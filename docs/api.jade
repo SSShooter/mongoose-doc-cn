@@ -1,0 +1,34 @@
+extends layout
+
+append style
+  link(rel="stylesheet", href="/docs/css/api.css")
+
+block content
+  h1 API Docs
+
+  each item in docs
+    hr.separate-api
+    h2(id="#{item.name}")
+      a(href="##{item.name}")
+        | #{item.name}
+    ul
+      each prop in item.props
+        li
+          a(href="##{prop.anchorId}")
+            | #{prop.string}
+    each prop in item.props
+      hr.separate-api-elements
+      h3(id="#{prop.anchorId}")
+        a(href="##{prop.anchorId}")
+          | #{prop.string}
+      if prop.param != null
+        h5 Parameters
+        ul.params
+          each param in prop.param
+            li.param #{param.name} <span class="method-type">&laquo;#{param.types}&raquo;</span> !{param.description}
+      if prop.return != null
+        h5 Returns:
+        ul
+          li <span class="method-type">&laquo;#{prop.return.types}&raquo;</span> #{prop.return.description}
+      div
+        | !{prop.description}

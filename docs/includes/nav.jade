@@ -1,0 +1,93 @@
+ul
+  li.home
+    a(href="../index.html") home
+  li.faq
+    a(href="./faq.html") FAQ
+  li.plugins
+    a(href="http://plugins.mongoosejs.com") plugins
+  li.changelog
+    a(href="http://github.com/Automattic/mongoose/tree/master/History.md") change log
+  li.support
+    a(href="../index.html#support") support
+  li.fork
+    a(href="http://github.com/Automattic/mongoose") fork
+  li.guide
+    a(href="./guide.html") guide
+    if (locals.guide)
+      ul
+        li.double
+          a(href="./guide.html") schemas
+          ul
+            li.schematypes
+              a(href="./schematypes.html")
+                span schema
+                | types
+            li.custom-schema-types
+              a(href="./customschematypes.html")
+                | custom schema types
+            li.advanced-schemas
+              a(href="./advanced_schemas.html")
+                | advanced usage
+        li
+          a(href="./models.html")
+            | models
+        li.double
+          a(href="./documents.html")
+            | documents
+          ul
+            li.subdocs
+              a(href="./subdocs.html")
+                | sub docs
+            li.defaults
+              a(href="./defaults.html")
+                | defaults
+        li
+          a(href="./queries.html")
+            | queries
+        li
+          a(href="./validation.html")
+            | validation
+        li
+          a(href="./middleware.html")
+            | middleware
+        li
+          a(href="./populate.html")
+            | population
+        li
+          a(href="./connections.html")
+            | connections
+        li
+          a(href="./plugins.html")
+            | plugins
+        li
+          a(href="./promises.html")
+            | promises
+        li
+          a(href="./discriminators.html")
+            | discriminators
+        li
+          a(href="https://github.com/Automattic/mongoose/blob/master/CONTRIBUTING.md")
+            | contributing
+        li
+          a(href="./browser.html")
+            | schemas in the browser
+        li
+          a(href="./compatibility.html")
+            | MongoDB Version Compatibility
+        li
+          a(href="https://github.com/Automattic/mongoose/wiki/3.6-Release-Notes")
+            | 3.6 release notes
+        li
+          a(href="https://github.com/Automattic/mongoose/wiki/3.8-Release-Notes")
+            | 3.8 release notes
+        li
+          a(href="https://github.com/Automattic/mongoose/wiki/4.0-Release-Notes")
+            | 4.0 release notes
+  li.api
+    a(href="./api.html") API docs
+  li.quickstart
+    a(href="./index.html") quick start
+  li.contrib
+    a(href="http://github.com/Automattic/mongoose/contributors") contributors
+  li.prior
+    a(href="./prior.html") prior releases

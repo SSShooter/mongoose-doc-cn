@@ -1,0 +1,60 @@
+{
+  "name": "mongoose-doc-cn",
+  "description": "mongoose-doc-cn",
+  "version": "5.0.15",
+  "author": "Guillermo Rauch <guillermo@learnboost.com>",
+  "keywords": [
+    "mongodb",
+    "document",
+    "model",
+    "schema",
+    "database",
+    "odm",
+    "data",
+    "datastore",
+    "query",
+    "nosql",
+    "orm",
+    "db"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "acquit": "0.5.1",
+    "acquit-ignore": "0.0.3",
+    "co": "4.6.0",
+    "dox": "0.3.1",
+    "eslint": "4.14.0",
+    "highlight.js": "9.1.0",
+    "jade": "1.11.0",
+    "lodash": "4.16.6",
+    "markdown": "0.5.0",
+    "marked": "0.3.9",
+    "mongodb-topology-manager": "1.0.11",
+    "mongoose-long": "0.1.1",
+    "node-static": "0.7.10",
+    "nsp": "~2.8.1",
+    "nyc": "11.4.1",
+    "power-assert": "1.4.1",
+    "tbd": "0.6.4",
+    "uuid": "2.0.3",
+    "uuid-parse": "1.0.0",
+    "validator": "5.4.0"
+  },
+  "directories": {
+    "lib": "./lib/mongoose"
+  },
+  "scripts": {
+    "fix-lint": "eslint . --fix",
+    "lint": "eslint . --quiet",
+    "nsp": "nsp check",
+    "release": "git pull && git push origin master --tags && npm publish",
+    "release-legacy": "git pull origin 4.x && git push origin 4.x --tags && npm publish --tag legacy",
+    "test": "mocha --exit test/*.test.js test/**/*.test.js",
+    "test-cov": "nyc --reporter=html --reporter=text npm test"
+  },
+  "main": "./index.js",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "browser": "./browser.js"
+}
