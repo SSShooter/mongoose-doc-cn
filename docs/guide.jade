@@ -33,15 +33,12 @@ block content
     在这之后你还想添加 keys 的话， 请使用
     [Schema#add](./api.html#schema_Schema-add) 方法。
 
-    Each key in our code `blogSchema` defines a property in our documents which
-    will be cast to its associated [SchemaType](./api.html#schematype_SchemaType).
-    For example, we've defined a property `title` which will be cast to the
-    [String](./api.html#schema-string-js) SchemaType and property `date`
-    which will be cast to a `Date` SchemaType. Keys may also be assigned
-    nested objects containing further key/type definitions like
-    the `meta` property above.
+    document 里每个属性的类型都会被转换为 在 `blogSchema` 里定义对应的 [SchemaType](./api.html#schematype_SchemaType)。
+    例如 `title` 属性会被转换为 SchemaType [String](./api.html#schema-string-js)，
+    而 `date`属性会被转换为 SchemaType `Date`。
+    还可以像上面 `meta` 属性，更详细地指定嵌套在里面的属性类型。
 
-    The permitted SchemaTypes are:
+    允许使用的 SchemaTypes 有:
 
     * String
     * Number
@@ -52,14 +49,15 @@ block content
     * ObjectId
     * Array
 
-    Read more about [SchemaTypes here](./schematypes.html).
+    更多关于 [SchemaTypes](./schematypes.html)
 
-    Schemas not only define the structure of your document and casting of
-    properties, they also define document [instance methods](#methods),
-    [static Model methods](#statics), [compound indexes](#indexes),
-    and document lifecycle hooks called [middleware](./middleware.html).
+    Schema的功能不只是定义文档结构和属性类型，它可以定义——
+    * document 的 [instance methods](#methods)
+    * model 的 [static Model methods](#statics)
+    * [复合索引](#indexes)
+    * 文档的生命周期钩子，也成为[中间件](./middleware.html)
 
-    <h3 id="models"><a href="#models">Creating a model</a></h3>
+    <h3 id="models"><a href="#models">创建一个 model</a></h3>
 
     To use our schema definition, we need to convert our `blogSchema` into a
     [Model](./models.html) we can work with.
@@ -70,7 +68,7 @@ block content
       // ready to go!
     ```
 
-    <h3 id="methods"><a href="#methods">Instance methods</a></h3>
+    <h3 id="methods"><a href="#methods">实例方法（method）</a></h3>
 
     Instances of `Models` are [documents](./documents.html). Documents have
     many of their own [built-in instance methods](./api.html#document-js).
@@ -101,7 +99,7 @@ block content
     * Overwriting a default mongoose document method may lead to unpredictable results. See [this](./api.html#schema_Schema.reserved) for more details.
     * Do **not** declare methods using ES6 arrow functions (`=>`). Arrow functions [explicitly prevent binding `this`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#No_binding_of_this), so your method will **not** have access to the document and the above examples will not work.
 
-    <h3 id="statics"><a href="#statics">Statics</a></h3>
+    <h3 id="statics"><a href="#statics">静态方法（static）</a></h3>
 
     Adding static methods to a `Model` is simple as well. Continuing with our
     `animalSchema`:
@@ -120,11 +118,9 @@ block content
 
     Do **not** declare statics using ES6 arrow functions (`=>`). Arrow functions [explicitly prevent binding `this`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#No_binding_of_this), so the above examples will not work because of the value of `this`.
 
-    <h3 id="query-helpers"><a href="#query-helpers">Query Helpers</a></h3>
+    <h3 id="query-helpers"><a href="#query-helpers">查询助手（query helper）</a></h3>
 
-    You can also add query helper functions, which are like instance methods
-    but for mongoose queries. Query helper methods let you extend mongoose's
-    [chainable query builder API](./queries.html).
+    查询助手作用于 query 实例，方便你自定义拓展你的 [链式查询](./queries.html)
 
     ```javascript
       animalSchema.query.byName = function(name) {
@@ -137,9 +133,9 @@ block content
       });
     ```
 
-    <h3 id="indexes"><a href="#indexes">Indexes</a></h3>
+    <h3 id="indexes"><a href="#indexes">索引（index）</a></h3>
 
-    MongoDB supports [secondary indexes](http://docs.mongodb.org/manual/indexes/).
+    MongoDB 支持 [secondary indexes](http://docs.mongodb.org/manual/indexes/).
     With mongoose, we define these indexes within our `Schema` [at](./api.html#schematype_SchemaType-index) [the](./api.html#schematype_SchemaType-unique) [path](./api.html#schematype_SchemaType-sparse) [level](./api.html#schema_date_SchemaDate-expires) or the `schema` level.
     Defining indexes at the schema level is necessary when creating
     [compound indexes](https://docs.mongodb.com/manual/core/index-compound/).
@@ -185,7 +181,7 @@ block content
 
     See also the [Model#ensureIndexes](./api.html#model_Model.ensureIndexes) method.
 
-    <h3 id="virtuals"><a href="#virtuals">Virtuals</a></h3>
+    <h3 id="virtuals"><a href="#virtuals">虚拟值（Virtual）</a></h3>
 
     [Virtuals](./api.html#schema_Schema-virtual) are document properties that
     you can get and set but that do not get persisted to MongoDB. The getters
@@ -261,7 +257,7 @@ block content
     Only non-virtual properties work as part of queries and for field selection.
     Since virtuals are not stored in MongoDB, you can't query with them.
 
-    <h5 id="aliases"><a href="#aliases">Aliases</a></h5>
+    <h5 id="aliases"><a href="#aliases">别名（Alias）</a></h5>
 
     Aliases are a particular type of virtual where the getter and setter
     seamlessly get and set another property. This is handy for saving network

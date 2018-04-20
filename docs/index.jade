@@ -16,18 +16,16 @@ block content
   :markdown
     ## Getting Started
 
-    _First be sure you have [MongoDB](http://www.mongodb.org/downloads) and [Node.js](http://nodejs.org/) installed._
+    _请先安装 [MongoDB](http://www.mongodb.org/downloads) 和 [Node.js](http://nodejs.org/)。 _
 
-    Next install Mongoose from the command line using `npm`:
+    下一步，`npm`安装Mongoose:
 
     ```
     $ npm install mongoose
     ```
 
-    Now say we like fuzzy kittens and want to record every kitten we ever meet
-    in MongoDB.
-    The first thing we need to do is include mongoose in our project and open a
-    connection to the `test` database on our locally running instance of MongoDB.
+    假设我们都很喜欢喵星人，想在MongoDB里记录每只我们见过的喵星人。
+    首先我们要在项目中引入 mongoose ，然后连接我们本地的 `test` 数据库。
 
     ```javascript
     // getting-started.js
@@ -35,9 +33,8 @@ block content
     mongoose.connect('mongodb://localhost/test');
     ```
 
-    We have a pending connection to the test database running on localhost.
-    We now need to get notified if we connect successfully or if a connection
-    error occurs:
+    `connect()` 返回一个状态待定（pending）的连接，
+    接着我们加上成功提醒和失败警告。
 
     ```javascript
     var db = mongoose.connection;
@@ -47,11 +44,11 @@ block content
     });
     ```
 
-    Once our connection opens, our callback will be called. For brevity,
-    let's assume that all following code is within this callback.
+    连接成功时，回调函数会被调用。简洁起见，
+    我们假设下面所有函数都运行在这个回调函数里。
 
-    With Mongoose, everything is derived from a [Schema](/docs/guide.html).
-    Let's get a reference to it and define our kittens.
+    Mongoose 里，一切都始于[Schema](/docs/guide.html)。
+    现在我们来看一个例子：
 
     ```javascript
     var kittySchema = mongoose.Schema({
@@ -59,25 +56,26 @@ block content
     });
     ```
 
-    So far so good. We've got a schema with one property, `name`, which will be a  `String`. The next step is compiling our schema into a [Model](/docs/models.html).
+    很好，我们得到了一个带有 `String` 类型 `name` 属性的 schema 。
+    接着我们需要把这个 schema 编译成一个 [Model](/docs/models.html)：
 
     ```javascript
     var Kitten = mongoose.model('Kitten', kittySchema);
     ```
 
-    A model is a class with which we construct documents.
-    In this case, each document will be a kitten with properties and behaviors as declared in our schema.
-    Let's create a kitten document representing the little guy we just met on the sidewalk outside:
+    model 是我们构造 document 的 Class。
+    在例子中，每个 document 都是一只喵，它的属性和行为都会被声明在 schema。
+    现在我们来“创造”一只猫：
 
     ```javascript
-    var silence = new Kitten({ name: 'Silence' });
-    console.log(silence.name); // 'Silence'
+    var felyne = new Kitten({ name: 'Felyne' });
+    console.log(felyne.name); // 'Felyne'
     ```
 
-    Kittens can meow, so let's take a look at how to add "speak" functionality
-    to our documents:
+    不会喵怎么算喵星人，现在给喵星人 document 加个 "speak" 方法：
 
     ```javascript
+    // 译者注：注意了， method 是给 document 用的
     // NOTE: methods must be added to the schema before compiling it with mongoose.model()
     kittySchema.methods.speak = function () {
       var greeting = this.name
@@ -89,16 +87,17 @@ block content
     var Kitten = mongoose.model('Kitten', kittySchema);
     ```
 
-    Functions added to the `methods` property of a schema get compiled into
-    the `Model` prototype and exposed on each document instance:
+    加在 schema `methods` 属性的函数会编译到 `Model` 的 prototype，
+    也会暴露到每个 document 实例：
 
     ```javascript
     var fluffy = new Kitten({ name: 'fluffy' });
     fluffy.speak(); // "Meow name is fluffy"
     ```
 
-    We have talking kittens! But we still haven't saved anything to MongoDB.
-    Each document can be saved to the database by calling its [save](/docs/api.html#model_Model-save) method. The first argument to the callback will be an error if any occured.
+    赞！是一只会说话的瞄星人！emmmmm虽然我们还没吧它存到数据库里。
+    每个 document 会在调用他的 [save](/docs/api.html#model_Model-save) 方法后保存到数据库。
+    注意回调函数的第一个参数永远是 error 。
 
     ```javascript
       fluffy.save(function (err, fluffy) {
@@ -107,8 +106,7 @@ block content
       });
     ```
 
-    Say time goes by and we want to display all the kittens we've seen.
-    We can access all of the kitten documents through our Kitten [model](/docs/models.html).
+    后来我们收集了好多喵，就可以通过以下方法获取喵星人 [model](/docs/models.html) 里的所有数据：
 
     ```javascript
     Kitten.find(function (err, kittens) {
@@ -117,16 +115,15 @@ block content
     })
     ```
 
-    We just logged all of the kittens in our db to the console.
-    If we want to filter our kittens by name, Mongoose supports MongoDBs rich [querying](/docs/queries.html) syntax.
+    如果我们想获取特定的数据，
+    可以了解一下 [query](/docs/queries.html)。
 
     ```javascript
+    // 这么写可以获取所有 name 为 "Fluff" 开头的数据
     Kitten.find({ name: /^fluff/ }, callback);
     ```
 
-    This performs a search for all documents with a name property that begins
-    with "Fluff" and returns the result as an array of kittens to the callback.
+    ### 可喜可贺
 
-    ### Congratulations
-
-    That's the end of our quick start. We created a schema, added a custom document method, saved and queried kittens in MongoDB using Mongoose. Head over to the [guide](guide.html), or [API docs](api.html) for more.
+    我们已经看完快速上手啦！上面我们写了一个 schema ，添加了 method ，然后用 Mongoose 把我们的猫储存到了数据库，
+    接着我们可以到[指引](guide.html) 和 [API 文档](api.html)了解更多信息。
