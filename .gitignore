@@ -1,0 +1,31 @@
+lib-cov
+**.swp
+*.sw*
+node_modules/
+*.orig
+.DS_Store
+docs/*.json
+docs/source/_docs
+tags
+test/triage/*.js
+/.idea
+/inspections
+bin/mongoose.min.js
+coverage
+npm-debug.log
+data/
+.nyc_output/
+
+tools/31*
+
+# Visual Studio
+# =========
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Visual STudio Code
+.vscode
+
+*.key
