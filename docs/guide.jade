@@ -136,9 +136,8 @@ block content
     <h3 id="indexes"><a href="#indexes">索引（index）</a></h3>
 
     MongoDB 支持 [secondary indexes](http://docs.mongodb.org/manual/indexes/).
-    With mongoose, we define these indexes within our `Schema` [at](./api.html#schematype_SchemaType-index) [the](./api.html#schematype_SchemaType-unique) [path](./api.html#schematype_SchemaType-sparse) [level](./api.html#schema_date_SchemaDate-expires) or the `schema` level.
-    Defining indexes at the schema level is necessary when creating
-    [compound indexes](https://docs.mongodb.com/manual/core/index-compound/).
+    在 mongoose 中，我们在 `Schema` 中定义索引。索引分字段级别和schema级别，
+    [复合索引](https://docs.mongodb.com/manual/core/index-compound/) 需要在 schema 级别定义。
 
     ```javascript
       var animalSchema = new Schema({
@@ -150,9 +149,11 @@ block content
       animalSchema.index({ name: 1, type: -1 }); // schema level
     ```
 
-    When your application starts up, Mongoose automatically calls [`createIndex`](https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/#db.collection.createIndex) for each defined index in your schema.
-    Mongoose will call `createIndex` for each index sequentially, and emit an 'index' event on the model when all the `createIndex` calls succeeded or when there was an error.
-    While nice for development, it is recommended this behavior be disabled in production since index creation can cause a [significant performance impact](http://docs.mongodb.org/manual/core/indexes/#index-creation-operations). Disable the behavior by setting the `autoIndex` option of your schema to `false`, or globally on the connection by setting the option `autoIndex` to `false`.
+    应用启动时， Mongoose 会自动调用 [`createIndex`](https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/#db.collection.createIndex) 初始化你定义的索引。
+    Mongoose 顺序处理每一个 `createIndex` ，然后在model触发 'index' 事件。
+    While nice for development, it is recommended this behavior be disabled 
+    in production since index creation can cause a [significant performance impact](http://docs.mongodb.org/manual/core/indexes/#index-creation-operations). 
+    Disable the behavior by setting the `autoIndex` option of your schema to `false`, or globally on the connection by setting the option `autoIndex` to `false`.
 
     ```javascript
       mongoose.connect('mongodb://user:pass@localhost:port/database', { autoIndex: false });
@@ -164,8 +165,7 @@ block content
       new Schema({..}, { autoIndex: false });
     ```
 
-    Mongoose will emit an `index` event on the model when indexes are done
-    building or an error occurred.
+    索引构建完成或失败后，Mongoose 会触发 `index` 事件。
 
     ```javascript
       // Will cause an error because mongodb has an _id index by default that
@@ -179,14 +179,13 @@ block content
       });
     ```
 
-    See also the [Model#ensureIndexes](./api.html#model_Model.ensureIndexes) method.
+    相关链接 [Model#ensureIndexes](./api.html#model_Model.ensureIndexes) 
 
     <h3 id="virtuals"><a href="#virtuals">虚拟值（Virtual）</a></h3>
 
-    [Virtuals](./api.html#schema_Schema-virtual) are document properties that
-    you can get and set but that do not get persisted to MongoDB. The getters
-    are useful for formatting or combining fields, while setters are useful for
-    de-composing a single value into multiple values for storage.
+    [Virtuals](./api.html#schema_Schema-virtual) 是 document 的属性，但是不会被保存到 MongoDB。
+    getter可以用于格式化和组合字段数据，
+    setter可以很方便地分解一个值到多个字段。
 
     ```javascript
       // define a schema
@@ -206,17 +205,15 @@ block content
       });
     ```
 
-    Suppose you want to print out the person's full name. You could do it yourself:
+    如果你要log出全名，可以这么做：
 
     ```javascript
     console.log(axl.name.first + ' ' + axl.name.last); // Axl Rose
     ```
 
-    But concatenating the first and last name every time can get cumbersome.
-    And what if you want to do some extra processing on the name, like
-    [removing diacritics](https://www.npmjs.com/package/diacritics)? A
-    [virtual property getter](./api.html#virtualtype_VirtualType-get) lets you
-    define a `fullName` property that won't get persisted to MongoDB.
+    但是每次都这么拼接实在太麻烦了，
+    推荐你使用[virtual property getter](./api.html#virtualtype_VirtualType-get)，
+    这个方法允许你定义一个 `fullName` 属性，但不必保存到数据库。
 
     ```javascript
     personSchema.virtual('fullName').get(function () {
@@ -224,20 +221,18 @@ block content
     });
     ```
 
-    Now, mongoose will call your getter function every time you access the
-    `fullName` property:
+    现在, mongoose 可以调用 getter 函数访问
+    `fullName` 属性：
 
     ```javascript
     console.log(axl.fullName); // Axl Rose
     ```
 
-    If you use `toJSON()` or `toObject()` (or use `JSON.stringify()` on a
-    mongoose document) mongoose will *not* include virtuals by default.
-    Pass `{ virtuals: true }` to either
-    [toObject()](./api.html#document_Document-toObject) or `toJSON()`.
-
-    You can also add a custom setter to your virtual that will let you set both
-    first name and last name via the `fullName` virtual.
+    如果对 document 使用 `toJSON()` 或 `toObject()`，默认不包括虚拟值，
+    你需要额外向 [toObject()](./api.html#document_Document-toObject) 或者 `toJSON()`
+    传入参数 `{ virtuals: true }`。
+    
+    你也可以设定虚拟值的 setter ，下例中，当你赋值到虚拟值时，它可以自动拆分到其他属性：
 
     ```javascript
     personSchema.virtual('fullName').
@@ -259,10 +254,9 @@ block content
 
     <h5 id="aliases"><a href="#aliases">别名（Alias）</a></h5>
 
-    Aliases are a particular type of virtual where the getter and setter
-    seamlessly get and set another property. This is handy for saving network
-    bandwidth, so you can convert a short property name stored in the database
-    into a longer name for code readability.
+    Aliase 是一种特殊的虚拟值，它的 getter 和 setter
+    会无缝链接到另一个值。这是一个节省带宽的做法，
+    你可以储存一个更短的属性名到数据库，同时在调用的时候保持可读性。 
 
     ```javascript
     var personSchema = new Schema({
@@ -317,6 +311,7 @@ block content
     - [collation](#collation)
     - [skipVersioning](#skipVersioning)
     - [timestamps](#timestamps)
+    - [useNestedStrict](#useNestedStrict)
 
     <h3 id="autoIndex"><a href="#autoIndex">option: autoIndex</a></h3>
 
@@ -505,6 +500,7 @@ block content
 
     <h3 id="shardKey"><a href="#shardKey">option: shardKey</a></h3>
 
+    分片相关
     The `shardKey` option is used when we have a [sharded MongoDB architecture](http://www.mongodb.org/display/DOCS/Sharding+Introduction).
     Each sharded collection is given a shard key which must be present in all
     insert/update operations. We just need to set this schema option to the same
@@ -519,9 +515,7 @@ block content
 
     <h3 id="strict">option: strict</h3>
 
-    The strict option, (enabled by default), ensures that values passed to our
-    model constructor that were not specified in our schema do not get saved to
-    the db.
+    Strict 选项默认为 true，这意味着你不能 `save` schema 里没有声明的属性。
 
     ```javascript
     var thingSchema = new Schema({..})
@@ -535,7 +529,7 @@ block content
     thing.save(); // iAmNotInTheSchema is now saved to the db!!
     ```
 
-    This also affects the use of `doc.set()` to set a property value.
+    `doc.set()` 也受该选项影响：
 
     ```javascript
     var thingSchema = new Schema({..})
@@ -545,8 +539,7 @@ block content
     thing.save(); // iAmNotInTheSchema is not saved to the db
     ```
 
-    This value can be overridden at the model instance level by passing a second
-    boolean argument:
+    这个值可以在 model 级别重写，在第二个参数值传入：
 
     ```javascript
     var Thing = mongoose.model('Thing');
@@ -761,11 +754,11 @@ block content
 
     <h3 id="timestamps"><a href="#timestamps">option: timestamps</a></h3>
 
-    If set `timestamps`, mongoose assigns `createdAt` and `updatedAt` fields to
-    your schema, the type assigned is [Date](./api.html#schema-date-js).
+    如果设置了 `timestamps` 选项, mongoose 会在你的 schema 自动添加 `createdAt` 和 `updatedAt` 字段，
+    其类型为 [Date](./api.html#schema-date-js)。
 
-    By default, the name of two fields are `createdAt` and `updatedAt`, customize
-    the field name by setting `timestamps.createdAt` and `timestamps.updatedAt`.
+    这两个字段的默认名是 `createdAt` 和 `updatedAt`， 你可以通过设定
+    `timestamps.createdAt` 和 `timestamps.updatedAt` 自定义字段名称。
 
     ```javascript
     var thingSchema = new Schema({..}, { timestamps: { createdAt: 'created_at' } });

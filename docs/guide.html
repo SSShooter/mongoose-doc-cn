@@ -22,14 +22,11 @@ collection ，并定义这个collection里的文档的构成。</p>
 </code></pre>
 <p>在这之后你还想添加 keys 的话， 请使用
 <a href="./api.html#schema_Schema-add">Schema#add</a> 方法。</p>
-<p>Each key in our code <code>blogSchema</code> defines a property in our documents which
-will be cast to its associated <a href="./api.html#schematype_SchemaType">SchemaType</a>.
-For example, we&#39;ve defined a property <code>title</code> which will be cast to the
-<a href="./api.html#schema-string-js">String</a> SchemaType and property <code>date</code>
-which will be cast to a <code>Date</code> SchemaType. Keys may also be assigned
-nested objects containing further key/type definitions like
-the <code>meta</code> property above.</p>
-<p>The permitted SchemaTypes are:</p>
+<p>document 里每个属性的类型都会被转换为 在 <code>blogSchema</code> 里定义对应的 <a href="./api.html#schematype_SchemaType">SchemaType</a>。
+例如 <code>title</code> 属性会被转换为 SchemaType <a href="./api.html#schema-string-js">String</a>，
+而 <code>date</code>属性会被转换为 SchemaType <code>Date</code>。
+还可以像上面 <code>meta</code> 属性，更详细地指定嵌套在里面的属性类型。</p>
+<p>允许使用的 SchemaTypes 有:</p>
 <ul>
 <li>String</li>
 <li>Number</li>
@@ -40,12 +37,15 @@ the <code>meta</code> property above.</p>
 <li>ObjectId</li>
 <li>Array</li>
 </ul>
-<p>Read more about <a href="./schematypes.html">SchemaTypes here</a>.</p>
-<p>Schemas not only define the structure of your document and casting of
-properties, they also define document <a href="#methods">instance methods</a>,
-<a href="#statics">static Model methods</a>, <a href="#indexes">compound indexes</a>,
-and document lifecycle hooks called <a href="./middleware.html">middleware</a>.</p>
-<h3 id="models"><a href="#models">Creating a model</a></h3>
+<p>更多关于 <a href="./schematypes.html">SchemaTypes</a></p>
+<p>Schema的功能不只是定义文档结构和属性类型，它可以定义——</p>
+<ul>
+<li>document 的 <a href="#methods">instance methods</a></li>
+<li>model 的 <a href="#statics">static Model methods</a></li>
+<li><a href="#indexes">复合索引</a></li>
+<li>文档的生命周期钩子，也成为<a href="./middleware.html">中间件</a></li>
+</ul>
+<h3 id="models"><a href="#models">创建一个 model</a></h3>
 
 <p>To use our schema definition, we need to convert our <code>blogSchema</code> into a
 <a href="./models.html">Model</a> we can work with.
@@ -53,7 +53,7 @@ To do so, we pass it into <code>mongoose.model(modelName, schema)</code>:</p>
 <pre><code class="lang-javascript">  <span class="hljs-keyword">var</span> Blog = mongoose.model(<span class="hljs-string">'Blog'</span>, blogSchema);
   <span class="hljs-comment">// ready to go!</span>
 </code></pre>
-<h3 id="methods"><a href="#methods">Instance methods</a></h3>
+<h3 id="methods"><a href="#methods">实例方法（method）</a></h3>
 
 <p>Instances of <code>Models</code> are <a href="./documents.html">documents</a>. Documents have
 many of their own <a href="./api.html#document-js">built-in instance methods</a>.
@@ -79,7 +79,7 @@ to them.</p>
 <li>Overwriting a default mongoose document method may lead to unpredictable results. See <a href="./api.html#schema_Schema.reserved">this</a> for more details.</li>
 <li>Do <strong>not</strong> declare methods using ES6 arrow functions (<code>=&gt;</code>). Arrow functions <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#No_binding_of_this">explicitly prevent binding <code>this</code></a>, so your method will <strong>not</strong> have access to the document and the above examples will not work.</li>
 </ul>
-<h3 id="statics"><a href="#statics">Statics</a></h3>
+<h3 id="statics"><a href="#statics">静态方法（static）</a></h3>
 
 <p>Adding static methods to a <code>Model</code> is simple as well. Continuing with our
 <code>animalSchema</code>:</p>
@@ -94,11 +94,9 @@ to them.</p>
   });
 </code></pre>
 <p>Do <strong>not</strong> declare statics using ES6 arrow functions (<code>=&gt;</code>). Arrow functions <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#No_binding_of_this">explicitly prevent binding <code>this</code></a>, so the above examples will not work because of the value of <code>this</code>.</p>
-<h3 id="query-helpers"><a href="#query-helpers">Query Helpers</a></h3>
+<h3 id="query-helpers"><a href="#query-helpers">查询助手（query helper）</a></h3>
 
-<p>You can also add query helper functions, which are like instance methods
-but for mongoose queries. Query helper methods let you extend mongoose&#39;s
-<a href="./queries.html">chainable query builder API</a>.</p>
+<p>查询助手作用于 query 实例，方便你自定义拓展你的 <a href="./queries.html">链式查询</a></p>
 <pre><code class="lang-javascript">  animalSchema.query.byName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>) </span>{
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.find({ name: <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(name, <span class="hljs-string">'i'</span>) });
   };
@@ -108,12 +106,11 @@ but for mongoose queries. Query helper methods let you extend mongoose&#39;s
     <span class="hljs-built_in">console</span>.log(animals);
   });
 </code></pre>
-<h3 id="indexes"><a href="#indexes">Indexes</a></h3>
+<h3 id="indexes"><a href="#indexes">索引（index）</a></h3>
 
-<p>MongoDB supports <a href="http://docs.mongodb.org/manual/indexes/">secondary indexes</a>.
-With mongoose, we define these indexes within our <code>Schema</code> <a href="./api.html#schematype_SchemaType-index">at</a> <a href="./api.html#schematype_SchemaType-unique">the</a> <a href="./api.html#schematype_SchemaType-sparse">path</a> <a href="./api.html#schema_date_SchemaDate-expires">level</a> or the <code>schema</code> level.
-Defining indexes at the schema level is necessary when creating
-<a href="https://docs.mongodb.com/manual/core/index-compound/">compound indexes</a>.</p>
+<p>MongoDB 支持 <a href="http://docs.mongodb.org/manual/indexes/">secondary indexes</a>.
+在 mongoose 中，我们在 <code>Schema</code> 中定义索引。索引分字段级别和schema级别，
+<a href="https://docs.mongodb.com/manual/core/index-compound/">复合索引</a> 需要在 schema 级别定义。</p>
 <pre><code class="lang-javascript">  <span class="hljs-keyword">var</span> animalSchema = <span class="hljs-keyword">new</span> Schema({
     name: <span class="hljs-built_in">String</span>,
     type: <span class="hljs-built_in">String</span>,
@@ -122,9 +119,11 @@ Defining indexes at the schema level is necessary when creating
 
   animalSchema.index({ name: <span class="hljs-number">1</span>, type: <span class="hljs-number">-1</span> }); <span class="hljs-comment">// schema level</span>
 </code></pre>
-<p>When your application starts up, Mongoose automatically calls <a href="https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/#db.collection.createIndex"><code>createIndex</code></a> for each defined index in your schema.
-Mongoose will call <code>createIndex</code> for each index sequentially, and emit an &#39;index&#39; event on the model when all the <code>createIndex</code> calls succeeded or when there was an error.
-While nice for development, it is recommended this behavior be disabled in production since index creation can cause a <a href="http://docs.mongodb.org/manual/core/indexes/#index-creation-operations">significant performance impact</a>. Disable the behavior by setting the <code>autoIndex</code> option of your schema to <code>false</code>, or globally on the connection by setting the option <code>autoIndex</code> to <code>false</code>.</p>
+<p>应用启动时， Mongoose 会自动调用 <a href="https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/#db.collection.createIndex"><code>createIndex</code></a> 初始化你定义的索引。
+Mongoose 顺序处理每一个 <code>createIndex</code> ，然后在model触发 &#39;index&#39; 事件。
+While nice for development, it is recommended this behavior be disabled 
+in production since index creation can cause a <a href="http://docs.mongodb.org/manual/core/indexes/#index-creation-operations">significant performance impact</a>. 
+Disable the behavior by setting the <code>autoIndex</code> option of your schema to <code>false</code>, or globally on the connection by setting the option <code>autoIndex</code> to <code>false</code>.</p>
 <pre><code class="lang-javascript">  mongoose.connect(<span class="hljs-string">'mongodb://user:pass@localhost:port/database'</span>, { autoIndex: <span class="hljs-literal">false</span> });
   <span class="hljs-comment">// or</span>
   mongoose.createConnection(<span class="hljs-string">'mongodb://user:pass@localhost:port/database'</span>, { autoIndex: <span class="hljs-literal">false</span> });
@@ -133,8 +132,7 @@ While nice for development, it is recommended this behavior be disabled in produ
   <span class="hljs-comment">// or</span>
   <span class="hljs-keyword">new</span> Schema({..}, { autoIndex: <span class="hljs-literal">false</span> });
 </code></pre>
-<p>Mongoose will emit an <code>index</code> event on the model when indexes are done
-building or an error occurred.</p>
+<p>索引构建完成或失败后，Mongoose 会触发 <code>index</code> 事件。</p>
 <pre><code class="lang-javascript">  <span class="hljs-comment">// Will cause an error because mongodb has an _id index by default that</span>
   <span class="hljs-comment">// is not sparse</span>
   animalSchema.index({ _id: <span class="hljs-number">1</span> }, { sparse: <span class="hljs-literal">true</span> });
@@ -145,13 +143,12 @@ building or an error occurred.</p>
     <span class="hljs-built_in">console</span>.log(error.message);
   });
 </code></pre>
-<p>See also the <a href="./api.html#model_Model.ensureIndexes">Model#ensureIndexes</a> method.</p>
-<h3 id="virtuals"><a href="#virtuals">Virtuals</a></h3>
+<p>相关链接 <a href="./api.html#model_Model.ensureIndexes">Model#ensureIndexes</a> </p>
+<h3 id="virtuals"><a href="#virtuals">虚拟值（Virtual）</a></h3>
 
-<p><a href="./api.html#schema_Schema-virtual">Virtuals</a> are document properties that
-you can get and set but that do not get persisted to MongoDB. The getters
-are useful for formatting or combining fields, while setters are useful for
-de-composing a single value into multiple values for storage.</p>
+<p><a href="./api.html#schema_Schema-virtual">Virtuals</a> 是 document 的属性，但是不会被保存到 MongoDB。
+getter可以用于格式化和组合字段数据，
+setter可以很方便地分解一个值到多个字段。</p>
 <pre><code class="lang-javascript">  <span class="hljs-comment">// define a schema</span>
   <span class="hljs-keyword">var</span> personSchema = <span class="hljs-keyword">new</span> Schema({
     name: {
@@ -168,28 +165,24 @@ de-composing a single value into multiple values for storage.</p>
     name: { first: <span class="hljs-string">'Axl'</span>, last: <span class="hljs-string">'Rose'</span> }
   });
 </code></pre>
-<p>Suppose you want to print out the person&#39;s full name. You could do it yourself:</p>
+<p>如果你要log出全名，可以这么做：</p>
 <pre><code class="lang-javascript"><span class="hljs-built_in">console</span>.log(axl.name.first + <span class="hljs-string">' '</span> + axl.name.last); <span class="hljs-comment">// Axl Rose</span>
 </code></pre>
-<p>But concatenating the first and last name every time can get cumbersome.
-And what if you want to do some extra processing on the name, like
-<a href="https://www.npmjs.com/package/diacritics">removing diacritics</a>? A
-<a href="./api.html#virtualtype_VirtualType-get">virtual property getter</a> lets you</p>
-<p>define a <code>fullName</code> property that won&#39;t get persisted to MongoDB.</p>
+<p>但是每次都这么拼接实在太麻烦了，
+推荐你使用<a href="./api.html#virtualtype_VirtualType-get">virtual property getter</a>，
+这个方法允许你定义一个 <code>fullName</code> 属性，但不必保存到数据库。</p>
 <pre><code class="lang-javascript">personSchema.virtual(<span class="hljs-string">'fullName'</span>).get(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name.first + <span class="hljs-string">' '</span> + <span class="hljs-keyword">this</span>.name.last;
 });
 </code></pre>
-<p>Now, mongoose will call your getter function every time you access the
-<code>fullName</code> property:</p>
+<p>现在, mongoose 可以调用 getter 函数访问
+<code>fullName</code> 属性：</p>
 <pre><code class="lang-javascript"><span class="hljs-built_in">console</span>.log(axl.fullName); <span class="hljs-comment">// Axl Rose</span>
 </code></pre>
-<p>If you use <code>toJSON()</code> or <code>toObject()</code> (or use <code>JSON.stringify()</code> on a
-mongoose document) mongoose will <em>not</em> include virtuals by default.
-Pass <code>{ virtuals: true }</code> to either
-<a href="./api.html#document_Document-toObject">toObject()</a> or <code>toJSON()</code>.</p>
-<p>You can also add a custom setter to your virtual that will let you set both
-first name and last name via the <code>fullName</code> virtual.</p>
+<p>如果对 document 使用 <code>toJSON()</code> 或 <code>toObject()</code>，默认不包括虚拟值，
+你需要额外向 <a href="./api.html#document_Document-toObject">toObject()</a> 或者 <code>toJSON()</code>
+传入参数 <code>{ virtuals: true }</code>。</p>
+<p>你也可以设定虚拟值的 setter ，下例中，当你赋值到虚拟值时，它可以自动拆分到其他属性：</p>
 <pre><code class="lang-javascript">personSchema.virtual(<span class="hljs-string">'fullName'</span>).
   get(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name.first + <span class="hljs-string">' '</span> + <span class="hljs-keyword">this</span>.name.last; }).
   set(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">v</span>) </span>{
@@ -204,12 +197,11 @@ above would still work even if the <code>first</code> and <code>last</code> name
 required.</p>
 <p>Only non-virtual properties work as part of queries and for field selection.
 Since virtuals are not stored in MongoDB, you can&#39;t query with them.</p>
-<h5 id="aliases"><a href="#aliases">Aliases</a></h5>
+<h5 id="aliases"><a href="#aliases">别名（Alias）</a></h5>
 
-<p>Aliases are a particular type of virtual where the getter and setter
-seamlessly get and set another property. This is handy for saving network
-bandwidth, so you can convert a short property name stored in the database
-into a longer name for code readability.</p>
+<p>Aliase 是一种特殊的虚拟值，它的 getter 和 setter
+会无缝链接到另一个值。这是一个节省带宽的做法，
+你可以储存一个更短的属性名到数据库，同时在调用的时候保持可读性。 </p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> personSchema = <span class="hljs-keyword">new</span> Schema({
   n: {
     type: <span class="hljs-built_in">String</span>,
@@ -227,10 +219,9 @@ into a longer name for code readability.</p>
 person.name = <span class="hljs-string">'Not Val'</span>;
 <span class="hljs-built_in">console</span>.log(person); <span class="hljs-comment">// { n: 'Not Val' }</span>
 </code></pre>
-<h3 id="options"><a href="#options">Options</a></h3>
+<h3 id="options"><a href="#options">选项</a></h3>
 
-<p>Schemas have a few configurable options which can be passed to the
-constructor or <code>set</code> directly:</p>
+<p>Schemas 有很多可配置选项，你可以在构造时传入或者直接 <code>set</code>：</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">new</span> Schema({..}, options);
 
 <span class="hljs-comment">// or</span>
@@ -259,10 +250,16 @@ schema.set(option, value);
 <li><a href="#collation">collation</a></li>
 <li><a href="#skipVersioning">skipVersioning</a></li>
 <li><a href="#timestamps">timestamps</a></li>
+<li><a href="#useNestedStrict">useNestedStrict</a></li>
 </ul>
 <h3 id="autoIndex"><a href="#autoIndex">option: autoIndex</a></h3>
 
-<p>At application startup, Mongoose sends a <a href="https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/#db.collection.createIndex"><code>createIndex</code> command</a> for each index declared in your <code>Schema</code>. As of Mongoose v3, indexes are created in the <code>background</code> by default. If you wish to disable the auto-creation feature and manually handle when indexes are created, set your <code>Schema</code>s <code>autoIndex</code> option to <code>false</code> and use the <a href="./api.html#model_Model.ensureIndexes">ensureIndexes</a> method on your model.</p>
+<p>应用启动时，Mongoose 自动发送
+<a href="https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/#db.collection.createIndex"><code>createIndex</code></a> 指令，
+schema 里的每个 index 都会被创建。
+如果你需要关闭自动创建功能或者需要在创建后进行一系列操作，
+可以把 <code>autoIndex</code> 设为 <code>false</code>，
+然后对 model 调用 <a href="./api.html#model_Model.ensureIndexes">ensureIndexes</a>：</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> schema = <span class="hljs-keyword">new</span> Schema({..}, { autoIndex: <span class="hljs-literal">false</span> });
 <span class="hljs-keyword">var</span> Clock = mongoose.model(<span class="hljs-string">'Clock'</span>, schema);
 Clock.ensureIndexes(callback);
@@ -281,10 +278,9 @@ to false.</p>
 </code></pre>
 <h3 id="capped"><a href="#capped">option: capped</a></h3>
 
-<p>Mongoose supports MongoDBs <a href="http://www.mongodb.org/display/DOCS/Capped+Collections">capped</a>
-collections. To specify the underlying MongoDB collection be <code>capped</code>, set
-the <code>capped</code> option to the maximum size of the collection in
-<a href="http://www.mongodb.org/display/DOCS/Capped+Collections#CappedCollections-size.">bytes</a>.</p>
+<p>Mongoose 支持 MongoDB 的 <a href="http://www.mongodb.org/display/DOCS/Capped+Collections">capped</a>
+collections。 要从底层把 collection 设定为 <code>capped</code> （封顶）, 
+可以把 collection 的最大容量设定到 <code>capped</code> 选项（单位<a href="http://www.mongodb.org/display/DOCS/Capped+Collections#CappedCollections-size.">bytes</a>）。</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">new</span> Schema({..}, { capped: <span class="hljs-number">1024</span> });
 </code></pre>
 <p>The <code>capped</code> option may also be set to an object if you want to pass
@@ -404,7 +400,8 @@ mongoose.model(<span class="hljs-string">'JellyBean'</span>, schema);
 </code></pre>
 <h3 id="shardKey"><a href="#shardKey">option: shardKey</a></h3>
 
-<p>The <code>shardKey</code> option is used when we have a <a href="http://www.mongodb.org/display/DOCS/Sharding+Introduction">sharded MongoDB architecture</a>.
+<p>分片相关
+The <code>shardKey</code> option is used when we have a <a href="http://www.mongodb.org/display/DOCS/Sharding+Introduction">sharded MongoDB architecture</a>.
 Each sharded collection is given a shard key which must be present in all
 insert/update operations. We just need to set this schema option to the same
 shard key and we’ll be all set.</p>
@@ -414,9 +411,7 @@ shard key and we’ll be all set.</p>
 must configure your shards yourself.</em></p>
 <h3 id="strict">option: strict</h3>
 
-<p>The strict option, (enabled by default), ensures that values passed to our
-model constructor that were not specified in our schema do not get saved to
-the db.</p>
+<p>Strict 选项默认为 true，这意味着你不能 <code>save</code> schema 里没有声明的属性。</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> thingSchema = <span class="hljs-keyword">new</span> Schema({..})
 <span class="hljs-keyword">var</span> Thing = mongoose.model(<span class="hljs-string">'Thing'</span>, thingSchema);
 <span class="hljs-keyword">var</span> thing = <span class="hljs-keyword">new</span> Thing({ iAmNotInTheSchema: <span class="hljs-literal">true</span> });
@@ -427,15 +422,14 @@ thing.save(); <span class="hljs-comment">// iAmNotInTheSchema is not saved to th
 <span class="hljs-keyword">var</span> thing = <span class="hljs-keyword">new</span> Thing({ iAmNotInTheSchema: <span class="hljs-literal">true</span> });
 thing.save(); <span class="hljs-comment">// iAmNotInTheSchema is now saved to the db!!</span>
 </code></pre>
-<p>This also affects the use of <code>doc.set()</code> to set a property value.</p>
+<p><code>doc.set()</code> 也受该选项影响：</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> thingSchema = <span class="hljs-keyword">new</span> Schema({..})
 <span class="hljs-keyword">var</span> Thing = mongoose.model(<span class="hljs-string">'Thing'</span>, thingSchema);
 <span class="hljs-keyword">var</span> thing = <span class="hljs-keyword">new</span> Thing;
 thing.set(<span class="hljs-string">'iAmNotInTheSchema'</span>, <span class="hljs-literal">true</span>);
 thing.save(); <span class="hljs-comment">// iAmNotInTheSchema is not saved to the db</span>
 </code></pre>
-<p>This value can be overridden at the model instance level by passing a second
-boolean argument:</p>
+<p>这个值可以在 model 级别重写，在第二个参数值传入：</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> Thing = mongoose.model(<span class="hljs-string">'Thing'</span>);
 <span class="hljs-keyword">var</span> thing = <span class="hljs-keyword">new</span> Thing(doc, <span class="hljs-literal">true</span>);  <span class="hljs-comment">// enables strict mode</span>
 <span class="hljs-keyword">var</span> thing = <span class="hljs-keyword">new</span> Thing(doc, <span class="hljs-literal">false</span>); <span class="hljs-comment">// disables strict mode</span>
@@ -604,10 +598,10 @@ thing.save(); <span class="hljs-comment">// version is not incremented</span>
 </code></pre>
 <h3 id="timestamps"><a href="#timestamps">option: timestamps</a></h3>
 
-<p>If set <code>timestamps</code>, mongoose assigns <code>createdAt</code> and <code>updatedAt</code> fields to
-your schema, the type assigned is <a href="./api.html#schema-date-js">Date</a>.</p>
-<p>By default, the name of two fields are <code>createdAt</code> and <code>updatedAt</code>, customize
-the field name by setting <code>timestamps.createdAt</code> and <code>timestamps.updatedAt</code>.</p>
+<p>如果设置了 <code>timestamps</code> 选项, mongoose 会在你的 schema 自动添加 <code>createdAt</code> 和 <code>updatedAt</code> 字段，
+其类型为 <a href="./api.html#schema-date-js">Date</a>。</p>
+<p>这两个字段的默认名是 <code>createdAt</code> 和 <code>updatedAt</code>， 你可以通过设定
+<code>timestamps.createdAt</code> 和 <code>timestamps.updatedAt</code> 自定义字段名称。</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> thingSchema = <span class="hljs-keyword">new</span> Schema({..}, { timestamps: { createdAt: <span class="hljs-string">'created_at'</span> } });
 <span class="hljs-keyword">var</span> Thing = mongoose.model(<span class="hljs-string">'Thing'</span>, thingSchema);
 <span class="hljs-keyword">var</span> thing = <span class="hljs-keyword">new</span> Thing();
