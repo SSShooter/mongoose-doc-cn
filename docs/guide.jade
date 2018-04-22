@@ -59,9 +59,8 @@ block content
 
     <h3 id="models"><a href="#models">创建一个 model</a></h3>
 
-    To use our schema definition, we need to convert our `blogSchema` into a
-    [Model](./models.html) we can work with.
-    To do so, we pass it into `mongoose.model(modelName, schema)`:
+    我们要把 schema 转换为一个 [Model](./models.html)，
+    使用 `mongoose.model(modelName, schema)` 函数：
 
     ```javascript
       var Blog = mongoose.model('Blog', blogSchema);
@@ -70,9 +69,8 @@ block content
 
     <h3 id="methods"><a href="#methods">实例方法（method）</a></h3>
 
-    Instances of `Models` are [documents](./documents.html). Documents have
-    many of their own [built-in instance methods](./api.html#document-js).
-    We may also define our own custom document instance methods too.
+    [documents](./documents.html) 是 `Models` 的实例。 Document 有很多自带的[实例方法](./api.html#document-js)，
+    当然也可以自定义我们自己的方法。
 
     ```javascript
       // define a schema
@@ -84,8 +82,7 @@ block content
       };
     ```
 
-    Now all of our `animal` instances have a `findSimilarTypes` method available
-    to them.
+    现在所有 `animal` 实例都有 `findSimilarTypes` 方法：
 
     ```javascript
       var Animal = mongoose.model('Animal', animalSchema);
@@ -96,13 +93,12 @@ block content
       });
     ```
 
-    * Overwriting a default mongoose document method may lead to unpredictable results. See [this](./api.html#schema_Schema.reserved) for more details.
-    * Do **not** declare methods using ES6 arrow functions (`=>`). Arrow functions [explicitly prevent binding `this`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#No_binding_of_this), so your method will **not** have access to the document and the above examples will not work.
+    * 重写 mongoose 的默认方法会造成无法预料的结果，[相关链接](./api.html#schema_Schema.reserved)。 
+    * **不要**在自定义方法中使用 ES6 箭头函数，会造成 this 指向错误。
 
     <h3 id="statics"><a href="#statics">静态方法（static）</a></h3>
 
-    Adding static methods to a `Model` is simple as well. Continuing with our
-    `animalSchema`:
+    添加 `Model` 的静态方法也十分简单，继续用 `animalSchema` 举例：
 
     ```javascript
       // assign a function to the "statics" object of our animalSchema
@@ -116,7 +112,7 @@ block content
       });
     ```
 
-    Do **not** declare statics using ES6 arrow functions (`=>`). Arrow functions [explicitly prevent binding `this`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#No_binding_of_this), so the above examples will not work because of the value of `this`.
+    同样**不要**在静态方法中使用 ES6 箭头函数
 
     <h3 id="query-helpers"><a href="#query-helpers">查询助手（query helper）</a></h3>
 
@@ -184,8 +180,8 @@ block content
     <h3 id="virtuals"><a href="#virtuals">虚拟值（Virtual）</a></h3>
 
     [Virtuals](./api.html#schema_Schema-virtual) 是 document 的属性，但是不会被保存到 MongoDB。
-    getter可以用于格式化和组合字段数据，
-    setter可以很方便地分解一个值到多个字段。
+    getter 可以用于格式化和组合字段数据，
+    setter 可以很方便地分解一个值到多个字段。
 
     ```javascript
       // define a schema
@@ -245,12 +241,7 @@ block content
     axl.fullName = 'William Rose'; // Now `axl.name.first` is "William"
     ```
 
-    Virtual property setters are applied before other validation. So the example
-    above would still work even if the `first` and `last` name fields were
-    required.
-
-    Only non-virtual properties work as part of queries and for field selection.
-    Since virtuals are not stored in MongoDB, you can't query with them.
+    再次强调，虚拟值不能用于查询和字段选择，因为虚拟值不储存于 MongoDB。
 
     <h5 id="aliases"><a href="#aliases">别名（Alias）</a></h5>
 
@@ -359,7 +350,7 @@ block content
     The `capped` option may also be set to an object if you want to pass
     additional options like [max](http://www.mongodb.org/display/DOCS/Capped+Collections#CappedCollections-max)
     or [autoIndexId](http://www.mongodb.org/display/DOCS/Capped+Collections#CappedCollections-autoIndexId).
-    In this case you must explicitly pass the `size` option, which is required.
+    这个情况下你需要显式传入必要值 `size`。
 
     ```javascript
     new Schema({..}, { capped: { size: 1024, max: 1000, autoIndexId: true } });

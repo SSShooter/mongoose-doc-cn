@@ -47,17 +47,15 @@ collection ，并定义这个collection里的文档的构成。</p>
 </ul>
 <h3 id="models"><a href="#models">创建一个 model</a></h3>
 
-<p>To use our schema definition, we need to convert our <code>blogSchema</code> into a
-<a href="./models.html">Model</a> we can work with.
-To do so, we pass it into <code>mongoose.model(modelName, schema)</code>:</p>
+<p>我们要把 schema 转换为一个 <a href="./models.html">Model</a>，
+使用 <code>mongoose.model(modelName, schema)</code> 函数：</p>
 <pre><code class="lang-javascript">  <span class="hljs-keyword">var</span> Blog = mongoose.model(<span class="hljs-string">'Blog'</span>, blogSchema);
   <span class="hljs-comment">// ready to go!</span>
 </code></pre>
 <h3 id="methods"><a href="#methods">实例方法（method）</a></h3>
 
-<p>Instances of <code>Models</code> are <a href="./documents.html">documents</a>. Documents have
-many of their own <a href="./api.html#document-js">built-in instance methods</a>.
-We may also define our own custom document instance methods too.</p>
+<p><a href="./documents.html">documents</a> 是 <code>Models</code> 的实例。 Document 有很多自带的<a href="./api.html#document-js">实例方法</a>，
+当然也可以自定义我们自己的方法。</p>
 <pre><code class="lang-javascript">  <span class="hljs-comment">// define a schema</span>
   <span class="hljs-keyword">var</span> animalSchema = <span class="hljs-keyword">new</span> Schema({ name: <span class="hljs-built_in">String</span>, type: <span class="hljs-built_in">String</span> });
 
@@ -66,8 +64,7 @@ We may also define our own custom document instance methods too.</p>
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.model(<span class="hljs-string">'Animal'</span>).find({ type: <span class="hljs-keyword">this</span>.type }, cb);
   };
 </code></pre>
-<p>Now all of our <code>animal</code> instances have a <code>findSimilarTypes</code> method available
-to them.</p>
+<p>现在所有 <code>animal</code> 实例都有 <code>findSimilarTypes</code> 方法：</p>
 <pre><code class="lang-javascript">  <span class="hljs-keyword">var</span> Animal = mongoose.model(<span class="hljs-string">'Animal'</span>, animalSchema);
   <span class="hljs-keyword">var</span> dog = <span class="hljs-keyword">new</span> Animal({ type: <span class="hljs-string">'dog'</span> });
 
@@ -76,13 +73,12 @@ to them.</p>
   });
 </code></pre>
 <ul>
-<li>Overwriting a default mongoose document method may lead to unpredictable results. See <a href="./api.html#schema_Schema.reserved">this</a> for more details.</li>
-<li>Do <strong>not</strong> declare methods using ES6 arrow functions (<code>=&gt;</code>). Arrow functions <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#No_binding_of_this">explicitly prevent binding <code>this</code></a>, so your method will <strong>not</strong> have access to the document and the above examples will not work.</li>
+<li>重写 mongoose 的默认方法会造成无法预料的结果，<a href="./api.html#schema_Schema.reserved">相关链接</a>。 </li>
+<li><strong>不要</strong>在自定义方法中使用 ES6 箭头函数，会造成 this 指向错误。</li>
 </ul>
 <h3 id="statics"><a href="#statics">静态方法（static）</a></h3>
 
-<p>Adding static methods to a <code>Model</code> is simple as well. Continuing with our
-<code>animalSchema</code>:</p>
+<p>添加 <code>Model</code> 的静态方法也十分简单，继续用 <code>animalSchema</code> 举例：</p>
 <pre><code class="lang-javascript">  <span class="hljs-comment">// assign a function to the "statics" object of our animalSchema</span>
   animalSchema.statics.findByName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name, cb</span>) </span>{
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.find({ name: <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(name, <span class="hljs-string">'i'</span>) }, cb);
@@ -93,7 +89,7 @@ to them.</p>
     <span class="hljs-built_in">console</span>.log(animals);
   });
 </code></pre>
-<p>Do <strong>not</strong> declare statics using ES6 arrow functions (<code>=&gt;</code>). Arrow functions <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#No_binding_of_this">explicitly prevent binding <code>this</code></a>, so the above examples will not work because of the value of <code>this</code>.</p>
+<p>同样<strong>不要</strong>在静态方法中使用 ES6 箭头函数</p>
 <h3 id="query-helpers"><a href="#query-helpers">查询助手（query helper）</a></h3>
 
 <p>查询助手作用于 query 实例，方便你自定义拓展你的 <a href="./queries.html">链式查询</a></p>
@@ -147,8 +143,8 @@ Disable the behavior by setting the <code>autoIndex</code> option of your schema
 <h3 id="virtuals"><a href="#virtuals">虚拟值（Virtual）</a></h3>
 
 <p><a href="./api.html#schema_Schema-virtual">Virtuals</a> 是 document 的属性，但是不会被保存到 MongoDB。
-getter可以用于格式化和组合字段数据，
-setter可以很方便地分解一个值到多个字段。</p>
+getter 可以用于格式化和组合字段数据，
+setter 可以很方便地分解一个值到多个字段。</p>
 <pre><code class="lang-javascript">  <span class="hljs-comment">// define a schema</span>
   <span class="hljs-keyword">var</span> personSchema = <span class="hljs-keyword">new</span> Schema({
     name: {
@@ -192,11 +188,7 @@ setter可以很方便地分解一个值到多个字段。</p>
 
 axl.fullName = <span class="hljs-string">'William Rose'</span>; <span class="hljs-comment">// Now `axl.name.first` is "William"</span>
 </code></pre>
-<p>Virtual property setters are applied before other validation. So the example
-above would still work even if the <code>first</code> and <code>last</code> name fields were
-required.</p>
-<p>Only non-virtual properties work as part of queries and for field selection.
-Since virtuals are not stored in MongoDB, you can&#39;t query with them.</p>
+<p>再次强调，虚拟值不能用于查询和字段选择，因为虚拟值不储存于 MongoDB。</p>
 <h5 id="aliases"><a href="#aliases">别名（Alias）</a></h5>
 
 <p>Aliase 是一种特殊的虚拟值，它的 getter 和 setter
@@ -286,7 +278,7 @@ collections。 要从底层把 collection 设定为 <code>capped</code> （封�
 <p>The <code>capped</code> option may also be set to an object if you want to pass
 additional options like <a href="http://www.mongodb.org/display/DOCS/Capped+Collections#CappedCollections-max">max</a>
 or <a href="http://www.mongodb.org/display/DOCS/Capped+Collections#CappedCollections-autoIndexId">autoIndexId</a>.
-In this case you must explicitly pass the <code>size</code> option, which is required.</p>
+这个情况下你需要显式传入必要值 <code>size</code>。</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">new</span> Schema({..}, { capped: { size: <span class="hljs-number">1024</span>, max: <span class="hljs-number">1000</span>, autoIndexId: <span class="hljs-literal">true</span> } });
 </code></pre>
 <h3 id="collection"><a href="#collection">option: collection</a></h3>
