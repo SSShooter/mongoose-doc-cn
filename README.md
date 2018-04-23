@@ -10,9 +10,11 @@ node website
 ```
 node static
 ```
+### 排版相关
+[中文文案排版指北](https://github.com/sparanoid/chinese-copywriting-guidelines)
 ### 翻译情况
 页面|情况|译者|
 --- | --- |--- 
 快速开始|完成|ssshooter|
 guide|进行中|ssshooter|
-lib/schema|进行中|easezhi|
+lib/schema|进行中|[easezhi](https://github.com/easezhi)|
