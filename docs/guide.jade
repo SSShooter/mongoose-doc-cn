@@ -358,10 +358,9 @@ block content
 
     <h3 id="collection"><a href="#collection">option: collection</a></h3>
 
-    Mongoose by default produces a collection name by passing the model name to
-    the [utils.toCollectionName](./api.html#utils_exports.toCollectionName) method.
-    This method pluralizes the name. Set this option if you need a different name
-    for your collection.
+    Mongoose 通过 [utils.toCollectionName](./api.html#utils_exports.toCollectionName) 方法
+    默认生成 collection 的名称（生成 model 名称的复数形式）。
+    设置这个选项可以自定义名称。
 
     ```javascript
     var dataSchema = new Schema({..}, { collection: 'data' });
@@ -369,10 +368,8 @@ block content
 
     <h3 id="id"><a href="#id">option: id</a></h3>
 
-    Mongoose assigns each of your schemas an `id` virtual getter by default
-    which returns the documents `_id` field cast to a string, or in the case of
-    ObjectIds, its hexString. If you don't want an `id` getter added to your
-    schema, you may disable it passing this option at schema construction time.
+    Mongoose 会默认生成一个虚拟值 `id`，指向文档的 `_id` 字段。
+    如果你不需要 `id` 虚拟值，可以通过这个选项禁用此功能。
 
     ```javascript
     // default behavior
@@ -390,15 +387,12 @@ block content
 
     <h3 id="_id"><a href="#_id">option: _id</a></h3>
 
-    Mongoose assigns each of your schemas an `_id` field by default if one
-    is not passed into the [Schema](/docs/api.html#schema-js) constructor.
-    The type assigned is an [ObjectId](/docs/api.html#schema_Schema.Types)
-    to coincide with MongoDB's default behavior. If you don't want an `_id`
-    added to your schema at all, you may disable it using this option.
+    Mongoose 默认给你的 [Schema](/docs/api.html#schema-js) 赋值一个 `_id`。
+    这个值的类型是 [ObjectId](/docs/api.html#schema_Schema.Types)，这与MongoDB的默认表现一致。
+    如果你不需要 `_id`，可以通过这个选项禁用此功能。
 
-    You can **only** use this option on subdocuments. Mongoose can't
-    save a document without knowing its id, so you will get an error if
-    you try to save a document without an `_id`.
+    此选项**只能**用于 subdocument。
+    Mongoose 不能保存没有id的文档，如果你硬是要这么做，会报错的哦。
 
     ```javascript
     // default behavior
@@ -420,7 +414,7 @@ block content
 
     <h3 id="minimize"><a href="#minimize">option: minimize</a></h3>
 
-    Mongoose will, by default, "minimize" schemas by removing empty objects.
+    Mongoose 默认不保存空对象。
 
     ```javascript
     var schema = new Schema({ name: String, inventory: {} });
@@ -439,8 +433,7 @@ block content
     });
     ```
 
-    This behavior can be overridden by setting `minimize` option to `false`. It
-    will then store empty objects.
+    如果把 `minimize` 选项设为 `false`，Mongoose 将保存空对象。
 
     ```javascript
     var schema = new Schema({ name: String, inventory: {} }, { minimize: false });
@@ -609,14 +602,11 @@ block content
 
     <h3 id="toObject"><a href="#toObject">option: toObject</a></h3>
 
-    Documents have a [toObject](/docs/api.html#document_Document-toObject) method
-    which converts the mongoose document into a plain javascript object. This
-    method accepts a few options. Instead of applying these options on a
-    per-document basis we may declare the options here and have it applied to
-    all of this schemas documents by default.
+    Documents 的 [toObject](/docs/api.html#document_Document-toObject) 方法可以把文档转换成一个 
+    plain javascript object （也就是去掉里面的方法）。
+    这是一个可以接收多个参数的方法，我们可以在 schemas 定义这些参数。
 
-    To have all virtuals show up in your `console.log` output, set the
-    `toObject` option to `{ getters: true }`:
+    例如要打印出虚拟值，可以向 `toObject` 传入 `{ getters: true }`：
 
     ```javascript
     var schema = new Schema({ name: String });
@@ -629,7 +619,7 @@ block content
     console.log(m); // { _id: 504e0cd7dd992d9be2f20b6f, name: 'Max Headroom is my name' }
     ```
 
-    To see all available `toObject` options, read [this](/docs/api.html#document_Document-toObject).
+    完整的 `toObject` 选项请看[这里](/docs/api.html#document_Document-toObject)。
 
     <h3 id="typeKey"><a href="#typeKey">option: typeKey</a></h3>
 
@@ -677,12 +667,10 @@ block content
 
     <h3 id="versionKey"><a href="#versionKey">option: versionKey</a></h3>
 
-    The `versionKey` is a property set on each document when first created by
-    Mongoose. This keys value contains the internal
-    [revision](http://aaronheckmann.tumblr.com/post/48943525537/mongoose-v3-part-1-versioning)
-    of the document. The `versionKey` option is a string that represents the
-    path to use for versioning. The default is `__v`. If this conflicts with
-    your application you can configure as such:
+    `versionKey` 是 Mongoose 在文件创建时自动设定的。
+    这个值包含文件的内部[修订号](http://aaronheckmann.tumblr.com/post/48943525537/mongoose-v3-part-1-versioning)。
+    `versionKey` 是一个字符串，代表版本号的属性名，
+    默认值为 `__v`。如果这个值与你的计划冲突，你可以设定为其他名称：
 
     ```javascript
     var schema = new Schema({ name: 'string' });
@@ -697,9 +685,8 @@ block content
     thing.save(); // { _somethingElse: 0, name: 'mongoose v3' }
     ```
 
-    Document versioning can also be disabled by setting the `versionKey` to
-    `false`.
-    _DO NOT disable versioning unless you [know what you are doing](http://aaronheckmann.tumblr.com/post/48943525537/mongoose-v3-part-1-versioning)._
+    你也可以赋值为 `false` 禁用 `versionKey`。
+    _你不应该随便禁用这个功能，[除非你清楚知道这有什么影响](http://aaronheckmann.tumblr.com/post/48943525537/mongoose-v3-part-1-versioning)。_
 
     ```javascript
     new Schema({..}, { versionKey: false });
@@ -710,8 +697,8 @@ block content
 
     <h3 id="collation"><a href="#collation">option: collation</a></h3>
 
-    Sets a default [collation](https://docs.mongodb.com/manual/reference/collation/)
-    for every query and aggregation. [Here's a beginner-friendly overview of collations](http://thecodebarbarian.com/a-nodejs-perspective-on-mongodb-34-collations).
+    为 查询（query）和 聚合（aggregation）设置 [collation](https://docs.mongodb.com/manual/reference/collation/)。
+    这里有一份友好的 [collation 指南](http://thecodebarbarian.com/a-nodejs-perspective-on-mongodb-34-collations)。
 
     ```javascript
     var schema = new Schema({
@@ -795,9 +782,9 @@ block content
 
     <h3 id="plugins"><a href="#plugins">Pluggable</a></h3>
 
-    Schemas are also [pluggable](./plugins.html) which allows us to package up reusable features into
-    plugins that can be shared with the community or just between your projects.
+    Schemas 是 [pluggable（可扩展的）](./plugins.html)，
+    我们可以打包插件分享到社区，或者复用于自己的项目。
 
-    <h3 id="next">Next Up</h3>
+    <h3 id="next">下一步</h3>
 
-    Now that we've covered `Schemas`, let's take a look at [SchemaTypes](/docs/schematypes.html).
+    现在我们了解了 `Schemas`，我们接着了解一下 [SchemaTypes](/docs/schematypes.html)。

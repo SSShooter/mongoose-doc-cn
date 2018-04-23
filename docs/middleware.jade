@@ -4,21 +4,20 @@ block content
   :markdown
     ## Middleware
 
-    Middleware (also called pre and post *hooks*) are functions which are passed
-    control during execution of asynchronous functions. Middleware is specified
-    on the schema level and is useful for writing [plugins](./plugins.html).
-    Mongoose 4.x has 4 types
-    of middleware: document middleware, model middleware, aggregate middleware, and query middleware.
-    Document middleware is supported for the following document functions.
-    In document middleware functions, `this` refers to the document.
+    中间件 (pre 和 post *钩子*) 是在异步函数执行时函数传入的控制函数。
+    Middleware is specified
+    on the schema 级别，在写[插件](./plugins.html)的时候很有用。
+    Mongoose 4.x 有四种中间件： document 中间件，model 中间件，aggregate 中间件，和 query 中间件。
+    对于 document 中间件， `this` 指向当前 document。
+    Document 中间件支持以下 document 操作：
 
     * [init](./api.html#document_Document-init)
     * [validate](./api.html#document_Document-validate)
     * [save](./api.html#model_Model-save)
     * [remove](./api.html#model_Model-remove)
 
-    Query middleware is supported for the following Model and Query functions.
-    In query middleware functions, `this` refers to the query.
+    对于 query 中间件，`this` 指向当前 query。
+    Query 中间件支持以下 Model 和 Query 操作：
 
     * [count](./api.html#query_Query-count)
     * [find](./api.html#query_Query-find)
@@ -27,24 +26,23 @@ block content
     * [findOneAndUpdate](./api.html#query_Query-findOneAndUpdate)
     * [update](./api.html#query_Query-update)
 
-    Aggregate middleware is for `MyModel.aggregate()`. Aggregate middleware
-    executes when you call `exec()` on an aggregate object.
-    In aggregate middleware, `this` refers to the [aggregation object](./api.html#model_Model.aggregate).
+    Aggregate 中间件作用于 `MyModel.aggregate()`，
+    它会在你对 aggregate 对象调用 `exec()` 时执行。
+    对于 aggregate 中间件，`this` 指向当前[aggregation 对象](./api.html#model_Model.aggregate)。
 
     * [aggregate](./api.html#model_Model.aggregate)
 
-    Model middleware is supported for the following model functions.
-    In model middleware functions, `this` refers to the model.
+    对于 model 中间件，`this` 指向当前 model。
+    Model 中间件支持以下 Model 操作：
 
     * [insertMany](./api.html#model_Model.insertMany)
 
-    All middleware types support pre and post hooks.
-    How pre and post hooks work is described in more detail below.
+    所有中间件支持 pre 和 post 钩子，
+    下面将详细解释这两个钩子的细节。
 
-    **Note:** There is no query hook for `remove()`, only for documents.
-    If you set a 'remove' hook, it will be fired when you call `myDoc.remove()`,
-    not when you call `MyModel.remove()`.
-    **Note:** The `create()` function fires `save()` hooks.
+    **注意：** Query 是没有 `remove()` 钩子的，只有 document 有，
+    如果你设定了 'remove' 钩子，他将会在你调用 `myDoc.remove()`（而不是 `MyModel.remove()`）时触发。
+    **注意：** `create()` 函数会触发 `save()` 钩子.
 
     <h3 id="pre"><a href="#pre">Pre</a></h3>
 

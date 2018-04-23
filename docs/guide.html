@@ -283,18 +283,15 @@ or <a href="http://www.mongodb.org/display/DOCS/Capped+Collections#CappedCollect
 </code></pre>
 <h3 id="collection"><a href="#collection">option: collection</a></h3>
 
-<p>Mongoose by default produces a collection name by passing the model name to
-the <a href="./api.html#utils_exports.toCollectionName">utils.toCollectionName</a> method.
-This method pluralizes the name. Set this option if you need a different name
-for your collection.</p>
+<p>Mongoose 通过 <a href="./api.html#utils_exports.toCollectionName">utils.toCollectionName</a> 方法
+默认生成 collection 的名称（生成 model 名称的复数形式）。
+设置这个选项可以自定义名称。</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> dataSchema = <span class="hljs-keyword">new</span> Schema({..}, { collection: <span class="hljs-string">'data'</span> });
 </code></pre>
 <h3 id="id"><a href="#id">option: id</a></h3>
 
-<p>Mongoose assigns each of your schemas an <code>id</code> virtual getter by default
-which returns the documents <code>_id</code> field cast to a string, or in the case of
-ObjectIds, its hexString. If you don&#39;t want an <code>id</code> getter added to your
-schema, you may disable it passing this option at schema construction time.</p>
+<p>Mongoose 会默认生成一个虚拟值 <code>id</code>，指向文档的 <code>_id</code> 字段。
+如果你不需要 <code>id</code> 虚拟值，可以通过这个选项禁用此功能。</p>
 <pre><code class="lang-javascript"><span class="hljs-comment">// default behavior</span>
 <span class="hljs-keyword">var</span> schema = <span class="hljs-keyword">new</span> Schema({ name: <span class="hljs-built_in">String</span> });
 <span class="hljs-keyword">var</span> Page = mongoose.model(<span class="hljs-string">'Page'</span>, schema);
@@ -309,14 +306,11 @@ schema, you may disable it passing this option at schema construction time.</p>
 </code></pre>
 <h3 id="_id"><a href="#_id">option: _id</a></h3>
 
-<p>Mongoose assigns each of your schemas an <code>_id</code> field by default if one
-is not passed into the <a href="/docs/api.html#schema-js">Schema</a> constructor.
-The type assigned is an <a href="/docs/api.html#schema_Schema.Types">ObjectId</a>
-to coincide with MongoDB&#39;s default behavior. If you don&#39;t want an <code>_id</code>
-added to your schema at all, you may disable it using this option.</p>
-<p>You can <strong>only</strong> use this option on subdocuments. Mongoose can&#39;t
-save a document without knowing its id, so you will get an error if
-you try to save a document without an <code>_id</code>.</p>
+<p>Mongoose 默认给你的 <a href="/docs/api.html#schema-js">Schema</a> 赋值一个 <code>_id</code>。
+这个值的类型是 <a href="/docs/api.html#schema_Schema.Types">ObjectId</a>，这与MongoDB的默认表现一致。
+如果你不需要 <code>_id</code>，可以通过这个选项禁用此功能。</p>
+<p>此选项<strong>只能</strong>用于 subdocument。
+Mongoose 不能保存没有id的文档，如果你硬是要这么做，会报错的哦。</p>
 <pre><code class="lang-javascript"><span class="hljs-comment">// default behavior</span>
 <span class="hljs-keyword">var</span> schema = <span class="hljs-keyword">new</span> Schema({ name: <span class="hljs-built_in">String</span> });
 <span class="hljs-keyword">var</span> Page = mongoose.model(<span class="hljs-string">'Page'</span>, schema);
@@ -335,7 +329,7 @@ Model.create({ children: [{ name: <span class="hljs-string">'Luke'</span> }] }, 
 </code></pre>
 <h3 id="minimize"><a href="#minimize">option: minimize</a></h3>
 
-<p>Mongoose will, by default, &quot;minimize&quot; schemas by removing empty objects.</p>
+<p>Mongoose 默认不保存空对象。</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> schema = <span class="hljs-keyword">new</span> Schema({ name: <span class="hljs-built_in">String</span>, inventory: {} });
 <span class="hljs-keyword">var</span> Character = mongoose.model(<span class="hljs-string">'Character'</span>, schema);
 
@@ -351,8 +345,7 @@ Character.findOne({ name: <span class="hljs-string">'Sam'</span> }, <span class=
   <span class="hljs-built_in">console</span>.log(character); <span class="hljs-comment">// { name: 'Sam' }</span>
 });
 </code></pre>
-<p>This behavior can be overridden by setting <code>minimize</code> option to <code>false</code>. It
-will then store empty objects.</p>
+<p>如果把 <code>minimize</code> 选项设为 <code>false</code>，Mongoose 将保存空对象。</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> schema = <span class="hljs-keyword">new</span> Schema({ name: <span class="hljs-built_in">String</span>, inventory: {} }, { minimize: <span class="hljs-literal">false</span> });
 <span class="hljs-keyword">var</span> Character = mongoose.model(<span class="hljs-string">'Character'</span>, schema);
 
@@ -480,13 +473,10 @@ schema.set(<span class="hljs-string">'toJSON'</span>, { getters: <span class="hl
 <p>To see all available <code>toJSON/toObject</code> options, read <a href="/docs/api.html#document_Document-toObject">this</a>.</p>
 <h3 id="toObject"><a href="#toObject">option: toObject</a></h3>
 
-<p>Documents have a <a href="/docs/api.html#document_Document-toObject">toObject</a> method
-which converts the mongoose document into a plain javascript object. This
-method accepts a few options. Instead of applying these options on a
-per-document basis we may declare the options here and have it applied to
-all of this schemas documents by default.</p>
-<p>To have all virtuals show up in your <code>console.log</code> output, set the
-<code>toObject</code> option to <code>{ getters: true }</code>:</p>
+<p>Documents 的 <a href="/docs/api.html#document_Document-toObject">toObject</a> 方法可以把文档转换成一个 
+plain javascript object （也就是去掉里面的方法）。
+这是一个可以接收多个参数的方法，我们可以在 schemas 定义这些参数。</p>
+<p>例如要打印出虚拟值，可以向 <code>toObject</code> 传入 <code>{ getters: true }</code>：</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> schema = <span class="hljs-keyword">new</span> Schema({ name: <span class="hljs-built_in">String</span> });
 schema.path(<span class="hljs-string">'name'</span>).get(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">v</span>) </span>{
   <span class="hljs-keyword">return</span> v + <span class="hljs-string">' is my name'</span>;
@@ -496,7 +486,7 @@ schema.set(<span class="hljs-string">'toObject'</span>, { getters: <span class="
 <span class="hljs-keyword">var</span> m = <span class="hljs-keyword">new</span> M({ name: <span class="hljs-string">'Max Headroom'</span> });
 <span class="hljs-built_in">console</span>.log(m); <span class="hljs-comment">// { _id: 504e0cd7dd992d9be2f20b6f, name: 'Max Headroom is my name' }</span>
 </code></pre>
-<p>To see all available <code>toObject</code> options, read <a href="/docs/api.html#document_Document-toObject">this</a>.</p>
+<p>完整的 <code>toObject</code> 选项请看<a href="/docs/api.html#document_Document-toObject">这里</a>。</p>
 <h3 id="typeKey"><a href="#typeKey">option: typeKey</a></h3>
 
 <p>By default, if you have an object with key &#39;type&#39; in your schema, mongoose
@@ -534,12 +524,10 @@ m.save(); <span class="hljs-comment">// Succeeds despite being invalid</span>
 </code></pre>
 <h3 id="versionKey"><a href="#versionKey">option: versionKey</a></h3>
 
-<p>The <code>versionKey</code> is a property set on each document when first created by
-Mongoose. This keys value contains the internal
-<a href="http://aaronheckmann.tumblr.com/post/48943525537/mongoose-v3-part-1-versioning">revision</a>
-of the document. The <code>versionKey</code> option is a string that represents the
-path to use for versioning. The default is <code>__v</code>. If this conflicts with
-your application you can configure as such:</p>
+<p><code>versionKey</code> 是 Mongoose 在文件创建时自动设定的。
+这个值包含文件的内部<a href="http://aaronheckmann.tumblr.com/post/48943525537/mongoose-v3-part-1-versioning">修订号</a>。
+<code>versionKey</code> 是一个字符串，代表版本号的属性名，
+默认值为 <code>__v</code>。如果这个值与你的计划冲突，你可以设定为其他名称：</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> schema = <span class="hljs-keyword">new</span> Schema({ name: <span class="hljs-string">'string'</span> });
 <span class="hljs-keyword">var</span> Thing = mongoose.model(<span class="hljs-string">'Thing'</span>, schema);
 <span class="hljs-keyword">var</span> thing = <span class="hljs-keyword">new</span> Thing({ name: <span class="hljs-string">'mongoose v3'</span> });
@@ -551,9 +539,8 @@ thing.save(); <span class="hljs-comment">// { __v: 0, name: 'mongoose v3' }</spa
 <span class="hljs-keyword">var</span> thing = <span class="hljs-keyword">new</span> Thing({ name: <span class="hljs-string">'mongoose v3'</span> });
 thing.save(); <span class="hljs-comment">// { _somethingElse: 0, name: 'mongoose v3' }</span>
 </code></pre>
-<p>Document versioning can also be disabled by setting the <code>versionKey</code> to
-<code>false</code>.
-<em>DO NOT disable versioning unless you <a href="http://aaronheckmann.tumblr.com/post/48943525537/mongoose-v3-part-1-versioning">know what you are doing</a>.</em></p>
+<p>你也可以赋值为 <code>false</code> 禁用 <code>versionKey</code>。
+<em>你不应该随便禁用这个功能，<a href="http://aaronheckmann.tumblr.com/post/48943525537/mongoose-v3-part-1-versioning">除非你清楚知道这有什么影响</a>。</em></p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">new</span> Schema({..}, { versionKey: <span class="hljs-literal">false</span> });
 <span class="hljs-keyword">var</span> Thing = mongoose.model(<span class="hljs-string">'Thing'</span>, schema);
 <span class="hljs-keyword">var</span> thing = <span class="hljs-keyword">new</span> Thing({ name: <span class="hljs-string">'no versioning please'</span> });
@@ -561,8 +548,8 @@ thing.save(); <span class="hljs-comment">// { name: 'no versioning please' }</sp
 </code></pre>
 <h3 id="collation"><a href="#collation">option: collation</a></h3>
 
-<p>Sets a default <a href="https://docs.mongodb.com/manual/reference/collation/">collation</a>
-for every query and aggregation. <a href="http://thecodebarbarian.com/a-nodejs-perspective-on-mongodb-34-collations">Here&#39;s a beginner-friendly overview of collations</a>.</p>
+<p>为 查询（query）和 聚合（aggregation）设置 <a href="https://docs.mongodb.com/manual/reference/collation/">collation</a>。
+这里有一份友好的 <a href="http://thecodebarbarian.com/a-nodejs-perspective-on-mongodb-34-collations">collation 指南</a>。</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> schema = <span class="hljs-keyword">new</span> Schema({
   name: <span class="hljs-built_in">String</span>
 }, { collation: { locale: <span class="hljs-string">'en_US'</span>, strength: <span class="hljs-number">1</span> } });
@@ -630,11 +617,11 @@ Parent.update({}, { <span class="hljs-string">'child.name'</span>: <span class="
 </code></pre>
 <h3 id="plugins"><a href="#plugins">Pluggable</a></h3>
 
-<p>Schemas are also <a href="./plugins.html">pluggable</a> which allows us to package up reusable features into
-plugins that can be shared with the community or just between your projects.</p>
-<h3 id="next">Next Up</h3>
+<p>Schemas 是 <a href="./plugins.html">pluggable（可扩展的）</a>，
+我们可以打包插件分享到社区，或者复用于自己的项目。</p>
+<h3 id="next">下一步</h3>
 
-<p>Now that we&#39;ve covered <code>Schemas</code>, let&#39;s take a look at <a href="/docs/schematypes.html">SchemaTypes</a>.</p>
+<p>现在我们了解了 <code>Schemas</code>，我们接着了解一下 <a href="/docs/schematypes.html">SchemaTypes</a>。</p>
 </div></div><script type="text/javascript">!function(name,path,ctx){
   var latest,prev=name!=='Keen'&&window.Keen?window.Keen:false;ctx[name]=ctx[name]||{ready:function(fn){var h=document.getElementsByTagName('head')[0],s=document.createElement('script'),w=window,loaded;s.onload=s.onerror=s.onreadystatechange=function(){if((s.readyState&&!(/^c|loade/.test(s.readyState)))||loaded){return}s.onload=s.onreadystatechange=null;loaded=1;latest=w.Keen;if(prev){w.Keen=prev}else{try{delete w.Keen}catch(e){w.Keen=void 0}}ctx[name]=latest;ctx[name].ready(fn)};s.async=1;s.src=path;h.parentNode.insertBefore(s,h)}}
 }('KeenAsync','https://d26b395fwzu5fz.cloudfront.net/keen-tracking-1.1.3.min.js',this);
