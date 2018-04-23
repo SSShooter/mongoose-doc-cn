@@ -15,3 +15,4 @@ node static
 --- | --- |--- 
 快速开始|完成|ssshooter|
 guide|进行中|ssshooter|
+lib/schema|进行中|easezhi|
