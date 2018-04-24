@@ -747,28 +747,26 @@ block content
 
     <h3 id="useNestedStrict"><a href="#useNestedStrict">option: useNestedStrict</a></h3>
 
-    In mongoose 4, `update()` and `findOneAndUpdate()` only check the top-level
-    schema's strict mode setting.
+    在 mongoose4 中，`update()` 和 `findOneAndUpdate()`只检查顶层
+    schema 的严格模式设定。
 
     ```javascript
     var childSchema = new Schema({}, { strict: false });
     var parentSchema = new Schema({ child: childSchema }, { strict: 'throw' });
     var Parent = mongoose.model('Parent', parentSchema);
     Parent.update({}, { 'child.name': 'Luke Skywalker' }, function(error) {
-      // Error because parentSchema has `strict: throw`, even though
-      // `childSchema` has `strict: false`
+      // 报错！原因是父Schema设定为`strict: throw`，但是因为只检查顶层，导致
+      // 子Schema的 `strict: false` 遭到无情忽视
     });
 
     var update = { 'child.name': 'Luke Skywalker' };
     var opts = { strict: false };
     Parent.update({}, update, opts, function(error) {
-      // This works because passing `strict: false` to `update()` overwrites
-      // the parent schema.
+      // 这样可以，因为重写了父Schema的 strict 选项
     });
     ```
 
-    If you set `useNestedStrict` to true, mongoose will use the child schema's
-    `strict` option for casting updates.
+    如果你把 `useNestedStrict` 设为 true，mongoose 就不会忽略嵌套的 strict 设定。
 
     ```javascript
     var childSchema = new Schema({}, { strict: false });

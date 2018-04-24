@@ -39,18 +39,19 @@ Model 中间件支持以下 Model 操作：</p>
 <strong>注意：</strong> <code>create()</code> 函数会触发 <code>save()</code> 钩子.</p>
 <h3 id="pre"><a href="#pre">Pre</a></h3>
 
-<p>There are two types of <code>pre</code> hooks, serial and parallel.</p>
-<h4 id="serial">Serial</h4>
+<p><code>pre</code> 钩子分串行和并行两种。</p>
+<h4 id="serial">串行</h4>
 
-<p>Serial middleware functions are executed one after another, when each
-middleware calls <code>next</code>.</p>
+<p>串行中间件一个接一个地执行。具体来说，
+上一个中间件调用 <code>next</code> 函数的时候，下一个执行。</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> schema = <span class="hljs-keyword">new</span> Schema(..);
 schema.pre(<span class="hljs-string">'save'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">next</span>) </span>{
   <span class="hljs-comment">// do stuff</span>
   next();
 });
 </code></pre>
-<p>In <a href="http://thecodebarbarian.com/introducing-mongoose-5.html#promises-and-async-await-with-middleware">mongoose 5.x</a>, instead of calling <code>next()</code> manually, you can use a
+<p>在<a href="http://thecodebarbarian.com/introducing-mongoose-5.html#promises-and-async-await-with-middleware">mongoose 5.x</a>中，
+instead of calling <code>next()</code> manually, you can use a
 function that returns a promise. In particular, you can use <a href="http://thecodebarbarian.com/common-async-await-design-patterns-in-node.js.html"><code>async/await</code></a>.</p>
 <pre><code class="lang-javascript">schema.pre(<span class="hljs-string">'save'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">return</span> doStuff().
@@ -63,8 +64,8 @@ schema.pre(<span class="hljs-string">'save'</span>, <span class="hljs-keyword">a
   <span class="hljs-keyword">await</span> doMoreStuff();
 });
 </code></pre>
-<p>If you use <code>next()</code>, the <code>next()</code> call does <strong>not</strong> stop the rest of the code in your middleware function from executing. Use
-<a href="https://www.bennadel.com/blog/2323-use-a-return-statement-when-invoking-callbacks-especially-in-a-guard-statement.htm">the early <code>return</code> pattern</a>
+<p>如果你使用 <code>next()</code>, the <code>next()</code> call does <strong>not</strong> stop the rest of the code in your middleware function from executing. 
+Use <a href="https://www.bennadel.com/blog/2323-use-a-return-statement-when-invoking-callbacks-especially-in-a-guard-statement.htm">the early <code>return</code> pattern</a>
 to prevent the rest of your middleware function from running when you call <code>next()</code>.</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> schema = <span class="hljs-keyword">new</span> Schema(..);
 schema.pre(<span class="hljs-string">'save'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">next</span>) </span>{
@@ -77,9 +78,9 @@ schema.pre(<span class="hljs-string">'save'</span>, <span class="hljs-function">
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'after next'</span>);
 });
 </code></pre>
-<h4 id="parallel">Parallel</h4>
+<h4 id="parallel">并行</h4>
 
-<p>Parallel middleware offer more fine-grained flow control.</p>
+<p>并行中间件提供细粒度流控制。</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> schema = <span class="hljs-keyword">new</span> Schema(..);
 
 <span class="hljs-comment">// `true` means this is a parallel middleware. You **must** specify `true`</span>
@@ -90,23 +91,22 @@ schema.pre(<span class="hljs-string">'save'</span>, <span class="hljs-literal">t
   setTimeout(done, <span class="hljs-number">100</span>);
 });
 </code></pre>
-<p>The hooked method, in this case <code>save</code>, will not be executed until <code>done</code>
-is called by each middleware.</p>
-<h4 id="use-cases">Use Cases</h4>
+<p>在这个例子里，<code>save</code> 方法将在所有中间件都调用了 <code>done</code> 的时候才会执行。</p>
+<h4 id="use-cases">使用场景</h4>
 
-<p>Middleware are useful for atomizing model logic. Here are some other ideas:</p>
+<p>中间件对原子化模型逻辑很有帮助。这里有一些其他建议：</p>
 <ul>
-<li>complex validation</li>
-<li>removing dependent documents (removing a user removes all his blogposts)</li>
+<li>复杂的数据校验</li>
+<li>删除依赖文档（删除用户后删除他的所有文章）</li>
 <li>asynchronous defaults</li>
 <li>asynchronous tasks that a certain action triggers</li>
 </ul>
-<h4 id="error-handling">Error handling</h4>
+<h4 id="error-handling">错误处理</h4>
 
-<p>If any pre hook errors out, mongoose will not execute subsequent middleware
-or the hooked function. Mongoose will instead pass an error to the callback
-and/or reject the returned promise. There are several ways to report an
-error in middleware:</p>
+<p>如果 pre 钩子出错，mongoose 将不会执行后面的函数。
+Mongoose 会向回调函数传入 err 参数，
+或者 reject 返回的 promise。
+这里列举几个错误处理的方法：</p>
 <pre><code class="lang-javascript">schema.pre(<span class="hljs-string">'save'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">next</span>) </span>{
   <span class="hljs-keyword">const</span> err = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'something went wrong'</span>);
   <span class="hljs-comment">// If you call `next()` with an argument, that argument is assumed to be</span>
@@ -141,10 +141,10 @@ myDoc.save(<span class="hljs-function"><span class="hljs-keyword">function</span
 </code></pre>
 <p>Calling <code>next()</code> multiple times is a no-op. If you call <code>next()</code> with an
 error <code>err1</code> and then throw an error <code>err2</code>, mongoose will report <code>err1</code>.</p>
-<h3 id="post"><a href="#post">Post middleware</a></h3>
+<h3 id="post"><a href="#post">Post 中间件</a></h3>
 
-<p><a href="/docs/api.html#schema_Schema-post">post</a> middleware are executed <em>after</em>
-the hooked method and all of its <code>pre</code> middleware have completed.</p>
+<p><a href="/docs/api.html#schema_Schema-post">post</a> 中间件在方法执行<em>之后</em>
+调用，这个时候每个 <code>pre</code> 中间件都已经完成。</p>
 <pre><code class="lang-javascript">schema.post(<span class="hljs-string">'init'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">doc</span>) </span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'%s has been initialized from the db'</span>, doc._id);
 });

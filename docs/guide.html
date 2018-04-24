@@ -588,25 +588,23 @@ thing.save(); <span class="hljs-comment">// `created_at` &amp; `updatedAt` will 
 </code></pre>
 <h3 id="useNestedStrict"><a href="#useNestedStrict">option: useNestedStrict</a></h3>
 
-<p>In mongoose 4, <code>update()</code> and <code>findOneAndUpdate()</code> only check the top-level
-schema&#39;s strict mode setting.</p>
+<p>在 mongoose4 中，<code>update()</code> 和 <code>findOneAndUpdate()</code>只检查顶层
+schema 的严格模式设定。</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> childSchema = <span class="hljs-keyword">new</span> Schema({}, { strict: <span class="hljs-literal">false</span> });
 <span class="hljs-keyword">var</span> parentSchema = <span class="hljs-keyword">new</span> Schema({ child: childSchema }, { strict: <span class="hljs-string">'throw'</span> });
 <span class="hljs-keyword">var</span> Parent = mongoose.model(<span class="hljs-string">'Parent'</span>, parentSchema);
 Parent.update({}, { <span class="hljs-string">'child.name'</span>: <span class="hljs-string">'Luke Skywalker'</span> }, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
-  <span class="hljs-comment">// Error because parentSchema has `strict: throw`, even though</span>
-  <span class="hljs-comment">// `childSchema` has `strict: false`</span>
+  <span class="hljs-comment">// 报错！原因是父Schema设定为`strict: throw`，但是因为只检查顶层，导致</span>
+  <span class="hljs-comment">// 子Schema的 `strict: false` 遭到无情忽视</span>
 });
 
 <span class="hljs-keyword">var</span> update = { <span class="hljs-string">'child.name'</span>: <span class="hljs-string">'Luke Skywalker'</span> };
 <span class="hljs-keyword">var</span> opts = { strict: <span class="hljs-literal">false</span> };
 Parent.update({}, update, opts, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
-  <span class="hljs-comment">// This works because passing `strict: false` to `update()` overwrites</span>
-  <span class="hljs-comment">// the parent schema.</span>
+  <span class="hljs-comment">// 这样可以，因为重写了父Schema的 strict 选项</span>
 });
 </code></pre>
-<p>If you set <code>useNestedStrict</code> to true, mongoose will use the child schema&#39;s
-<code>strict</code> option for casting updates.</p>
+<p>如果你把 <code>useNestedStrict</code> 设为 true，mongoose 就不会忽略嵌套的 strict 设定。</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> childSchema = <span class="hljs-keyword">new</span> Schema({}, { strict: <span class="hljs-literal">false</span> });
 <span class="hljs-keyword">var</span> parentSchema = <span class="hljs-keyword">new</span> Schema({ child: childSchema },
   { strict: <span class="hljs-string">'throw'</span>, useNestedStrict: <span class="hljs-literal">true</span> });
