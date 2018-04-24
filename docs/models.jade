@@ -3,22 +3,23 @@ extends layout
 block content
   h2 Models
   :markdown
-    [Models](./api.html#model-js) are fancy constructors compiled from our `Schema` definitions. Instances of these models represent [documents](./documents.html) which can be saved and retrieved from our database. All document creation and retrieval from the database is handled by these models.
+    [Models](./api.html#model-js) 是从 `Schema` 编译来的构造函数。 它们的实例就是可以从数据库保存和读取的 [documents](./documents.html)。
+    从数据库创建和读取 document 的所有操作都是通过 model 进行的。
 
-  h3 Compiling your first model
+  h3 编译你的第一个 model
   :markdown
     ```javascript
     var schema = new mongoose.Schema({ name: 'string', size: 'string' });
     var Tank = mongoose.model('Tank', schema);
     ```
   :markdown
-    The first argument is the _singular_ name of the collection your model is for. ** Mongoose automatically looks for the _plural_ version of your model name. **
-    Thus, for the example above, the model Tank is for the **tanks** collection in the database.
-    The `.model()` function makes a copy of `schema`. Make sure that you've added everything you want to `schema` before calling `.model()`!
+    第一个参数是 model 对应 collection 名字的_单数_形式。 ** Mongoose 自动查找名称是 model 名字_复数_形式的 collection **。
+    对于上例，Tank 这个 model 就对应数据库中 **tanks** 这个 collection。`.model()` 这个函数是对 `schema` 做了次复制。
+    你要确保在调用 `.model()` 之前把所有需要的东西都加进 `schema` 了！
 
-  h3 Constructing documents
+  h3 构造 documents
   :markdown
-    [Documents](./documents.html) are instances of our model. Creating them and saving to the database is easy:
+    [Documents](./documents.html) 是 model 的实例。 创建它们并保存到数据库非常简单：
     ```javascript
     var Tank = mongoose.model('Tank', yourSchema);
 
@@ -36,8 +37,9 @@ block content
     })
     ```
   :markdown
-    Note that no tanks will be created/removed until the connection your model
-    uses is open. Every model has an associated connection. When you use
+    要注意到， tanks 不会被创建或删除，直到 model 使用的数据库连接 (connection) 被打开。每个 model 都有绑定的连接。
+    
+    When you use
     `mongoose.model()`, your model will use the default mongoose connection.
     ```javascript
     mongoose.connect('localhost', 'gettingstarted');
