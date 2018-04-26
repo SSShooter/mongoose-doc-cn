@@ -5,9 +5,9 @@ mongoose-doc-cn
 ### 排版相关
 [中文文案排版指北](https://github.com/sparanoid/chinese-copywriting-guidelines)
 ### 操作
-翻译 lib 文件夹和 docs 文件夹里的文件，           
-docs 文件夹为教程，        
-lib 文件夹为 api 文档
+翻译 lib 文件夹和 docs 文件夹里的文件，              
+docs 文件夹为教程，            
+lib 文件夹为 api 文档        
 ### 生成文档（jade->html）
 ```
 // 预览前必须先生成文档
@@ -20,7 +20,7 @@ node static
 ```
 ### 翻译情况
 页面|情况|译者|校对
---- | --- |--- |
+--- | --- |--- |---
 docs/index|完成|ssshooter|
 docs/guide|90%|ssshooter|
 docs/middleware|进行中|ssshooter|
