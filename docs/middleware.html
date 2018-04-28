@@ -51,8 +51,9 @@ schema.pre(<span class="hljs-string">'save'</span>, <span class="hljs-function">
 });
 </code></pre>
 <p>在<a href="http://thecodebarbarian.com/introducing-mongoose-5.html#promises-and-async-await-with-middleware">mongoose 5.x</a>中，
-instead of calling <code>next()</code> manually, you can use a
-function that returns a promise. In particular, you can use <a href="http://thecodebarbarian.com/common-async-await-design-patterns-in-node.js.html"><code>async/await</code></a>.</p>
+除了手动调用 <code>next()</code>，
+你还可以返回一个promise，
+甚至是 <a href="http://thecodebarbarian.com/common-async-await-design-patterns-in-node.js.html"><code>async/await</code></a>。</p>
 <pre><code class="lang-javascript">schema.pre(<span class="hljs-string">'save'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">return</span> doStuff().
     then(() =&gt; doMoreStuff());
@@ -64,9 +65,9 @@ schema.pre(<span class="hljs-string">'save'</span>, <span class="hljs-keyword">a
   <span class="hljs-keyword">await</span> doMoreStuff();
 });
 </code></pre>
-<p>如果你使用 <code>next()</code>, the <code>next()</code> call does <strong>not</strong> stop the rest of the code in your middleware function from executing. 
-Use <a href="https://www.bennadel.com/blog/2323-use-a-return-statement-when-invoking-callbacks-especially-in-a-guard-statement.htm">the early <code>return</code> pattern</a>
-to prevent the rest of your middleware function from running when you call <code>next()</code>.</p>
+<p><code>next()</code> <strong>不会</strong> 阻止剩余代码的运行。 
+你可以使用 <a href="https://www.bennadel.com/blog/2323-use-a-return-statement-when-invoking-callbacks-especially-in-a-guard-statement.htm">提早 <code>return</code> 模式</a>
+阻止 <code>next()</code> 后面的代码运行。</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">var</span> schema = <span class="hljs-keyword">new</span> Schema(..);
 schema.pre(<span class="hljs-string">'save'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">next</span>) </span>{
   <span class="hljs-keyword">if</span> (foo()) {
@@ -139,8 +140,8 @@ myDoc.save(<span class="hljs-function"><span class="hljs-keyword">function</span
   <span class="hljs-built_in">console</span>.log(err.message); <span class="hljs-comment">// something went wrong</span>
 });
 </code></pre>
-<p>Calling <code>next()</code> multiple times is a no-op. If you call <code>next()</code> with an
-error <code>err1</code> and then throw an error <code>err2</code>, mongoose will report <code>err1</code>.</p>
+<p>多次调用 <code>next()</code> 是无效的。如果你调用 <code>next()</code> 带有错误参数 <code>err1</code>，
+然后你再抛一个 <code>err2</code>，mongoose 只会传递 <code>err1</code>。</p>
 <h3 id="post"><a href="#post">Post 中间件</a></h3>
 
 <p><a href="/docs/api.html#schema_Schema-post">post</a> 中间件在方法执行<em>之后</em>
@@ -158,11 +159,10 @@ schema.post(<span class="hljs-string">'remove'</span>, <span class="hljs-functio
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'%s has been removed'</span>, doc._id);
 });
 </code></pre>
-<h3 id="post-async"><a href="#post-async">Asynchronous Post Hooks</a></h3>
+<h3 id="post-async"><a href="#post-async">异步 Post 钩子</a></h3>
 
-<p>If your post hook function takes at least 2 parameters, mongoose will
-assume the second parameter is a <code>next()</code> function that you will call to
-trigger the next middleware in the sequence.</p>
+<p>如果你给回调函数传入两个参数，mongoose 
+会认为第二个参数是 <code>next()</code> 函数，你可以通过 next 触发下一个中间件</p>
 <pre><code class="lang-javascript"><span class="hljs-comment">// Takes 2 parameters: this is an asynchronous post hook</span>
 schema.post(<span class="hljs-string">'save'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">doc, next</span>) </span>{
   setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
@@ -178,12 +178,12 @@ schema.post(<span class="hljs-string">'save'</span>, <span class="hljs-function"
   next();
 });
 </code></pre>
-<h3 id="order"><a href="#order">Save/Validate Hooks</a></h3>
+<h3 id="order"><a href="#order">Save/Validate 钩子</a></h3>
 
-<p>The <code>save()</code> function triggers <code>validate()</code> hooks, because mongoose
-has a built-in <code>pre(&#39;save&#39;)</code> hook that calls <code>validate()</code>. This means
-that all <code>pre(&#39;validate&#39;)</code> and <code>post(&#39;validate&#39;)</code> hooks get called
-<strong>before</strong> any <code>pre(&#39;save&#39;)</code> hooks.</p>
+<p><code>save()</code> 函数触发 <code>validate()</code> 钩子，mongoose
+<code>validate()</code> 其实就是 <code>pre(&#39;save&#39;)</code> 钩子，
+这意味着所有 <code>pre(&#39;validate&#39;)</code> 和 <code>post(&#39;validate&#39;)</code> 都会在
+<code>pre(&#39;save&#39;)</code> 钩子<strong>之前</strong>调用。</p>
 <pre><code class="lang-javascript">schema.pre(<span class="hljs-string">'validate'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'this gets printed first'</span>);
 });
@@ -216,20 +216,18 @@ schema.post(<span class="hljs-string">'find'</span>, <span class="hljs-function"
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'find() took '</span> + (<span class="hljs-built_in">Date</span>.now() - <span class="hljs-keyword">this</span>.start) + <span class="hljs-string">' millis'</span>);
 });
 </code></pre>
-<p>Query middleware differs from document middleware in a subtle but
-important way: in document middleware, <code>this</code> refers to the document
-being updated. In query middleware, mongoose doesn&#39;t necessarily have
-a reference to the document being updated, so <code>this</code> refers to the
-<strong>query</strong> object rather than the document being updated.</p>
-<p>For instance, if you wanted to add an <code>updatedAt</code> timestamp to every
-<code>update()</code> call, you would use the following pre hook.</p>
+<p>Query 中间件 不同于 document 中间件：document 中间件中，
+<code>this</code> 指向被更新 document，query 中间件中，
+<code>this</code> 指向 <strong>query</strong> 对象而不是被更新 document。</p>
+<p>例如，如果你要在每次 update之前更新 <code>updatedAt</code> 时间戳，
+你可以使用 <code>pre</code> 钩子。</p>
 <pre><code class="lang-javascript">schema.pre(<span class="hljs-string">'update'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">this</span>.update({},{ $set: { updatedAt: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>() } });
 });
 </code></pre>
-<h3 id="error-handling"><a href="#error-handling">Error Handling Middleware</a></h3>
+<h3 id="error-handling"><a href="#error-handling">错误处理中间件</a></h3>
 
-<p><em>New in 4.5.0</em></p>
+<p><em>4.5.0 新增</em></p>
 <p>Middleware execution normally stops the first time a piece of middleware
 calls <code>next()</code> with an error. However, there is a special kind of post
 middleware called &quot;error handling middleware&quot; that executes specifically
@@ -281,10 +279,9 @@ Person.create(people, <span class="hljs-function"><span class="hljs-keyword">fun
   });
 });
 </code></pre>
-<h3 id="next">Next Up</h3>
+<h3 id="next">下一步</h3>
 
-<p>Now that we&#39;ve covered middleware, let&#39;s take a look at Mongoose&#39;s approach
-to faking JOINs with its query <a href="/docs/populate.html">population</a> helper.</p>
+<p>我们了解了中间件，接着我们看看 Mongoose 怎么用 <a href="/docs/populate.html">population</a> 模拟 JOIN 操作。</p>
 </div></div><script type="text/javascript">!function(name,path,ctx){
   var latest,prev=name!=='Keen'&&window.Keen?window.Keen:false;ctx[name]=ctx[name]||{ready:function(fn){var h=document.getElementsByTagName('head')[0],s=document.createElement('script'),w=window,loaded;s.onload=s.onerror=s.onreadystatechange=function(){if((s.readyState&&!(/^c|loade/.test(s.readyState)))||loaded){return}s.onload=s.onreadystatechange=null;loaded=1;latest=w.Keen;if(prev){w.Keen=prev}else{try{delete w.Keen}catch(e){w.Keen=void 0}}ctx[name]=latest;ctx[name].ready(fn)};s.async=1;s.src=path;h.parentNode.insertBefore(s,h)}}
 }('KeenAsync','https://d26b395fwzu5fz.cloudfront.net/keen-tracking-1.1.3.min.js',this);

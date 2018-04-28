@@ -24,4 +24,6 @@ node static
 docs/index|完成|ssshooter|
 docs/guide|90%|ssshooter|
 docs/middleware|进行中|ssshooter|
+docs/model|完成|[easezhi](https://github.com/easezhi)|
+docs/queries|进行中|[easezhi](https://github.com/easezhi)|
 lib/schema|完成|[easezhi](https://github.com/easezhi)|
