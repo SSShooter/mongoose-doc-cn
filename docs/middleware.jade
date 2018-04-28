@@ -62,8 +62,9 @@ block content
     ```
 
     在[mongoose 5.x](http://thecodebarbarian.com/introducing-mongoose-5.html#promises-and-async-await-with-middleware)中，
-    instead of calling `next()` manually, you can use a
-    function that returns a promise. In particular, you can use [`async/await`](http://thecodebarbarian.com/common-async-await-design-patterns-in-node.js.html).
+    除了手动调用 `next()`，
+    你还可以返回一个promise，
+    甚至是 [`async/await`](http://thecodebarbarian.com/common-async-await-design-patterns-in-node.js.html)。
 
     ```javascript
     schema.pre('save', function() {
@@ -78,9 +79,9 @@ block content
     });
     ```
 
-    如果你使用 `next()`, the `next()` call does **not** stop the rest of the code in your middleware function from executing. 
-    Use [the early `return` pattern](https://www.bennadel.com/blog/2323-use-a-return-statement-when-invoking-callbacks-especially-in-a-guard-statement.htm)
-    to prevent the rest of your middleware function from running when you call `next()`.
+    `next()` **不会** 阻止剩余代码的运行。 
+    你可以使用 [提早 `return` 模式](https://www.bennadel.com/blog/2323-use-a-return-statement-when-invoking-callbacks-especially-in-a-guard-statement.htm)
+    阻止 `next()` 后面的代码运行。
 
     ```javascript
     var schema = new Schema(..);
@@ -163,8 +164,8 @@ block content
     });
     ```
 
-    Calling `next()` multiple times is a no-op. If you call `next()` with an
-    error `err1` and then throw an error `err2`, mongoose will report `err1`.
+    多次调用 `next()` 是无效的。如果你调用 `next()` 带有错误参数 `err1`，
+    然后你再抛一个 `err2`，mongoose 只会传递 `err1`。
 
     <h3 id="post"><a href="#post">Post 中间件</a></h3>
 
@@ -186,11 +187,10 @@ block content
     });
     ```
 
-    <h3 id="post-async"><a href="#post-async">Asynchronous Post Hooks</a></h3>
+    <h3 id="post-async"><a href="#post-async">异步 Post 钩子</a></h3>
 
-    If your post hook function takes at least 2 parameters, mongoose will
-    assume the second parameter is a `next()` function that you will call to
-    trigger the next middleware in the sequence.
+    如果你给回调函数传入两个参数，mongoose 
+    会认为第二个参数是 `next()` 函数，你可以通过 next 触发下一个中间件
 
     ```javascript
     // Takes 2 parameters: this is an asynchronous post hook
@@ -209,12 +209,12 @@ block content
     });
     ```
 
-    <h3 id="order"><a href="#order">Save/Validate Hooks</a></h3>
+    <h3 id="order"><a href="#order">Save/Validate 钩子</a></h3>
 
-    The `save()` function triggers `validate()` hooks, because mongoose
-    has a built-in `pre('save')` hook that calls `validate()`. This means
-    that all `pre('validate')` and `post('validate')` hooks get called
-    **before** any `pre('save')` hooks.
+    `save()` 函数触发 `validate()` 钩子，mongoose
+    `validate()` 其实就是 `pre('save')` 钩子，
+    这意味着所有 `pre('validate')` 和 `post('validate')` 都会在
+    `pre('save')` 钩子**之前**调用。
 
     ```javascript
     schema.pre('validate', function() {
@@ -253,14 +253,12 @@ block content
     });
     ```
 
-    Query middleware differs from document middleware in a subtle but
-    important way: in document middleware, `this` refers to the document
-    being updated. In query middleware, mongoose doesn't necessarily have
-    a reference to the document being updated, so `this` refers to the
-    **query** object rather than the document being updated.
+    Query 中间件 不同于 document 中间件：document 中间件中，
+    `this` 指向被更新 document，query 中间件中，
+    `this` 指向 **query** 对象而不是被更新 document。
 
-    For instance, if you wanted to add an `updatedAt` timestamp to every
-    `update()` call, you would use the following pre hook.
+    例如，如果你要在每次 update之前更新 `updatedAt` 时间戳，
+    你可以使用 `pre` 钩子。
 
     ```javascript
     schema.pre('update', function() {
@@ -268,9 +266,9 @@ block content
     });
     ```
 
-    <h3 id="error-handling"><a href="#error-handling">Error Handling Middleware</a></h3>
+    <h3 id="error-handling"><a href="#error-handling">错误处理中间件</a></h3>
 
-    _New in 4.5.0_
+    _4.5.0 新增_
 
     Middleware execution normally stops the first time a piece of middleware
     calls `next()` with an error. However, there is a special kind of post
@@ -330,7 +328,6 @@ block content
     });
     ```
 
-    <h3 id="next">Next Up</h3>
+    <h3 id="next">下一步</h3>
 
-    Now that we've covered middleware, let's take a look at Mongoose's approach
-    to faking JOINs with its query [population](/docs/populate.html) helper.
+    我们了解了中间件，接着我们看看 Mongoose 怎么用 [population](/docs/populate.html) 模拟 JOIN 操作。
