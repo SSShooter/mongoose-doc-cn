@@ -3,22 +3,23 @@ extends layout
 block content
   h2 Models
   :markdown
-    [Models](./api.html#model-js) are fancy constructors compiled from our `Schema` definitions. Instances of these models represent [documents](./documents.html) which can be saved and retrieved from our database. All document creation and retrieval from the database is handled by these models.
+    [Models](./api.html#model-js) 是从 `Schema` 编译来的构造函数。 它们的实例就代表着可以从数据库保存和读取的 [documents](./documents.html)。
+    从数据库创建和读取 document 的所有操作都是通过 model 进行的。
 
-  h3 Compiling your first model
+  h3 编译你的第一个 model
   :markdown
     ```javascript
     var schema = new mongoose.Schema({ name: 'string', size: 'string' });
     var Tank = mongoose.model('Tank', schema);
     ```
   :markdown
-    The first argument is the _singular_ name of the collection your model is for. ** Mongoose automatically looks for the _plural_ version of your model name. **
-    Thus, for the example above, the model Tank is for the **tanks** collection in the database.
-    The `.model()` function makes a copy of `schema`. Make sure that you've added everything you want to `schema` before calling `.model()`!
+    第一个参数是跟 model 对应的集合（ collection ）名字的 _单数_ 形式。 ** Mongoose 会自动找到名称是 model 名字 _复数_ 形式的 collection **。
+    对于上例，Tank 这个 model 就对应数据库中 **tanks** 这个 collection。`.model()` 这个函数是对 `schema` 做了拷贝（生成了 model）。
+    你要确保在调用 `.model()` 之前把所有需要的东西都加进 `schema` 里了！
 
-  h3 Constructing documents
+  h3 构造 documents
   :markdown
-    [Documents](./documents.html) are instances of our model. Creating them and saving to the database is easy:
+    [Documents](./documents.html) 是 model 的实例。 创建它们并保存到数据库非常简单：
     ```javascript
     var Tank = mongoose.model('Tank', yourSchema);
 
@@ -36,46 +37,45 @@ block content
     })
     ```
   :markdown
-    Note that no tanks will be created/removed until the connection your model
-    uses is open. Every model has an associated connection. When you use
-    `mongoose.model()`, your model will use the default mongoose connection.
+    要注意，直到 model 使用的数据库连接（ connection ）被打开，tanks 才会被创建/删除。每个 model 都有一个绑定的连接。
+    如果 model 是通过调用 `mongoose.model()` 生成的，它将使用 mongoose 的默认连接。
     ```javascript
     mongoose.connect('localhost', 'gettingstarted');
     ```
   :markdown
-    If you create a custom connection, use that connection's `model()` function
-    instead.
+    如果自行创建了连接，就需要使用 connection 的 `model()` 函数代替 mongoose 的 `model()` 函数。
     ```javascript
     var connection = mongoose.createConnection('mongodb://localhost:27017/test');
     var Tank = connection.model('Tank', yourSchema);
     ```
-  h3 Querying
+  h3 查询
   :markdown
-    Finding documents is easy with Mongoose, which supports the [rich](http://www.mongodb.org/display/DOCS/Advanced+Queries) query syntax of MongoDB. Documents can be retreived using each `models` [find](./api.html#model_Model.find), [findById](./api.html#model_Model.findById), [findOne](./api.html#model_Model.findOne), or [where](./api.html#model_Model.where) static methods.
+    用 mongoose 查询文档相当容易啦，它支持 MongoDB 的高级（ [rich](http://www.mongodb.org/display/DOCS/Advanced+Queries) ）查询语法。
+    查询文档可以用 `model` 的 [find](./api.html#model_Model.find), [findById](./api.html#model_Model.findById), [findOne](./api.html#model_Model.findOne), 和 [where](./api.html#model_Model.where) 这些静态方法。
 
     ```javascript
     Tank.find({ size: 'small' }).where('createdDate').gt(oneYearAgo).exec(callback);
     ```
   :markdown
-    See the chapter on [querying](./queries.html) for more details on how to use the [Query](./api.html#query-js) api.
-  h3 Removing
+    要了解 [Query](./api.html#query-js) api 的更多细节，可以查阅 [querying](./queries.html) 章节。
+  h3 删除
   :markdown
-    Models have a static `remove` method available for removing all documents matching `conditions`.
+    `model` 的 `remove` 方法可以删除所有匹配查询条件（ `conditions` ）的文档。
     ```javascript
     Tank.remove({ size: 'large' }, function (err) {
       if (err) return handleError(err);
       // removed!
     });
     ```
-  h3 Updating
+  h3 更新
   :markdown
-    Each `model` has its own `update` method for modifying documents in the database without returning them to your application. See the [API](./api.html#model_Model.update) docs for more detail.
+    `model` 的 `update` 方法可以修改数据库中的文档，不过不会把文档返回给应用层。查阅 [API](./api.html#model_Model.update) 了解更多详情。
 
-    _If you want to update a single document in the db and return it to your application, use [findOneAndUpdate](./api.html#model_Model.findOneAndUpdate) instead._
-  h3 Yet more
+    如果想更新单独一条文档并且返回给应用层，可以使用 [findOneAndUpdate](./api.html#model_Model.findOneAndUpdate) 方法。
+  h3 更多
   :markdown
-    The [API docs](./api.html#model_Model) cover many additional methods available like [count](./api.html#model_Model.count), [mapReduce](./api.html#model_Model.mapReduce), [aggregate](./api.html#model_Model.aggregate), and [more](./api.html#model_Model.findOneAndRemove).
+    [API](./api.html#model_Model) 文档中包含了很多额外的方法，比如 [count](./api.html#model_Model.count), [mapReduce](./api.html#model_Model.mapReduce), [aggregate](./api.html#model_Model.aggregate), 还有 [其他](./api.html#model_Model.findOneAndRemove)
 
-  h3#next Next Up
+  h3#next 下一步
   :markdown
-    Now that we've covered `Models`, let's take a look at [Documents](/docs/documents.html).
+    目前我们已经说过了 `Models`，接下来是 [Documents](/docs/documents.html)。
