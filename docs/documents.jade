@@ -4,19 +4,16 @@ block content
   :markdown
     ## Documents
 
-    Mongoose [documents](./api.html#document-js) represent a one-to-one mapping
-    to documents as stored in MongoDB. Each document is an instance of its
-    [Model](./models.html).
+    Mongoose [document](./api.html#document-js) 代表着 MongoDB 文档的一对一映射。
+    每个 document 都是他的 [Model](./models.html) 的实例。
 
-    ### Retrieving
+    ### 检索
 
-    There are many ways to retrieve documents from MongoDB. We won't cover that
-    in this section. See the chapter on [querying](./queries.html) for detail.
+    MongoDB 有很多检索数据的方法。我们在这章暂不提及，详情请看 [querying](./queries.html)。
 
-    ### Updating
+    ### 更新
 
-    There are a number of ways to update documents. We'll first look at a
-    traditional approach using [findById](./api.html#model_Model.findById):
+    Document 更新的方法同样有很多，我们先看看一个传统的实现，使用 [findById](./api.html#model_Model.findById)：
 
     ```javascript
     Tank.findById(id, function (err, tank) {
@@ -30,9 +27,9 @@ block content
     });
     ```
 
-    You can also use [`.set()`](./api.html#document_Document-set)
-    to modify documents. Under the hood, `tank.size = 'large';` becomes
-    `tank.set({ size: 'large' })`.
+    你也可以用 [`.set()`](./api.html#document_Document-set)
+    修改 document。在底层， `tank.size = 'large';` 用
+    `tank.set({ size: 'large' })`实现。
 
     ```javascript
     Tank.findById(id, function (err, tank) {
@@ -46,18 +43,15 @@ block content
     });
     ```
 
-    This approach involves first retrieving the document from Mongo, then
-    issuing an update command (triggered by calling `save`). However, if we
-    don't need the document returned in our application and merely want to
-    update a property in the database directly,
-    [Model#update](./api.html#model_Model.update) is right for us:
+    这个方法先检索数据，接着更新（使用了 `save`）。
+    如果我们仅仅需要更新而不需要获取该数据，
+    [Model#update](./api.html#model_Model.update) 就很适合我们：
 
     ```javascript
     Tank.update({ _id: id }, { $set: { size: 'large' }}, callback);
     ```
 
-    If we do need the document returned in our application there is another,
-    often [better](./api.html#model_Model.findByIdAndUpdate), option:
+    如果我们确实需要返回文档，[这个方法](./api.html#model_Model.findByIdAndUpdate)更适合：
 
     ```javascript
     Tank.findByIdAndUpdate(id, { $set: { size: 'large' }}, { new: true }, function (err, tank) {
@@ -66,26 +60,23 @@ block content
     });
     ```
 
-    The `findAndUpdate/Remove` static methods all make a change to at most one
-    document, and return it with just one call to the database. There
-    [are](./api.html#model_Model.findByIdAndRemove)
-    [several](./api.html#model_Model.findOneAndUpdate)
-    [variations](./api.html#model_Model.findOneAndRemove) on the
-    [findAndModify](http://www.mongodb.org/display/DOCS/findAndModify+Command)
-    theme. Read the [API](./api.html) docs for more detail.
+    `findAndUpdate/Remove` 系列静态方法查找并返回最多1个文档。
+    模式的方法有不少，请阅读 [API](./api.html) 文档了解更多。
 
-    _Note that `findAndUpdate/Remove` do *not* execute any hooks or validation before making the change in the database. You can use the [`runValidators` option](/docs/validation.html#update-validators) to access a limited subset of document validation. However, if you need hooks and full document validation, first query for the document and then `save()` it._
+    _注意：`findAndUpdate/Remove` *不会* 修改数据库时执行任何钩子或验证。
+    你可以使用 [`runValidators` 选项](/docs/validation.html#update-validators) 获取一个验证的限制子集（待修改）。 
+    但是你需要钩子和全文档验证，还是先 query 后 save 吧。_
 
-    ### Validating
+    ### 验证
 
-    Documents are validated before they are saved. Read the
-    [api](./api.html#document_Document-validate) docs or the
-    [validation](./validation.html) chapter for detail.
+    Document 会在被保存之前验证。阅读
+    [api](./api.html#document_Document-validate) 文档或
+    [validation](./validation.html) 章节了解更多。
 
-    ### Overwriting
+    ### 覆盖
 
-    You can overwrite an entire document using `.set()`. This is handy if you
-    want to change what document is being saved in [middleware](./middleware.html).
+    你可以用 `.set()` 覆盖整个文档。如果你要修改
+    在[中间件](./middleware.html)中被保存的文档，这样就很方便。
 
     ```javascript
     Tank.findById(id, function (err, tank) {
@@ -95,7 +86,7 @@ block content
     });
     ```
 
-    ### Next Up
+    ### 下一步
 
-    Now that we've covered Documents, let's take a look at
-    [Subdocuments](/docs/subdocs.html).
+    现在我们介绍了 Documents，接着看看
+    [Subdocuments](/docs/subdocs.html)。
