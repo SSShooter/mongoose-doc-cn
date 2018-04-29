@@ -2,26 +2,23 @@ extends layout
 
 block content
   :markdown
-    ## Queries
+    ## Queries 查询
 
-    Documents can be retrieved through several static helper methods of [models](./models.html).
+    [Model](./models.html) 的多个静态辅助方法都可以查询文档。
 
-    Any [model](./api.html#model_Model) method which [involves](./api.html#model_Model.find) [specifying](./api.html#model_Model.findById) [query](./api.html#model_Model.count) [conditions](./api.html#model_Model.update) can be executed two ways:
+    [Model](./api.html#model_Model) 的方法中包含查询条件参数的（ [find](./api.html#model_Model.find) [findById](./api.html#model_Model.findById) [count](./api.html#model_Model.count) [update](./api.html#model_Model.update) ）都可以按以下两种方式执行：
 
-    When a `callback` function:
+    - 传入 `callback` 参数，操作会被立即执行，查询结果被传给回调函数（ callback ）。
+    - 不传 `callback` 参数，[Query](./api.html#query-js) 的一个实例（一个 query 对象）被返回，这个 query 提供了构建查询器的特殊接口。
 
-    - is passed, the operation will be executed immediately with the results passed to the callback.
-    - is not passed, an instance of [Query](./api.html#query-js) is returned, which provides a special query builder interface.
+    [Query](./api.html#query-js) 实例有一个 `.then()` 函数，用法类似 promise。
 
-    A [Query](./api.html#query-js) has a `.then()` function, and
-    thus can be used as a promise.
-
-    When executing a query with a `callback` function, you specify your query as a JSON document. The JSON document's syntax is the same as the [MongoDB shell](http://docs.mongodb.org/manual/tutorial/query-documents/).
+    如果执行查询时传入 `callback` 参数，就需要用 JSON 文档的格式指定查询条件。JSON 文档的语法跟 [MongoDB shell](http://docs.mongodb.org/manual/tutorial/query-documents/) 一致。
 
     ```javascript
     var Person = mongoose.model('Person', yourSchema);
 
-    // find each person with a last name matching 'Ghost', selecting the `name` and `occupation` fields
+    // 查询每个 last name 是 'Ghost' 的 person， select `name` 和 `occupation` 字段
     Person.findOne({ 'name.last': 'Ghost' }, 'name occupation', function (err, person) {
       if (err) return handleError(err);
       // Prints "Space Ghost is a talk show host".
@@ -30,22 +27,24 @@ block content
     });
     ```
 
-    Here we see that the query was executed immediately and the results passed to our callback. All callbacks in Mongoose use the pattern:
-    `callback(error, result)`. If an error occurs executing the query, the `error` parameter will contain an error document, and `result`
-    will be null. If the query is successful, the `error` parameter will be null, and the `result` will be populated with the results of the query.
+    上例中查询被立即执行，查询结果被传给回调函数。Mongoose 中所有的回调函数都使用 `callback(error, result)` 这种模式。如果查询时发生错误，`error` 参数即是错误文档，
+    `result` 参数会是 null。如果查询成功，`error` 参数是 null，`result` 即是查询的结果。
 
-    Anywhere a callback is passed to a query in Mongoose, the callback follows the pattern `callback(error, results)`. What `results` is depends on the operation: For `findOne()` it is a [potentially-null single document](./api.html#model_Model.findOne), `find()` a [list of documents](./api.html#model_Model.find), `count()` [the number of documents](./api.html#model_Model.count), `update()` the [number of documents affected](./api.html#model_Model.update), etc. The [API docs for Models](./api.html#model-js) provide more detail on what is passed to the callbacks.
+    Mongoose 中每一处查询，被传入的回调函数都遵循 `callback(error, result)` 这种模式。查询结果的格式取决于做什么操作：
+    [findOne()](./api.html#model_Model.findOne) 是单个文档（有可能是 null ），[find()](./api.html#model_Model.find) 是文档列表，
+    [count()](./api.html#model_Model.count) 是文档数量，[update()](./api.html#model_Model.update) 是被修改的文档数量。
+    [Models API](./api.html#model-js) 文档中有详细描述被传给回调函数的值。
 
-    Now let's look at what happens when no `callback` is passed:
+    下面来看不传入 `callback` 这个参数会怎样：
 
     ```javascript
-    // find each person with a last name matching 'Ghost'
+    // 查询每个 last name 是 'Ghost' 的 person
     var query = Person.findOne({ 'name.last': 'Ghost' });
 
-    // selecting the `name` and `occupation` fields
+    // select `name` 和 `occupation` 字段
     query.select('name occupation');
 
-    // execute the query at a later time
+    // 然后执行查询
     query.exec(function (err, person) {
       if (err) return handleError(err);
       // Prints "Space Ghost is a talk show host."
@@ -54,9 +53,9 @@ block content
     });
     ```
 
-    In the above code, the `query` variable is of type [Query](./api.html#query-js).
-    A `Query` enables you to build up a query using chaining syntax, rather than specifying a JSON object.
-    The below 2 examples are equivalent.
+    以上代码中，`query` 是个 [Query](./api.html#query-js) 类型的变量。
+    `Query` 能够用链式语法构建查询器，无需指定 JSON 对象。
+    下面2个示例等效。
 
     ```javascript
     // With a JSON doc
@@ -84,21 +83,17 @@ block content
       exec(callback);
     ```
 
-    A full list of [Query helper functions can be found in the API docs](./api.html#query-js).
+    [Query API](./api.html#query-js) 文档中有查询函数的完整列表。
 
-    <h3 id="refs"><a href="#refs">References to other documents</a></h3>
+    <h3 id="refs"><a href="#refs">引用其他文档</a></h3>
 
-    There are no joins in MongoDB but sometimes we still want references to
-    documents in other collections. This is where [population](./populate.html)
-    comes in. Read more about how to include documents from other collections in
-    your query results [here](./api.html#query_Query-populate).
+    MongoDB 中没有表连接，但引用其他集合的文档有时也会需要。[Population](./populate.html) 即为此而生。
+    [这里](./api.html#query_Query-populate) 有关于从其他集合引用文档的更多内容。
 
     <h3 id="streaming"><a href="#streaming">Streaming</a></h3>
 
-    You can [stream](http://nodejs.org/api/stream.html) query results from
-    MongoDB. You need to call the
-    [Query#cursor()](./api.html#query_Query-cursor) function to return an instance of
-    [QueryCursor](./api.html#querycursor-js).
+    你可以流式（ [stream](http://nodejs.org/api/stream.html) ）处理 MongoDB 的查询结果，需要调用
+    [Query.cursor()](./api.html#query_Query-cursor) 函数获得 [QueryCursor](./api.html#querycursor-js) 的一个实例。
 
     ```javascript
     var cursor = Person.find({ occupation: /host/ }).cursor();
@@ -110,7 +105,5 @@ block content
     });
     ```
 
-    h3#next Next Up
-    :markdown
-      Now that we've covered Queries, let's take a look at
-      [Validation](./validation.html).
+    ### 下一步
+      现在我们介绍过了 Queries，接下来开始 [Validation](./validation.html)。
