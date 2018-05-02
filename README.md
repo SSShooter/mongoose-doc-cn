@@ -31,3 +31,4 @@ docs/model|完成|[easezhi](https://github.com/easezhi)|
 docs/queries|完成|[easezhi](https://github.com/easezhi)|
 lib/schema|完成|[easezhi](https://github.com/easezhi)|
 lib/query|进行中|[easezhi](https://github.com/easezhi)|
+docs/faq|进行中|[umrons](https://github.com/umrons)|
