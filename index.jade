@@ -1,5 +1,5 @@
 doctype html
-html(lang='en')
+html(lang='cn')
   head
     meta(charset='utf-8')
     meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
@@ -69,9 +69,9 @@ html(lang='en')
       #links
         ul
           li
-            a(href="docs/guide.html") Read the Docs
+            a(href="docs/guide.html") 阅读文档
           li
-            a(href="http://plugins.mongoosejs.io") Discover Plugins
+            a(href="http://plugins.mongoosejs.io") 发现插件
       #follow
         ul
           li
@@ -81,6 +81,14 @@ html(lang='en')
               | Version #{package.version}
           li
             iframe(class="github-btn", src="http://ghbtns.com/github-btn.html?user=Automattic&repo=mongoose&type=fork&count=true", allowtransparency="true", frameborder="0", scrolling="0", width="100px", height="20px")
+        ul
+          li
+            iframe(class="github-btn", src="http://ghbtns.com/github-btn.html?user=ssshooter&repo=mongoose-doc-cn&type=watch&count=true", allowtransparency="true", frameborder="0", scrolling="0", width="100px", height="20px")       
+          li#version
+            span
+              | 中文文档 GitHub 
+          li
+            iframe(class="github-btn", src="http://ghbtns.com/github-btn.html?user=ssshooter&repo=mongoose-doc-cn&type=fork&count=true", allowtransparency="true", frameborder="0", scrolling="0", width="100px", height="20px")
       #inner
         #what
           p.what
@@ -124,26 +132,6 @@ html(lang='en')
           ## Changelog
 
           * [Changelog](https://github.com/Automattic/mongoose/blob/master/History.md)
-
-          ## Sponsors
-
-          <div class="sponsors">
-            <div>
-              <a href="https://mixmax.com">
-                <img class="sponsor" src="/docs/images/mixmax.png" alt="MixMax.com">
-              </a>
-              <a href="https://localizejs.com/">
-                <img class="sponsor" src="http://ww1.prweb.com/prfiles/2015/10/28/13050459/localize-logo-black.png">
-              </a>
-              <a class="sponsor" href="https://www.keycdn.com/">
-                <img class="sponsor" src="https://opencollective.com/proxy/images/?src=https%3A%2F%2Fopencollective-production.s3-us-west-1.amazonaws.com%2F24fe4860-cb0c-11e7-a280-4f57b80ade52.png&height=100">
-              </a>
-            </div>
-          </div>
-
-          <div class="sponsor">
-            Sponsor [Mongoose on OpenCollective](https://opencollective.com/mongoose) to get your company's logo above!
-          </div>
 
     p#footer Licensed under MIT. Copyright 2011 <a href="http://learnboost.com">LearnBoost</a>.
     script.
