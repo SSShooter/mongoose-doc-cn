@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>http://mongoosedoc.top/</loc>
+  <lastmod>2018-05-02T14:16:40+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://mongoosedoc.top/docs/guide.html</loc>
+  <lastmod>2018-05-02T14:16:40+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://mongoosedoc.top/docs/index.html</loc>
+  <lastmod>2018-05-02T14:16:40+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://mongoosedoc.top/docs/schematypes.html</loc>
+  <lastmod>2018-05-02T14:16:40+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://mongoosedoc.top/docs/connections.html</loc>
+  <lastmod>2018-05-02T14:16:40+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://mongoosedoc.top/docs/models.html</loc>
+  <lastmod>2018-05-02T14:16:40+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://mongoosedoc.top/docs/documents.html</loc>
+  <lastmod>2018-05-02T14:16:40+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://mongoosedoc.top/docs/subdocs.html</loc>
+  <lastmod>2018-05-02T14:16:40+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://mongoosedoc.top/docs/queries.html</loc>
+  <lastmod>2018-05-02T14:16:40+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://mongoosedoc.top/docs/validation.html</loc>
+  <lastmod>2018-05-02T14:16:40+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://mongoosedoc.top/docs/middleware.html</loc>
+  <lastmod>2018-05-02T14:16:40+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://mongoosedoc.top/docs/populate.html</loc>
+  <lastmod>2018-05-02T14:16:40+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://mongoosedoc.top/docs/discriminators.html</loc>
+  <lastmod>2018-05-02T14:16:40+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://mongoosedoc.top/docs/plugins.html</loc>
+  <lastmod>2018-05-02T14:16:40+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://mongoosedoc.top/docs/lambda.html</loc>
+  <lastmod>2018-05-02T14:16:40+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://mongoosedoc.top/docs/api.html</loc>
+  <lastmod>2018-05-02T14:16:40+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://mongoosedoc.top/docs/compatibility.html</loc>
+  <lastmod>2018-05-02T14:16:40+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://mongoosedoc.top/docs/faq.html</loc>
+  <lastmod>2018-05-02T14:16:40+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://mongoosedoc.top/docs/promises.html</loc>
+  <lastmod>2018-05-02T14:16:40+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>
