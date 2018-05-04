@@ -196,8 +196,8 @@ block content
 
     <h4 id="mixed">Mixed</h4>
 
-    An "anything goes" SchemaType, its flexibility comes at a trade-off of it being harder to maintain. 
-    Mixed is available either through Schema.Types.Mixed or by passing an empty object literal. The following are equivalent:
+    一个啥都可以放的 SchemaType ， 虽然便利，但也会让数据难以维护。
+    Mixed 可以通过 Schema.Types.Mixed 或 传入一个空对象定义。以下三种方法效果一致：
 
     ```javascript
     var Any = new Schema({ any: {} });
@@ -205,12 +205,12 @@ block content
     var Any = new Schema({ any: Schema.Types.Mixed });
     ```
 
-    Since it is a schema-less type, 
-    you can change the value to anything else you like, 
-    but Mongoose loses the ability to auto detect and save those changes. 
-    To "tell" Mongoose that the value of a Mixed type has changed, call the
-    `.markModified(path)`
-    method of the document passing the path to the Mixed type you just changed.
+    因为这是个 schema-less type，
+    所以你可以赋值为任意类型， 
+    但是 mongoose 无法自动检测并保存你的修改。
+    要告诉 Mongoose 你修改了 Mixed type 的值，调用
+    文档的 `.markModified(path)` 方法，
+    传入你的 Mixed 字段路径。
 
     ```javascript
     person.anything = { x: [3, 4, { y: "changed" }] };
@@ -220,7 +220,7 @@ block content
 
     <h4 id="objectids">ObjectIds</h4>
 
-    To specify a type of ObjectId, use `Schema.Types.ObjectId` in your declaration.
+    要指定类型为 ObjectId，在声明中使用 `Schema.Types.ObjectId`。
 
     ```javascript
     var mongoose = require('mongoose');
@@ -231,8 +231,8 @@ block content
 
     <h4 id="arrays">Arrays</h4>
 
-    Provide creation of arrays of [SchemaTypes](./api.html#schema_Schema.Types)
-    or [Subdocuments](./subdocs.html).
+    创造 [SchemaTypes](./api.html#schema_Schema.Types)
+    或[子文档](./subdocs.html)数组。
 
     ```javascript
     var ToySchema = new Schema({ name: String });
@@ -245,8 +245,8 @@ block content
     });
     ```
 
-    Note: specifying an empty array is equivalent to `Mixed`. The following all create arrays of
-    `Mixed`:
+    注意：指定空数组相当于 `Mixed`。以下操作相当于创建
+    `Mixed` 数组：
 
     ```javascript
     var Empty1 = new Schema({ any: [] });
@@ -255,14 +255,14 @@ block content
     var Empty4 = new Schema({ any: [{}] });
     ```
 
-    Arrays implicitly have a default value of `[]` (empty array).
+    数组的默认值是 `[]` （空数组）。
 
     ```javascript
     var Toy = mongoose.model('Test', ToySchema);
     console.log((new Toy()).toys); // []
     ```
 
-    To overwrite this default, you need to set the default value to `undefined`
+    要手动把默认值设置为 `undefined`，从而覆盖 `[]`。
 
     ```javascript
     var ToySchema = new Schema({
@@ -273,21 +273,19 @@ block content
     });
     ```
 
-    <h3 id="customtypes"><a href="#customtypes">Creating Custom Types</a></h3>
+    <h3 id="customtypes"><a href="#customtypes">创建自定义 Type</a></h3>
 
-    Mongoose can also be extended with custom SchemaTypes. Search the
-    [plugins](http://plugins.mongoosejs.com)
-    site for compatible types like
-    [mongoose-long](https://github.com/aheckmann/mongoose-long),
-    [mongoose-int32](https://github.com/vkarpov15/mongoose-int32),
-    and
-    [other](https://github.com/aheckmann/mongoose-function)
-    [types](https://github.com/OpenifyIt/mongoose-types).
+    Mongoose 可以扩展自定义 SchemaTypes。搜索
+    [插件](http://plugins.mongoosejs.com)
+    页面，查找类似[mongoose-long](https://github.com/aheckmann/mongoose-long),
+    [mongoose-int32](https://github.com/vkarpov15/mongoose-int32)，
+    [以及其他](https://github.com/aheckmann/mongoose-function)
+    [types](https://github.com/OpenifyIt/mongoose-types)
+    的兼容 types。
 
-    <h3 id="path"><a href="#path">The `schema.path()` Function</a></h3>
+    <h3 id="path"><a href="#path">`schema.path()` 函数</a></h3>
 
-    The `schema.path()` function returns the instantiated schema type for a
-    given path.
+    `schema.path()` 函数为给定字段路径返回实例化 schema type。
 
     ```javascript
     var sampleSchema = new Schema({ name: { type: String, required: true } });
@@ -303,9 +301,9 @@ block content
      */
      ```
 
-    You can use this function to inspect the schema type for a given path,
-    including what validators it has and what the type is.
+    这个函数可以检查给定字段路径的检验器和类型等信息。
 
-    <h3 id="next"><a href="#next">Next Up</a></h3>
+    <h3 id="next"><a href="#next">下一步</a></h3>
 
-    Now that we've covered `SchemaTypes`, let's take a look at [Connections](/docs/connections.html).
+    现在我们介绍了 `SchemaTypes`，接着看看
+    [Connections](/docs/connections.html)。
