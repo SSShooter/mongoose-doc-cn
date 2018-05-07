@@ -20,16 +20,29 @@ node website
 // 启动本地服务器预览文档
 node static
 ```
-### 翻译情况
+### 翻译情况(网页展示顺序)
 页面|情况|译者|校对
 --- | --- |--- |---
-docs/documents|完成|ssshooter|
-docs/guide|90%|ssshooter|
 docs/index|完成|ssshooter|
-docs/middleware|进行中|ssshooter|
-docs/model|完成|[easezhi](https://github.com/easezhi)|
-docs/queries|完成|[easezhi](https://github.com/easezhi)|
-lib/schema|完成|[easezhi](https://github.com/easezhi)|
-lib/query|进行中|[easezhi](https://github.com/easezhi)|
-docs/faq|进行中|[umrons](https://github.com/umrons)|
+docs/guide|90%|ssshooter|
 docs/schematypes|完成|ssshooter|
+docs/connections|-|-|
+docs/model|完成|[easezhi](https://github.com/easezhi)|
+docs/documents|完成|ssshooter|
+docs/subdocs|-|-|
+docs/queries|完成|[easezhi](https://github.com/easezhi)|
+test/docs/validation|-|-|
+docs/middleware|进行中|ssshooter|
+docs/populate|-|-|
+test/docs/discriminators|-|-|
+docs/plugins|-|-|
+lib/schema|完成|[easezhi](https://github.com/easezhi)|
+lib/connection|-|-|
+lib/document|-|-|
+lib/model|-|-|
+lib/query|进行中|[easezhi](https://github.com/easezhi)|
+lib/aggregate|-|-|
+lib/schematype|-|-|
+lib/virtual|-|-|
+lib/err/index|-|-|
+docs/faq|进行中|[umrons](https://github.com/umrons)|
