@@ -18,6 +18,7 @@ exports['docs/contributing.jade'] = { guide: true, title: 'Contributing' }
 exports['docs/connections.jade'] = { guide: true, title: 'Connecting to MongoDB' }
 exports['docs/lambda.jade'] = { guide: true, title: 'Using Mongoose With AWS Lambda' }
 exports['docs/faq.jade'] = { guide: true, title: 'FAQ' }
+exports['docs/cnhome.jade'] = { guide: true, title: 'about' }
 exports['docs/compatibility.jade'] = {
   title: 'MongoDB Version Compatibility',
   guide: true

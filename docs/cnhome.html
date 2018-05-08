@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Mongoose 5.0 中文文档</title><link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="images/favicon/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="images/favicon/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="images/favicon/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png"><link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"><link rel="stylesheet" href="/docs/css/github.css"><link rel="stylesheet" href="/docs/css/mongoose5.css"><link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="images/favicon/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="images/favicon/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="images/favicon/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png"><link rel="manifest" href="images/favicon/manifest.json"><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="images/favicon/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"></head><body><div id="layout"><div id="mobile-menu"><a id="menuLink" href="#menu" class="menu-link"><span></span></a><div id="mobile-logo-container"><a href="/"><img id="logo" src="/docs/images/mongoose5_62x30_transparent.png"><span class="logo-text">mongoose</span></a></div></div><div id="menu"><div class="pure-menu"><div id="logo-container" class="pure-menu-heading"><a href="/"><img id="logo" src="/docs/images/mongoose5_62x30_transparent.png"><span class="logo-text">mongoose</span></a></div><ul class="pure-menu-list"><li class="pure-menu-item"><a href="/docs/cnhome.html" class="pure-menu-link">关于中文文档</a></li><li class="pure-menu-item"><a href="/docs/index.html" class="pure-menu-link">快速上手</a></li><li class="pure-menu-item"><a href="/docs/guide.html" class="pure-menu-link">模式（Schemas）</a></li><li class="pure-menu-item sub-item"><a href="/docs/schematypes.html" class="pure-menu-link">模式类型（SchemaTypes）</a></li><li class="pure-menu-item sub-item"><a href="/docs/connections.html" class="pure-menu-link">连接（Connections）</a></li><li class="pure-menu-item sub-item"><a href="/docs/models.html" class="pure-menu-link">模型（Models）</a></li><li class="pure-menu-item sub-item"><a href="/docs/documents.html" class="pure-menu-link">文档 （Documents）</a></li><li class="pure-menu-item sub-item"><a href="/docs/subdocs.html" class="pure-menu-link">子文档（Subdocuments）</a></li><li class="pure-menu-item sub-item"><a href="/docs/queries.html" class="pure-menu-link">查询 （queries）</a></li><li class="pure-menu-item sub-item"><a href="/docs/validation.html" class="pure-menu-link">验证 （validation）</a></li><li class="pure-menu-item sub-item"><a href="/docs/middleware.html" class="pure-menu-link">中间件 （middleware）</a></li><li class="pure-menu-item sub-item"><a href="/docs/populate.html" class="pure-menu-link">填充 （Populate）</a></li><li class="pure-menu-item sub-item"><a href="/docs/discriminators.html" class="pure-menu-link">鉴别器 （Discriminators）</a></li><li class="pure-menu-item sub-item"><a href="/docs/plugins.html" class="pure-menu-link">插件</a></li><li class="pure-menu-item sub-item"><a href="/docs/lambda.html" class="pure-menu-link">AWS Lambda</a></li><li class="pure-menu-item"><a href="/docs/api.html" class="pure-menu-link">API 文档</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Schema" class="pure-menu-link">Schema</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Connection" class="pure-menu-link">Connection</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Document" class="pure-menu-link">Document</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Model" class="pure-menu-link">Model</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Query" class="pure-menu-link">Query</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Aggregate" class="pure-menu-link">Aggregate</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Schematype" class="pure-menu-link">SchemaType</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Virtualtype" class="pure-menu-link">VirtualType</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Error" class="pure-menu-link">Error</a></li><li class="pure-menu-item"><a href="/docs/compatibility.html" class="pure-menu-link">Version Compatibility</a></li><li class="pure-menu-item"><a href="/docs/faq.html" class="pure-menu-link">FAQ</a></li><li class="carbon-ad"><script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=mongoosejscom" id="_carbonads_js"></script></li></ul></div></div><div class="container"><div id="content"><h1 id="mongoose-doc-cn">mongoose-doc-cn</h1>
+<p>mongoose-doc-cn
+欢迎加入翻译:joy:<br>文档来源 <a href="https://github.com/Automattic/mongoose">https://github.com/Automattic/mongoose</a><br>中文文档仓库 <a href="https://github.com/ssshooter/mongoose-doc-cn">https://github.com/ssshooter/mongoose-doc-cn</a><br>中文文档地址 <a href="https://mongoosedoc.top/docs/index.html">https://mongoosedoc.top/docs/index.html</a></p>
+<h3 id="-">排版相关</h3>
+<p><a href="https://github.com/sparanoid/chinese-copywriting-guidelines">中文文案排版指北</a></p>
+<h3 id="-">操作</h3>
+<p>翻译 lib 文件夹和 docs 文件夹里的文件，<br>docs 文件夹为教程，<br>lib 文件夹为 api 文档         </p>
+<h3 id="-">加入翻译</h3>
+<p>先 PR readme，在翻译情况添加自己要翻译的页面，接着就可以开始翻译啦。</p>
+<h3 id="-jade-html-">生成文档（jade-&gt;html）</h3>
+<pre><code><span class="hljs-comment">// 预览前必须先生成文档</span>
+node website
+</code></pre><h3 id="-">本地服务</h3>
+<pre><code><span class="hljs-comment">// 启动本地服务器预览文档</span>
+node static
+</code></pre><h3 id="-">翻译情况(网页展示顺序)</h3>
+<table>
+<thead>
+<tr>
+<th>页面</th>
+<th>情况</th>
+<th>译者</th>
+<th>校对</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>docs/index</td>
+<td>完成</td>
+<td>ssshooter</td>
+<td></td>
+</tr>
+<tr>
+<td>docs/guide</td>
+<td>90%</td>
+<td>ssshooter</td>
+<td></td>
+</tr>
+<tr>
+<td>docs/schematypes</td>
+<td>完成</td>
+<td>ssshooter</td>
+<td></td>
+</tr>
+<tr>
+<td>docs/connections</td>
+<td>-</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>docs/model</td>
+<td>完成</td>
+<td><a href="https://github.com/easezhi">easezhi</a></td>
+<td></td>
+</tr>
+<tr>
+<td>docs/documents</td>
+<td>完成</td>
+<td>ssshooter</td>
+<td></td>
+</tr>
+<tr>
+<td>docs/subdocs</td>
+<td>-</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>docs/queries</td>
+<td>完成</td>
+<td><a href="https://github.com/easezhi">easezhi</a></td>
+<td></td>
+</tr>
+<tr>
+<td>test/docs/validation</td>
+<td>-</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>docs/middleware</td>
+<td>进行中</td>
+<td>ssshooter</td>
+<td></td>
+</tr>
+<tr>
+<td>docs/populate</td>
+<td>-</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>test/docs/discriminators</td>
+<td>-</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>docs/plugins</td>
+<td>-</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>lib/schema</td>
+<td>完成</td>
+<td><a href="https://github.com/easezhi">easezhi</a></td>
+<td></td>
+</tr>
+<tr>
+<td>lib/connection</td>
+<td>-</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>lib/document</td>
+<td>-</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>lib/model</td>
+<td>-</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>lib/query</td>
+<td>进行中</td>
+<td><a href="https://github.com/easezhi">easezhi</a></td>
+<td></td>
+</tr>
+<tr>
+<td>lib/aggregate</td>
+<td>-</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>lib/schematype</td>
+<td>-</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>lib/virtual</td>
+<td>-</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>lib/err/index</td>
+<td>-</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>docs/faq</td>
+<td>进行中</td>
+<td><a href="https://github.com/umrons">umrons</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div></div><script type="text/javascript">!function(name,path,ctx){
+  var latest,prev=name!=='Keen'&&window.Keen?window.Keen:false;ctx[name]=ctx[name]||{ready:function(fn){var h=document.getElementsByTagName('head')[0],s=document.createElement('script'),w=window,loaded;s.onload=s.onerror=s.onreadystatechange=function(){if((s.readyState&&!(/^c|loade/.test(s.readyState)))||loaded){return}s.onload=s.onreadystatechange=null;loaded=1;latest=w.Keen;if(prev){w.Keen=prev}else{try{delete w.Keen}catch(e){w.Keen=void 0}}ctx[name]=latest;ctx[name].ready(fn)};s.async=1;s.src=path;h.parentNode.insertBefore(s,h)}}
+}('KeenAsync','https://d26b395fwzu5fz.cloudfront.net/keen-tracking-1.1.3.min.js',this);
+
+KeenAsync.ready(function(){
+  // Configure a client instance
+  var client = new KeenAsync({
+    projectId: '59aad9cbc9e77c0001ce1b32',
+    writeKey: '4B38B0046086885E425D368BFAEAD8FD0D4F2DC2FA2F936FDE058D79508AEFAD9886BC020B96520823BB9C8241D9D9BCFDC0EF52E6033BD89D06E4B24FC13AE955896BF443406269A84DD009CEB5862DCEC944874DB2107FD648DA91ADC1E6DE'
+  });
+
+  client.recordEvent('pageView', {
+    host: window.location.host,
+    pathname: window.location.pathname,
+    hash: window.location.hash
+  });
+});</script><script type="text/javascript">(function (window, document) {
+  var layout   = document.getElementById('layout'),
+      menu     = document.getElementById('menu'),
+      menuLink = document.getElementById('menuLink'),
+      content  = document.getElementById('content');
+
+  function toggleClass(element, className) {
+      var classes = element.className.split(/\s+/),
+          length = classes.length,
+          i = 0;
+
+      for(; i < length; i++) {
+        if (classes[i] === className) {
+          classes.splice(i, 1);
+          break;
+        }
+      }
+      // The className is not found
+      if (length === classes.length) {
+          classes.push(className);
+      }
+
+      element.className = classes.join(' ');
+  }
+
+  function toggleAll(e) {
+      var active = 'active';
+
+      e.preventDefault();
+      toggleClass(layout, active);
+      toggleClass(menu, active);
+      toggleClass(menuLink, active);
+  }
+
+  menuLink.onclick = function (e) {
+      toggleAll(e);
+  };
+
+  content.onclick = function(e) {
+      if (menu.className.indexOf('active') !== -1) {
+          toggleAll(e);
+      }
+  };
+
+}(this, this.document));</script></div></body></html>
