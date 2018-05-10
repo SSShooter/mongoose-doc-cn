@@ -1,12 +1,11 @@
 extends layout
 
 block content
-  h2 Sub Docs
+  h2 子文档（Subdocument）
   :markdown
-    Subdocuments are documents embedded in other documents. In Mongoose, this
-    means you can nest schemas in other schemas. Mongoose has two
-    distinct notions of subdocuments: arrays of subdocuments and single nested
-    subdocuments.
+    子文档是指嵌套在另一个文档中的文档。
+    在 Mongoose 中，这意味着你可以在里嵌套另一个 schema。
+    Mongoose 子文档有两种不同的概念：子文档数组和单个嵌套子文档。
     ```javascript
     var childSchema = new Schema({ name: 'string' });
 
@@ -19,27 +18,23 @@ block content
     });
     ```
   :markdown
-    Subdocuments are similar to normal documents. Nested schemas can have
-    [middleware](./middleware.html), [custom validation logic](./validation.html),
-    virtuals, and any other feature top-level schemas can use. The major
-    difference is that subdocuments are
-    not saved individually, they are saved whenever their top-level parent
-    document is saved.
+    子文档与普通 document 类似。嵌套 schema 可以有自己的
+    [中间件](./middleware.html)、[自定义检验逻辑](./validation.html)、
+    虚拟值以及其他顶层 schemas 可用的特性。两者主要的不同点是
+    子文档不能单独保存，他们会在他们的顶级文档保存时保存。
     ```javascript
     var Parent = mongoose.model('Parent', parentSchema);
     var parent = new Parent({ children: [{ name: 'Matt' }, { name: 'Sarah' }] })
     parent.children[0].name = 'Matthew';
 
-    // `parent.children[0].save()` is a no-op, it triggers middleware but
-    // does **not** actually save the subdocument. You need to save the parent
-    // doc.
+    // `parent.children[0].save()` 无操作，虽然他触发了中间件
+    // 但是**没有**保存文档。你需要 save 他的父文档
     parent.save(callback);
     ```
   :markdown
-    Subdocuments have `save` and `validate` [middleware](./middleware.html)
-    just like top-level documents. Calling `save()` on the parent document triggers
-    the `save()` middleware for all its subdocuments, and the same for `validate()`
-    middleware.
+    子文档跟普通 document 一样有 `save` 和 `validate` [中间件](./middleware.html)。
+    调用父文档的 `save()` 会触发其所有子文档的 `save()` 中间件，
+    `validate()` 中间件同理。
 
     ```javascript
     childSchema.pre('save', function (next) {
@@ -55,13 +50,13 @@ block content
     });
     ```
   :markdown
-    Subdocuments' `pre('save')` and `pre('validate')` middleware execute
-    **before** the top-level document's `pre('save')` but **after** the
-    top-level document's `pre('validate')` middleware. This is because validating
-    before `save()` is actually a piece of built-in middleware.
+    子文档的 `pre('save')` 和 `pre('validate')` 中间件执行于
+    顶层 document 的 `pre('save')` **之前**，
+    顶层 document 的 `pre('validate')` **之后**。
+    因为 `save()` 前的验证就是一个内置中间件。（待修改）
 
     ```javascript
-    // Below code will print out 1-4 in order
+    // 一下代码顺序打出 1-4 
     var childSchema = new mongoose.Schema({ name: 'string' });
 
     childSchema.pre('validate', function(next) {
@@ -89,21 +84,21 @@ block content
     });
     ```
 
-  h3 Finding a subdocument
+  h3 查找子文档
   :markdown
-    Each subdocument has an `_id` by default. Mongoose document arrays have a
-    special [id](./api.html#types_documentarray_MongooseDocumentArray-id) method
-    for searching a document array to find a document with a given `_id`.
+    每个子文档都有一个默认的 `_id` 。Mongoose document 数组有一个特别的
+    [id](./api.html#types_documentarray_MongooseDocumentArray-id) 方法，
+    这个方法只要传入 `_id` 就能返回文档数组中特定文档。
     ```javascript
     var doc = parent.children.id(_id);
     ```
-  h3 Adding subdocs to arrays
+  h3 添加子文档到数组
   :markdown
-    MongooseArray methods such as
-    [push](./api.html#types_array_MongooseArray.push),
-    [unshift](./api.html#types_array_MongooseArray.unshift),
-    [addToSet](./api.html#types_array_MongooseArray.addToSet),
-    and others cast arguments to their proper types transparently:
+    Mongoose 数组方法有
+    [push](./api.html#types_array_MongooseArray.push)、
+    [unshift](./api.html#types_array_MongooseArray.unshift)、
+    [addToSet](./api.html#types_array_MongooseArray.addToSet)、
+    及其他：
     ```javascript
     var Parent = mongoose.model('Parent');
     var parent = new Parent;
@@ -120,33 +115,29 @@ block content
     });
     ```
   :markdown
-    Subdocs may also be created without adding them to the array by using the
-    [create](./api.html#types_documentarray_MongooseDocumentArray.create)
-    method of MongooseArrays.
+    [create](./api.html#types_documentarray_MongooseDocumentArray.create) 方法可以新建子文档但不加入数组。
     ```javascript
     var newdoc = parent.children.create({ name: 'Aaron' });
     ```
-  h3 Removing subdocs
+  h3 删除子文档
   :markdown
-    Each subdocument has it's own
-    [remove](./api.html#types_embedded_EmbeddedDocument-remove) method. For
-    an array subdocument, this is equivalent to calling `.pull()` on the
-    subdocument. For a single nested subdocument, `remove()` is equivalent
-    to setting the subdocument to `null`.
+    每个子文档都有 [remove](./api.html#types_embedded_EmbeddedDocument-remove) 方法。
+    另外，对于子文档数组，有一个等效方法 `.pull()`。
+    对于单个嵌套子文档，`remove()` 与把这个文档的值设为 `null` 等效。
     ```javascript
-    // Equivalent to `parent.children.pull(_id)`
+    // 等效于 `parent.children.pull(_id)`
     parent.children.id(_id).remove();
-    // Equivalent to `parent.child = null`
+    // 等效于 `parent.child = null`
     parent.child.remove();
     parent.save(function (err) {
       if (err) return handleError(err);
       console.log('the subdocs were removed');
     });
     ```
-  h4#altsyntax Alternate declaration syntax for arrays
+  h4#altsyntax 代替声明语法的写法
   :markdown
-    If you create a schema with an array of objects, mongoose will automatically
-    convert the object to a schema for you:
+    如果你用对象的数组创建 schema ，mongoose 会自动
+    为你把对象转换成 schema：
     ```javascript
     var parentSchema = new Schema({
       children: [{ name: 'string' }]
@@ -156,7 +147,7 @@ block content
       children: [new Schema({ name: 'string' })]
     });
     ```
-  h3#next Next Up
+  h3#next 下一步
   :markdown
-    Now that we've covered Subdocuments, let's take a look at
-    [querying](./queries.html).
+    这章我们介绍了子文档，下一个章节将会介绍
+    [querying](./queries.html)。

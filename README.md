@@ -6,6 +6,8 @@ mongoose-doc-cn
 中文文档地址 https://mongoosedoc.top/docs/index.html          
 ### 排版相关
 [中文文案排版指北](https://github.com/sparanoid/chinese-copywriting-guidelines)
+### 约定
+Schema / document / model 等名词不翻译
 ### 操作
 翻译 lib 文件夹和 docs 文件夹里的文件，              
 docs 文件夹为教程，            
@@ -25,16 +27,16 @@ node static
 ### 翻译情况(网页展示顺序)
 页面|情况|译者|校对
 --- | --- |--- |---
-docs/index|完成|ssshooter|
-docs/guide|90%|ssshooter|
-docs/schematypes|完成|ssshooter|
+docs/index|完成|[ssshooter](https://github.com/ssshooter)|
+docs/guide|90%|[ssshooter](https://github.com/ssshooter)|
+docs/schematypes|完成|[ssshooter](https://github.com/ssshooter)|
 docs/connections|-|-|
 docs/model|完成|[easezhi](https://github.com/easezhi)|
-docs/documents|完成|ssshooter|
-docs/subdocs|-|-|
+docs/documents|完成|[ssshooter](https://github.com/ssshooter)|
+docs/subdocs|完成|[ssshooter](https://github.com/ssshooter)|
 docs/queries|完成|[easezhi](https://github.com/easezhi)|
 test/docs/validation|-|-|
-docs/middleware|进行中|ssshooter|
+docs/middleware|进行中|[ssshooter](https://github.com/ssshooter)|
 docs/populate|-|-|
 test/docs/discriminators|-|-|
 docs/plugins|-|-|
