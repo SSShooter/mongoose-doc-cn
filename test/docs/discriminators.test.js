@@ -36,34 +36,31 @@ describe('discriminator docs', function () {
   });
 
   /**
-   * Discriminators are a schema inheritance mechanism. They enable
-   * you to have multiple models with overlapping schemas on top of the
-   * same underlying MongoDB collection.
+   * [Discriminator](/docs/api.html#discriminator_discriminator) 是一种 schema 继承机制。
+   * 他允许你在相同的底层 MongoDB collection 上
+   * 使用部分重叠的 schema 建立多个 model。
    *
-   * Suppose you wanted to track different types of events in a single
-   * collection. Every event will have a timestamp, but events that
-   * represent clicked links should have a URL. You can achieve this
-   * using the `model.discriminator()` function. This function takes
-   * 2 parameters, a model name and a discriminator schema. It returns a
-   * model whose schema is the union of the base schema and the
-   * discriminator schema.
+   * 假设你要在单个 collection 中记录多种 event，
+   * 每个 event 都有时间戳字段，但是 click 事件还有 URL 字段，
+   * 这时你可以用 `model.discriminator()` 实现上述要求。
+   * 此函数接受 2 个参数，model 名称和 discriminator schema，
+   * 返回的 model 结合了原 model 的 schema 和 discriminator schema。
    */
-  it('The `model.discriminator()` function', function (done) {
+  it('`model.discriminator()` 函数', function (done) {
     var options = {discriminatorKey: 'kind'};
 
     var eventSchema = new mongoose.Schema({time: Date}, options);
     var Event = mongoose.model('Event', eventSchema);
 
-    // ClickedLinkEvent is a special type of Event that has
-    // a URL.
+    // ClickedLinkEvent 是一个有 URL 的特别 event
     var ClickedLinkEvent = Event.discriminator('ClickedLink',
       new mongoose.Schema({url: String}, options));
 
-    // When you create a generic event, it can't have a URL field...
+    // 当你创建通用 event，他将没有 URL 字段...
     var genericEvent = new Event({time: Date.now(), url: 'google.com'});
     assert.ok(!genericEvent.url);
 
-    // But a ClickedLinkEvent can
+    // 但是 ClickedLinkEvent 可以有
     var clickedEvent =
       new ClickedLinkEvent({time: Date.now(), url: 'google.com'});
     assert.ok(clickedEvent.url);
@@ -74,12 +71,11 @@ describe('discriminator docs', function () {
   });
 
   /**
-   * Suppose you created another discriminator to track events where
-   * a new user registered. These `SignedUpEvent` instances will be
-   * stored in the same collection as generic events and `ClickedLinkEvent`
-   * instances.
+   * 现在假设你要创建另一个 discriminator，记录用户注册 event。
+   * `SignedUpEvent` 实例将跟 通用 events 和 `ClickedLinkEvent` 实例
+   * 一样储存在同一个 collection。
    */
-  it('Discriminators save to the Event model\'s collection', function (done) {
+  it('Discriminator 储存在 Event model 的 collection', function (done) {
     var event1 = new Event({time: Date.now()});
     var event2 = new ClickedLinkEvent({time: Date.now(), url: 'google.com'});
     var event3 = new SignedUpEvent({time: Date.now(), user: 'testuser'});
@@ -107,12 +103,10 @@ describe('discriminator docs', function () {
     });
   });
 
-  /**
-   * The way mongoose tells the difference between the different
-   * discriminator models is by the 'discriminator key', which is
-   * `__t` by default. Mongoose adds a String path called `__t`
-   * to your schemas that it uses to track which discriminator
-   * this document is an instance of.
+  /** 
+   * Mongoose 通过 'discriminator key' 识别两个不同的 discriminator，
+   * 这个值默认是 `__t` 。Mongoose 自动在你的 schema 添加 `__t` 字段，
+   * 记录你的 document 是哪个 discriminator 的实例。
    */
   it('Discriminator keys', function (done) {
     var event1 = new Event({time: Date.now()});
@@ -129,11 +123,11 @@ describe('discriminator docs', function () {
   });
 
   /**
-   * Discriminator models are special; they attach the discriminator key
-   * to queries. In other words, `find()`, `count()`, `aggregate()`, etc.
-   * are smart enough to account for discriminators.
+   * Discriminator model 的特别之处在于：他们会把 discriminator key 附到
+   * query 上。换句话说，`find()`, `count()`, `aggregate()` 等方法
+   * 都能适配 discriminators。
    */
-  it('Discriminators add the discriminator key to queries', function (done) {
+  it('Discriminator 在查询中添加 discriminator key', function (done) {
     var event1 = new Event({time: Date.now()});
     var event2 = new ClickedLinkEvent({time: Date.now(), url: 'google.com'});
     var event3 = new SignedUpEvent({time: Date.now(), user: 'testuser'});
@@ -164,11 +158,10 @@ describe('discriminator docs', function () {
   });
 
   /**
-   * Discriminators also take their base schema's pre and post middleware.
-   * However, you can also attach middleware to the discriminator schema
-   * without affecting the base schema.
+   * Discriminator 会继承他的基础 schema 的 pre 和 post 中间件。
+   * 不过，你也可以为 discriminator 添加中间件，这不回影响到基础 schema。
    */
-  it('Discriminators copy pre and post hooks', function (done) {
+  it('Discriminator 复制 pre / post 钩子', function (done) {
     var options = {discriminatorKey: 'kind'};
 
     var eventSchema = new mongoose.Schema({time: Date}, options);
@@ -205,17 +198,17 @@ describe('discriminator docs', function () {
   });
 
   /**
-   * A discriminator's fields are the union of the base schema's fields and
-   * the discriminator schema's fields, and the discriminator schema's fields
-   * take precedence. There is one exception: the default `_id` field.
+   * Discriminator 的字段是基础 schema 加 discriminator schema ，
+   * 并且以 discriminator schema 的字段优先。
+   * 但有一个例外，`_id` 字段。
    *
    * You can work around this by setting the `_id` option to false in the
    * discriminator schema as shown below.
    */
-  it('Handling custom _id fields', function (done) {
+  it('处理自定义 _id 字段', function (done) {
     var options = {discriminatorKey: 'kind'};
 
-    // Base schema has a String `_id` and a Date `time`...
+    // 基础 schema 有字符串格式的 `_id` 字段和 Data 格式的 `time` 字段...
     var eventSchema = new mongoose.Schema({_id: String, time: Date},
       options);
     var Event = mongoose.model('BaseEvent', eventSchema);
@@ -224,16 +217,16 @@ describe('discriminator docs', function () {
       url: String,
       time: String
     }, options);
-    // But the discriminator schema has a String `time`, and an implicitly added
-    // ObjectId `_id`.
+    // 但是 Discriminator schema 有字符串格式的 `time`，并且有
+    // 隐式添加的 ObjectId 格式的 `_id`
     assert.ok(clickedLinkSchema.path('_id'));
     assert.equal(clickedLinkSchema.path('_id').instance, 'ObjectID');
     var ClickedLinkEvent = Event.discriminator('ChildEventBad',
       clickedLinkSchema);
 
     var event1 = new ClickedLinkEvent({ _id: 'custom id', time: '4pm' });
-    // Woops, clickedLinkSchema overwrites the `time` path, but **not**
-    // the `_id` path because that was implicitly added.
+    // 问题来了，clickedLinkSchema 重写了 `time` 路径，但是**没有**
+    // 重写 `_id` 路径，因为已经隐式添加（没看懂）
     assert.ok(typeof event1._id === 'string');
     assert.ok(typeof event1.time === 'string');
 
@@ -243,10 +236,9 @@ describe('discriminator docs', function () {
   });
 
   /**
-   * When you use `Model.create()`, mongoose will pull the correct type from
-   * the discriminator key for you.
+   * 当你使用 `Model.create()`，Mongoose 会自动帮你适配 discriminator key ~
    */
-  it('Using discriminators with `Model.create()`', function(done) {
+  it('discriminator 与 `Model.create()`', function(done) {
     var Schema = mongoose.Schema;
     var shapeSchema = new Schema({
       name: String
@@ -266,6 +258,7 @@ describe('discriminator docs', function () {
     ];
     Shape.create(shapes, function(error, shapes) {
       assert.ifError(error);
+      // 重点看这里
       assert.ok(shapes[0] instanceof Shape);
       assert.ok(shapes[1] instanceof Circle);
       assert.equal(shapes[1].radius, 5);
@@ -278,17 +271,16 @@ describe('discriminator docs', function () {
   });
 
   /**
-   * You can also define discriminators on embedded document arrays.
-   * Embedded discriminators are different because the different discriminator
-   * types are stored in the same document array (within a document) rather
-   * than the same collection. In other words, embedded discriminators let
-   * you store subdocuments matching different schemas in the same array.
+   * 你也可以为嵌套文档数组定义 discriminator。
+   * 嵌套 discriminator 的特点是：不同 discriminator
+   * 类型储存在相同的文档而不是同一个 mongoDB collection。
+   * 换句话说，嵌套 discriminator 让你
+   * 在同一个数组储存符合不同 schema 的子文档。
    *
-   * As a general best practice, make sure you declare any hooks on your
-   * schemas **before** you use them. You should **not** call `pre()` or
-   * `post()` after calling `discriminator()`
+   * 最佳实践：确保你声明了钩子再使用他们。
+   * 你**不应当**在调用 `discriminator()` 之后调用 `pre()` 或 `post()`
    */
-  it('Embedded discriminators in arrays', function(done) {
+  it('数组中的嵌套 discriminator', function(done) {
     var eventSchema = new Schema({ message: String },
       { discriminatorKey: 'kind', _id: false });
 
@@ -297,7 +289,7 @@ describe('discriminator docs', function () {
     // `batchSchema.path('events')` gets the mongoose `DocumentArray`
     var docArray = batchSchema.path('events');
 
-    // The `events` array can contain 2 different types of events, a
+    // 这个 `events` 数组可以包含 2 种不同的 event 类型，
     // 'clicked' event that requires an element id that was clicked...
     var clickedSchema = new Schema({
       element: {
@@ -305,8 +297,8 @@ describe('discriminator docs', function () {
         required: true
       }
     }, { _id: false });
-    // Make sure to attach any hooks to `eventSchema` and `clickedSchema`
-    // **before** calling `discriminator()`.
+    // 确定在调用 `discriminator()` **之前**
+    // 对 `eventSchema` 和 `clickedSchema` 赋予钩子
     var Clicked = docArray.discriminator('Clicked', clickedSchema);
 
     // ... and a 'purchased' event that requires the product that was purchased.
@@ -354,9 +346,9 @@ describe('discriminator docs', function () {
   });
 
   /**
-   * Recursive embedded discriminators
+   * 检索嵌套 discriminator
    */
-  it('Recursive embedded discriminators in arrays', function(done) {
+  it('检索数组中的嵌套 discriminator', function(done) {
     var singleEventSchema = new Schema({ message: String },
       { discriminatorKey: 'kind', _id: false });
 
