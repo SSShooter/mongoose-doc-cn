@@ -4,45 +4,41 @@ block content
   :markdown
     <h2><a href="#connections">Connections</a></h2>
 
-    You can connect to MongoDB with the `mongoose.connect()` method.
+    你可以使用 `mongoose.connect()` 方法连接 MongoDB 。
 
     ```javascript
     mongoose.connect('mongodb://localhost/myapp');
     ```
 
-    This is the minimum needed to connect the `myapp` database running locally
-    on the default port (27017). If the local connection fails then try using
-    127.0.0.1 instead of localhost. Sometimes issues may arise when the local
-    hostname has been changed.
+    这是连接到本地 `myapp` 数据库默认接口(27017)的最小配置。
+    本地连接失败可以尝试连接 127.0.0.1 。
+    local hostname 被修改有时候会引起问题。
 
-    You can also specify several more parameters in the `uri`:
+    你也可以在 `uri` 中指定多个参数：
 
     ```javascript
     mongoose.connect('mongodb://username:password@host:port/database?options...');
     ```
 
-    See the [mongodb connection string spec](http://docs.mongodb.org/manual/reference/connection-string/) for more detail.
+    详情请看 [mongodb connection string spec](http://docs.mongodb.org/manual/reference/connection-string/) for more detail.
 
-    <h3 id="buffering"><a href="#buffering">Operation Buffering</a></h3>
+    <h3 id="buffering"><a href="#buffering">操作缓存</a></h3>
 
-    Mongoose lets you start using your models immediately, without waiting for
-    mongoose to establish a connection to MongoDB.
+    你不必等待连接建立成功就可以使用你的 Mongoose models 。
 
     ```javascript
     mongoose.connect('mongodb://localhost/myapp');
     var MyModel = mongoose.model('Test', new Schema({ name: String }));
-    // Works
+    // 可行
     MyModel.findOne(function(error, result) { /* ... */ });
     ```
 
-    That's because mongoose buffers model function calls internally. This
-    buffering is convenient, but also a common source of confusion. Mongoose
-    will *not* throw any errors by default if you use a model without
-    connecting.
+    Mongoose 会缓存你的 model 操作。这个操作很方便，但也回引起一些疑惑,
+    因为如果你没连上 ，Mongoose *不会* 抛错。
 
     ```javascript
     var MyModel = mongoose.model('Test', new Schema({ name: String }));
-    // Will just hang until mongoose successfully connects
+    // 连接成功前操作会被挂起
     MyModel.findOne(function(error, result) { /* ... */ });
 
     setTimeout(function() {
@@ -50,38 +46,37 @@ block content
     }, 60000);
     ```
 
-    To disable buffering, turn off the [`bufferCommands` option on your schema](./guide.html#bufferCommands).
-    If you have `bufferCommands` on and your connection is hanging, try turning
-    `bufferCommands` off to see if you haven't opened a connection properly.
-    You can also disable `bufferCommands` globally:
+    要禁用缓存，请修改 [`bufferCommands`](./guide.html#bufferCommands) 配置。
+    如果你打开了 `bufferCommands` 连接被挂起，尝试关闭 `bufferCommands` 
+    检查你是否正确打开连接。
+    你也可以全局禁用 `bufferCommands` ：
 
     ```javascript
     mongoose.set('bufferCommands', false);
     ```
 
-    <h3 id="options"><a href="#options">Options</a></h3>
+    <h3 id="options"><a href="#options">选项</a></h3>
 
-    The `connect` method also accepts an `options` object which will be passed
-    on to the underlying MongoDB driver.
+    `connect` 方法也接受 `options` 参数，这些参数会传入底层 MongoDB 驱动。
 
     ```javascript
     mongoose.connect(uri, options);
     ```
 
-    A full list of options can be found on the [MongoDB Node.js driver docs for `connect()`](http://mongodb.github.io/node-mongodb-native/2.2/api/MongoClient.html#connect).
-    Mongoose passes options to the driver without modification, modulo a few
-    exceptions that are explained below.
+    完整参数列表请参考
+    [MongoDB Node.js 驱动文档 `connect()`](http://mongodb.github.io/node-mongodb-native/2.2/api/MongoClient.html#connect)。
+    Mongoose 会不做修改直接把选项传到驱动，以下有一点例外
 
-    * `bufferCommands`    - This is a mongoose-specific option (not passed to the MongoDB driver) that disables [mongoose's buffering mechanism](http://mongoosejs.com/docs/faq.html#callback_never_executes)
-    * `user`/`pass`       - The username and password for authentication. These options are mongoose-specific, they are equivalent to the MongoDB driver's `auth.user` and `auth.password` options.
-    * `autoIndex`         - By default, mongoose will automatically build indexes defined in your schema when it connects. This is great for development, but not ideal for large production deployments, because index builds can cause performance degradation. If you set `autoIndex` to false, mongoose will not automatically build indexes for **any** model associated with this connection.
-    * `dbName`            - Specifies which database to connect to and overrides any database specified in the connection string. If you're using the `mongodb+srv` syntax to connect to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas), you [should use `dbName` to specify the database](https://stackoverflow.com/questions/48917591/fail-to-connect-mongoose-to-atlas/48917626#48917626) because you currently cannot in the connection string.
+    * `bufferCommands`    - 这是 mongoose 特有的选项 (不传到 MongoDB) ，禁用 [mongoose 缓存机制](http://mongoosejs.com/docs/faq.html#callback_never_executes)
+    * `user`/`pass`       - 用于认证的用户名和密码。mongoose 特有，等价于 MongoDB 驱动的 `auth.user` 和 `auth.password` 选项
+    * `autoIndex`         - 默认情况下，mongoose 在连接时会自动建立 schema 的索引。这有利于开发，但是在大型生产环境下不是十分理想，因为索引建立会导致性能下降。如果 `autoIndex` 设为 false，mongoose 将不会自动建立索引
+    * `dbName`            - 指定要连接的数据库名称（覆盖连接字符串）。 如果你使用 `mongodb+srv` 语法连接 [MongoDB Atlas](https://www.mongodb.com/cloud/atlas), 你 [需要使用 `dbName` 指定数据库](https://stackoverflow.com/questions/48917591/fail-to-connect-mongoose-to-atlas/48917626#48917626)
 
-    Below are some of the options that are important for tuning mongoose.
+    以下是一些重要选项
 
-    * `autoReconnect`     - The underlying MongoDB driver will automatically try to reconnect when it loses connection to MongoDB. Unless you are an extremely advanced user that wants to manage their own connection pool, do **not** set this option to `false`.
+    * `autoReconnect`     - 底层 MongoDB 驱动在连接丢失后将自动重连。除非你是可以自己管理连接池的高手，否则**不要**把这个选项设为 `false`
     * `reconnectTries`    - If you're connected to a single server or mongos proxy (as opposed to a replica set), the MongoDB driver will try to reconnect every `reconnectInterval` milliseconds for `reconnectTries` times, and give up afterward. When the driver gives up, the mongoose connection emits a `reconnectFailed` event. This option does nothing for replica set connections.
-    * `reconnectInterval` - See `reconnectTries`
+    * `reconnectInterval` - 见 `reconnectTries`
     * `promiseLibrary`    - sets the [underlying driver's promise library](http://mongodb.github.io/node-mongodb-native/2.1/api/MongoClient.html)
     * `poolSize`          - The maximum number of sockets the MongoDB driver will keep open for this connection. By default, `poolSize` is 5. Keep in mind that, as of MongoDB 3.4, MongoDB only allows one operation per socket at a time, so you may want to increase this if you find you have a few slow queries that are blocking faster queries from proceeding.
     * `bufferMaxEntries`  - The MongoDB driver also has its own buffering mechanism that kicks in when the driver is disconnected. Set this option to 0 and set `bufferCommands` to `false` on your schemas if you want your database operations to fail immediately when the driver is not connected, as opposed to waiting for reconnection.
