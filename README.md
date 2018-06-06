@@ -30,12 +30,12 @@ node static
 docs/index|完成|[ssshooter](https://github.com/ssshooter)|
 docs/guide|90%|[ssshooter](https://github.com/ssshooter)|
 docs/schematypes|完成|[ssshooter](https://github.com/ssshooter)|
-docs/connections|-|-|
+docs/connections|90%|[ssshooter](https://github.com/ssshooter)|
 docs/model|完成|[easezhi](https://github.com/easezhi)|
 docs/documents|完成|[ssshooter](https://github.com/ssshooter)|
 docs/subdocs|完成|[ssshooter](https://github.com/ssshooter)|
 docs/queries|完成|[easezhi](https://github.com/easezhi)|
-test/docs/validation|-|-|
+test/docs/validation|90%|[ssshooter](https://github.com/ssshooter)|
 docs/middleware|进行中|[ssshooter](https://github.com/ssshooter)|
 docs/populate|-|-|
 test/docs/discriminators|-|-|

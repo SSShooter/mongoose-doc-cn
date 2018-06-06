@@ -18,17 +18,17 @@ describe('validation docs', function() {
   });
 
   /**
-   * Before we get into the specifics of validation syntax, please keep the following rules in mind:
+   * 如果你要使用验证，请注意一下几点：
    *
-   * - Validation is defined in the [SchemaType](./schematypes.html)
-   * - Validation is [middleware](./middleware.html). Mongoose registers validation as a `pre('save')` hook on every schema by default.
-   * - You can manually run validation using `doc.validate(callback)` or `doc.validateSync()`
-   * - Validators are not run on undefined values. The only exception is the [`required` validator](./api.html#schematype_SchemaType-required).
-   * - Validation is asynchronously recursive; when you call [Model#save](./api.html#model_Model-save), sub-document validation is executed as well. If an error occurs, your [Model#save](./api.html#model_Model-save) callback receives it
-   * - Validation is customizable
+   * - 验证定义于 [SchemaType](./schematypes.html)
+   * - 验证是一个[中间件](./middleware.html)。它默认作为 pre('save')` 钩子注册在 schema 上
+   * - 你可以使用 `doc.validate(callback)` 或 `doc.validateSync()` 手动验证
+   * - 验证器不对未定义的值运行，唯一例外是 [`required` 验证器](./api.html#schematype_SchemaType-required)
+   * - 验证是异步递归的。当你调用 [Model#save](./api.html#model_Model-save)，子文档验证也会执行，出错的话 [Model#save](./api.html#model_Model-save) 回调会接收错误
+   * - 验证是可定制的
    */
 
-  it('Validation', function(done) {
+  it('验证', function(done) {
     var schema = new Schema({
       name: {
         type: String,
@@ -53,16 +53,16 @@ describe('validation docs', function() {
   });
 
   /**
-   * Mongoose has several built-in validators.
+   * Mongoose 有一些内建验证器。
    *
-   * - All [SchemaTypes](./schematypes.html) have the built-in [required](./api.html#schematype_SchemaType-required) validator. The required validator uses the [SchemaType's `checkRequired()` function](./api.html#schematype_SchemaType-checkRequired) to determine if the value satisfies the required validator.
-   * - [Numbers](./api.html#schema-number-js) have [min](./api.html#schema_number_SchemaNumber-min) and [max](./api.html#schema_number_SchemaNumber-max) validators.
-   * - [Strings](./api.html#schema-string-js) have [enum](./api.html#schema_string_SchemaString-enum), [match](./api.html#schema_string_SchemaString-match), [maxlength](./api.html#schema_string_SchemaString-maxlength) and [minlength](./api.html#schema_string_SchemaString-minlength) validators.
+   * - 所有 [SchemaTypes](./schematypes.html) 都有内建 [required](./api.html#schematype_SchemaType-required) 验证器。required 验证器使用 [`checkRequired()` 函数](./api.html#schematype_SchemaType-checkRequired) 判定这个值是否满足 required 验证器
+   * - [Numbers](./api.html#schema-number-js) 有 [min](./api.html#schema_number_SchemaNumber-min) 和 [max](./api.html#schema_number_SchemaNumber-max) 验证器.
+   * - [Strings](./api.html#schema-string-js) 有 [enum](./api.html#schema_string_SchemaString-enum)、 [match](./api.html#schema_string_SchemaString-match)、 [maxlength](./api.html#schema_string_SchemaString-maxlength) 和 [minlength](./api.html#schema_string_SchemaString-minlength) 验证器
    *
-   * Each of the validator links above provide more information about how to enable them and customize their error messages.
+   * 上面的链接提供了使用和错误处理相关的详细信息
    */
 
-  it('Built-in Validators', function(done) {
+  it('内建 Validators', function(done) {
     var breakfastSchema = new Schema({
       eggs: {
         type: Number,
@@ -110,12 +110,12 @@ describe('validation docs', function() {
   });
 
   /**
-   * A common gotcha for beginners is that the `unique` option for schemas
-   * is *not* a validator. It's a convenient helper for building [MongoDB unique indexes](https://docs.mongodb.com/manual/core/index-unique/).
-   * See the [FAQ](/docs/faq.html) for more information.
+   * 初学者常见的 `unique` 选项
+   * *不是*验证器。这是构建 [MongoDB unique indexes](https://docs.mongodb.com/manual/core/index-unique/) 的辅助函数。
+   * 详见 [FAQ](/docs/faq.html)。
    */
 
-  it('The `unique` Option is Not a Validator', function(done) {
+  it('`unique` 不是验证器', function(done) {
     var uniqueUsernameSchema = new Schema({
       username: {
         type: String,
@@ -173,14 +173,12 @@ describe('validation docs', function() {
   });
 
   /**
-   * If the built-in validators aren't enough, you can define custom validators
-   * to suit your needs.
+   * 如果内建检验器不够用了，你可以定义满足自己需要的检验器
    *
-   * Custom validation is declared by passing a validation function.
-   * You can find detailed instructions on how to do this in the
-   * [`SchemaType#validate()` API docs](./api.html#schematype_SchemaType-validate).
+   * 自定义检验器通过传入一个检验函数来定义，更多细节请看
+   * [`SchemaType#validate()` API 文档](./api.html#schematype_SchemaType-validate)。
    */
-  it('Custom Validators', function(done) {
+  it('自定义验证器', function(done) {
     var userSchema = new Schema({
       phone: {
         type: String,
@@ -219,13 +217,12 @@ describe('validation docs', function() {
   });
 
   /**
-   * Custom validators can also be asynchronous. If your validator function
-   * returns a promise (like an `async` function), mongoose will wait for that
-   * promise to settle. If you prefer callbacks, set the `isAsync` option,
-   * and mongoose will pass a callback as the 2nd argument to your validator
-   * function.
+   * 自定义检验器可以是异步的。如果检验函数
+   * 返回 promise (像 `async` 函数)， mongoose 将会等待该 promise 完成。
+   * 如果你更喜欢使用回调函数，设置 `isAsync` 选项，
+   * mongoose 会将回调函数作为验证函数的第二个参数。
    */
-  it('Async Custom Validators', function(done) {
+  it('异步自定义验证器', function(done) {
     var userSchema = new Schema({
       name: {
         type: String,
@@ -247,12 +244,12 @@ describe('validation docs', function() {
             setTimeout(function() {
               var phoneRegex = /\d{3}-\d{3}-\d{4}/;
               var msg = v + ' is not a valid phone number!';
-              // First argument is a boolean, whether validator succeeded
-              // 2nd argument is an optional error message override
+              // 第一个参数是布尔值，代表验证结果
+              // 第二个参数是报错信息
               cb(phoneRegex.test(v), msg);
             }, 5);
           },
-          // Default error message, overridden by 2nd argument to `cb()` above
+          // 默认报错信息会被 `cb()` 第二个参数覆盖
           message: 'Default error message'
         },
         required: [true, 'User phone number required']
@@ -278,16 +275,14 @@ describe('validation docs', function() {
   });
 
   /**
-   * Errors returned after failed validation contain an `errors` object
-   * whose values are `ValidatorError` objects. Each
-   * [ValidatorError](./api.html#error-validation-js) has `kind`, `path`,
-   * `value`, and `message` properties.
-   * A ValidatorError also may have a `reason` property. If an error was
-   * thrown in the validator, this property will contain the error that was
-   * thrown.
+   * 验证失败返回的 err 包含一个 `ValidatorError` 对象。
+   * 每一个 [ValidatorError](./api.html#error-validation-js) 都有 `kind`、`path`、
+   * `value` 和 `message` 属性。
+   * ValidatorError 也可能有 `reason` 属性，
+   * 如果检验器抛出错误，这个属性会包含该错误原因。
    */
 
-  it('Validation Errors', function(done) {
+  it('验证错误', function(done) {
     var toySchema = new Schema({
       color: String,
       name: String
@@ -317,9 +312,9 @@ describe('validation docs', function() {
       assert.equal(err.errors.color.path, 'color');
       assert.equal(err.errors.color.value, 'Green');
 
-      // This is new in mongoose 5. If your validator throws an exception,
-      // mongoose will use that message. If your validator returns `false`,
-      // mongoose will use the 'Name `Power Ranger` is not valid' message.
+      // mongoose 5 新特性，如果验证器抛错，
+      // mongoose 会使用该错误信息。如果验证器返回 `false`，
+      // mongoose 会使用 'Name `Power Ranger` is not valid'。
       assert.equal(err.errors.name.message,
         'Need to get a Turbo Man for Christmas');
       assert.equal(err.errors.name.value, 'Power Ranger');
@@ -340,7 +335,7 @@ describe('validation docs', function() {
    * nested objects are not fully fledged paths.
    */
 
-  it('Required Validators On Nested Objects', function(done) {
+  it('嵌套对象中的 Required 检验器', function(done) {
     var personSchema = new Schema({
       name: {
         first: String,
@@ -349,11 +344,11 @@ describe('validation docs', function() {
     });
 
     assert.throws(function() {
-      // This throws an error, because 'name' isn't a full fledged path
+      // 这里会报错，因为 'name' 不是“完整成熟的路径”
       personSchema.path('name').required(true);
     }, /Cannot.*'required'/);
 
-    // To make a nested object required, use a single nested schema
+    // 要让嵌套对象 required，要使用单独的嵌套 schema
     var nameSchema = new Schema({
       first: String,
       last: String
@@ -377,16 +372,13 @@ describe('validation docs', function() {
   });
 
   /**
-   * In the above examples, you learned about document validation. Mongoose also
-   * supports validation for `update()` and `findOneAndUpdate()` operations.
-   * Update validators are off by default - you need to specify
-   * the `runValidators` option.
+   * 上例中，你学习了 document 的验证。Mongoose 还支持验证 
+   * `update()` 和 `findOneAndUpdate()` 操作。
+   * Update 验证器默认关闭，如需打开，请另外配置 `runValidators`。
    *
-   * To turn on update validators, set the `runValidators` option for
-   * `update()` or `findOneAndUpdate()`. Be careful: update validators
-   * are off by default because they have several caveats.
+   * 注意：update 验证器默认关闭是因为里面有几个注意事项必须先了解。
    */
-  it('Update Validators', function(done) {
+  it('Update 验证器', function(done) {
     var toySchema = new Schema({
       color: String,
       name: String
@@ -409,15 +401,13 @@ describe('validation docs', function() {
   });
 
   /**
-   * There are a couple of key differences between update validators and
-   * document validators. In the color validation function above, `this` refers
-   * to the document being validated when using document validation.
-   * However, when running update validators, the document being updated
-   * may not be in the server's memory, so by default the value of `this` is
-   * not defined.
+   * update 验证器和 document 验证器有诸多不同。
+   * 上面的颜色验证函数，`this` 指向验证中的 document 。
+   * 然而 update 验证器运行时，被更新文档不一定存在于服务器内存，
+   * 所以 `this` 值未定义。
    */
 
-  it('Update Validators and `this`', function(done) {
+  it('Update 验证器与 `this`', function(done) {
     var toySchema = new Schema({
       color: String,
       name: String
@@ -455,11 +445,10 @@ describe('validation docs', function() {
   });
 
   /**
-   * The `context` option lets you set the value of `this` in update validators
-   * to the underlying query.
+   * `context` 选项允许你把 update 验证器的 `this` 设置为 `query`。
    */
 
-  it('The `context` option', function(done) {
+  it('`context` 选项', function(done) {
     // acquit:ignore:start
     var toySchema = new Schema({
       color: String,
@@ -490,16 +479,13 @@ describe('validation docs', function() {
   });
 
   /**
-   * The other key difference that update validators only run on the paths
-   * specified in the update. For instance, in the below example, because
-   * 'name' is not specified in the update operation, update validation will
-   * succeed.
+   * 另一个关键不同点是 update 验证器只运行于更新的字段。
+   * 下例中，因为 'name' 在更新操作未被指定，所以此次更新操作成功。
    *
-   * When using update validators, `required` validators **only** fail when
-   * you try to explicitly `$unset` the key.
+   * 使用 update 验证器的时候， `required` 验证器**只会**在你对某个字段显式使用 `$unset` 才会触发。
    */
 
-  it('Update Validator Paths', function(done) {
+  it('Update 验证器字段路径', function(done) {
     // acquit:ignore:start
     var outstanding = 2;
     // acquit:ignore:end
@@ -513,7 +499,7 @@ describe('validation docs', function() {
     var update = { color: 'blue' };
     var opts = { runValidators: true };
     Kitten.update({}, update, opts, function(err) {
-      // Operation succeeds despite the fact that 'name' is not specified
+      // 即使 'name' 没有指定也操作成功了
       // acquit:ignore:start
       --outstanding || done();
       // acquit:ignore:end
@@ -521,7 +507,7 @@ describe('validation docs', function() {
 
     var unset = { $unset: { name: 1 } };
     Kitten.update({}, unset, opts, function(err) {
-      // Operation fails because 'name' is required
+      // 'name' required， 操作失败
       assert.ok(err);
       assert.ok(err.errors['name']);
       // acquit:ignore:start
@@ -531,8 +517,7 @@ describe('validation docs', function() {
   });
 
   /**
-   * One final detail worth noting: update validators **only** run on the
-   * following update operators:
+   * 最后要注意的是：update 验证器**只**运行于下列更新操作：
    *
    * - `$set`
    * - `$unset`
@@ -547,7 +532,7 @@ describe('validation docs', function() {
    * validation on the array itself, only individual elements of the array.
    */
 
-  it('Update Validators Only Run On Specified Paths', function(done) {
+  it('Update 验证器只运行于指定字段路径', function(done) {
     var testSchema = new Schema({
       number: { type: Number, max: 0 },
       arr: [{ message: { type: String, maxlength: 10 } }]
@@ -578,10 +563,10 @@ describe('validation docs', function() {
   });
 
   /**
-   * New in 4.8.0: update validators also run on `$push` and `$addToSet`
+   * 4.8.0 新特性： update 验证器也运行于 `$push` 和 `$addToSet`
    */
 
-  it('On $push and $addToSet', function(done) {
+  it('$push 和 $addToSet', function(done) {
     var testSchema = new Schema({
       numbers: [{ type: Number, max: 0 }],
       docs: [{
