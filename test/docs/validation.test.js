@@ -23,7 +23,7 @@ describe('validation docs', function() {
    * - 验证定义于 [SchemaType](./schematypes.html)
    * - 验证是一个[中间件](./middleware.html)。它默认作为 pre('save')` 钩子注册在 schema 上
    * - 你可以使用 `doc.validate(callback)` 或 `doc.validateSync()` 手动验证
-   * - 验证器不对未定义的值运行，唯一例外是 [`required` 验证器](./api.html#schematype_SchemaType-required)
+   * - 验证器不对未定义的值进行验证，唯一例外是 [`required` 验证器](./api.html#schematype_SchemaType-required)
    * - 验证是异步递归的。当你调用 [Model#save](./api.html#model_Model-save)，子文档验证也会执行，出错的话 [Model#save](./api.html#model_Model-save) 回调会接收错误
    * - 验证是可定制的
    */
@@ -331,8 +331,7 @@ describe('validation docs', function() {
   });
 
   /**
-   * Defining validators on nested objects in mongoose is tricky, because
-   * nested objects are not fully fledged paths.
+   * 定义嵌套对象的验证器需要特别注意。
    */
 
   it('嵌套对象中的 Required 检验器', function(done) {
@@ -525,11 +524,10 @@ describe('validation docs', function() {
    * - `$addToSet` (>= 4.8.0)
    * - `$pull` (>= 4.12.0)
    * - `$pullAll` (>= 4.12.0)
-   *
-   * For instance, the below update will succeed, regardless of the value of
-   * `number`, because update validators ignore `$inc`. Also, `$push`,
-   * `$addToSet`, `$pull`, and `$pullAll` validation does **not** run any
-   * validation on the array itself, only individual elements of the array.
+   * 
+   * 例如，以下 update 成功执行，不管 `number` 的值，因为 update 验证器 无视
+   * `$inc` 。同样， `$push`、`$addToSet`、 `$pull` 和 `$pullAll` 验证器
+   * 不会对数组自身验证，只会对数组中的元素验证。
    */
 
   it('Update 验证器只运行于指定字段路径', function(done) {
@@ -538,8 +536,8 @@ describe('validation docs', function() {
       arr: [{ message: { type: String, maxlength: 10 } }]
     });
 
-    // Update validators won't check this, so you can still `$push` 2 elements
-    // onto the array, so long as they don't have a `message` that's too long.
+    // Update 验证器不会作检查，所以你再仍然可以 `$push` 两个元素到数组 
+    // 只要他们的 `message` 没有超长
     testSchema.path('arr').validate(function(v) {
       return v.length < 2;
     });
@@ -549,11 +547,10 @@ describe('validation docs', function() {
     var update = { $inc: { number: 1 } };
     var opts = { runValidators: true };
     Test.update({}, update, opts, function(error) {
-      // There will never be a validation error here
+      // 这里不会报错
       update = { $push: [{ message: 'hello' }, { message: 'world' }] };
       Test.update({}, update, opts, function(error) {
-        // This will never error either even though the array will have at
-        // least 2 elements.
+        // 这里也不会报错
         // acquit:ignore:start
         assert.ifError(error);
         done();

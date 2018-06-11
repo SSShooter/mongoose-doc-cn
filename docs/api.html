@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Mongoose 5.0 中文文档</title><link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="images/favicon/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="images/favicon/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="images/favicon/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png"><link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"><link rel="stylesheet" href="/docs/css/github.css"><link rel="stylesheet" href="/docs/css/mongoose5.css"><link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="images/favicon/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="images/favicon/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="images/favicon/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png"><link rel="manifest" href="images/favicon/manifest.json"><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="images/favicon/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><link rel="stylesheet" href="/docs/css/api.css"></head><body><div id="layout"><div id="mobile-menu"><a id="menuLink" href="#menu" class="menu-link"><span></span></a><div id="mobile-logo-container"><a href="/"><img id="logo" src="/docs/images/mongoose5_62x30_transparent.png"><span class="logo-text">mongoose</span></a></div></div><div id="menu"><div class="pure-menu"><div id="logo-container" class="pure-menu-heading"><a href="/"><img id="logo" src="/docs/images/mongoose5_62x30_transparent.png"><span class="logo-text">mongoose</span></a></div><ul class="pure-menu-list"><li class="pure-menu-item"><a href="/docs/cnhome.html" class="pure-menu-link">关于中文文档</a></li><li class="pure-menu-item"><a href="/docs/index.html" class="pure-menu-link">快速上手</a></li><li class="pure-menu-item"><a href="/docs/guide.html" class="pure-menu-link">模式（Schemas）</a></li><li class="pure-menu-item sub-item"><a href="/docs/schematypes.html" class="pure-menu-link">模式类型（SchemaTypes）</a></li><li class="pure-menu-item sub-item"><a href="/docs/connections.html" class="pure-menu-link">连接（Connections）</a></li><li class="pure-menu-item sub-item"><a href="/docs/models.html" class="pure-menu-link">模型（Models）</a></li><li class="pure-menu-item sub-item"><a href="/docs/documents.html" class="pure-menu-link">文档 （Documents）</a></li><li class="pure-menu-item sub-item"><a href="/docs/subdocs.html" class="pure-menu-link">子文档（Subdocuments）</a></li><li class="pure-menu-item sub-item"><a href="/docs/queries.html" class="pure-menu-link">查询 （queries）</a></li><li class="pure-menu-item sub-item"><a href="/docs/validation.html" class="pure-menu-link">验证 （validation）</a></li><li class="pure-menu-item sub-item"><a href="/docs/middleware.html" class="pure-menu-link">中间件 （middleware）</a></li><li class="pure-menu-item sub-item"><a href="/docs/populate.html" class="pure-menu-link">填充 （Populate）</a></li><li class="pure-menu-item sub-item"><a href="/docs/discriminators.html" class="pure-menu-link">鉴别器 （Discriminators）</a></li><li class="pure-menu-item sub-item"><a href="/docs/plugins.html" class="pure-menu-link">插件</a></li><li class="pure-menu-item sub-item"><a href="/docs/lambda.html" class="pure-menu-link">AWS Lambda</a></li><li class="pure-menu-item"><a href="/docs/api.html" class="pure-menu-link">API 文档</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Schema" class="pure-menu-link">Schema</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Connection" class="pure-menu-link">Connection</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Document" class="pure-menu-link">Document</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Model" class="pure-menu-link">Model</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Query" class="pure-menu-link">Query</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Aggregate" class="pure-menu-link">Aggregate</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Schematype" class="pure-menu-link">SchemaType</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Virtualtype" class="pure-menu-link">VirtualType</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Error" class="pure-menu-link">Error</a></li><li class="pure-menu-item"><a href="/docs/compatibility.html" class="pure-menu-link">Version Compatibility</a></li><li class="pure-menu-item"><a href="/docs/faq.html" class="pure-menu-link">FAQ</a></li><li class="carbon-ad"><script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=mongoosejscom" id="_carbonads_js"></script></li></ul></div></div><div class="container"><div id="content"><h1>API Docs</h1><hr class="separate-api"><h2 id="Index"><a href="#Index">Index</a></h2><ul><li><a href="#mongoose_Mongoose">Mongoose()</a></li><li><a href="#mongoose_Mongoose-STATES">Mongoose.prototypeSTATES</a></li><li><a href="#mongoose_Mongoose-set">Mongoose.prototype.set()</a></li><li><a href="#mongoose_Mongoose-get">Mongoose.prototype.get()</a></li><li><a href="#mongoose_Mongoose-createConnection">Mongoose.prototype.createConnection()</a></li><li><a href="#mongoose_Mongoose-connect">Mongoose.prototype.connect()</a></li><li><a href="#mongoose_Mongoose-disconnect">Mongoose.prototype.disconnect()</a></li><li><a href="#mongoose_Mongoose-pluralize">Mongoose.prototype.pluralize()</a></li><li><a href="#mongoose_Mongoose-model">Mongoose.prototype.model()</a></li><li><a href="#mongoose_Mongoose-modelNames">Mongoose.prototype.modelNames()</a></li><li><a href="#mongoose_Mongoose-plugin">Mongoose.prototype.plugin()</a></li><li><a href="#mongoose_Mongoose-connection">Mongoose.prototype.connection</a></li><li><a href="#mongoose_Mongoose-Aggregate">Mongoose.prototype.Aggregate()</a></li><li><a href="#mongoose_Mongoose-Collection">Mongoose.prototype.Collection()</a></li><li><a href="#mongoose_Mongoose-Connection">Mongoose.prototype.Connection()</a></li><li><a href="#mongoose_Mongoose-version">Mongoose.prototype.version</a></li><li><a href="#mongoose_Mongoose-Mongoose">Mongoose.prototype.Mongoose()</a></li><li><a href="#mongoose_Mongoose-Schema">Mongoose.prototype.Schema()</a></li><li><a href="#mongoose_Mongoose-SchemaType">Mongoose.prototype.SchemaType()</a></li><li><a href="#mongoose_Mongoose-SchemaTypes">Mongoose.prototype.SchemaTypes</a></li><li><a href="#mongoose_Mongoose-VirtualType">Mongoose.prototype.VirtualType()</a></li><li><a href="#mongoose_Mongoose-Types">Mongoose.prototype.Types</a></li><li><a href="#mongoose_Mongoose-Query">Mongoose.prototype.Query()</a></li><li><a href="#mongoose_Mongoose-Promise">Mongoose.prototype.Promise</a></li><li><a href="#mongoose_Mongoose-PromiseProvider">Mongoose.prototype.PromiseProvider()</a></li><li><a href="#mongoose_Mongoose-Model">Mongoose.prototype.Model()</a></li><li><a href="#mongoose_Mongoose-Document">Mongoose.prototype.Document()</a></li><li><a href="#mongoose_Mongoose-DocumentProvider">Mongoose.prototype.DocumentProvider()</a></li><li><a href="#mongoose_Mongoose-Error">Mongoose.prototype.Error()</a></li><li><a href="#mongoose_Mongoose-CastError">Mongoose.prototype.CastError()</a></li><li><a href="#mongoose_Mongoose-mongo">Mongoose.prototype.mongo</a></li><li><a href="#mongoose_Mongoose-mquery">Mongoose.prototype.mquery</a></li></ul><hr class="separate-api-elements"><h3 id="mongoose_Mongoose"><a href="#mongoose_Mongoose">Mongoose()</a></h3><div><p>Mongoose constructor.</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Mongoose 5.0 中文文档</title><link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="images/favicon/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="images/favicon/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="images/favicon/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png"><link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"><link rel="stylesheet" href="/docs/css/github.css"><link rel="stylesheet" href="/docs/css/mongoose5.css"><link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="images/favicon/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="images/favicon/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="images/favicon/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png"><link rel="manifest" href="images/favicon/manifest.json"><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="images/favicon/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><link rel="stylesheet" href="/docs/css/api.css"></head><body><div id="layout"><div id="mobile-menu"><a id="menuLink" href="#menu" class="menu-link"><span></span></a><div id="mobile-logo-container"><a href="/"><img id="logo" src="/docs/images/mongoose5_62x30_transparent.png"><span class="logo-text">mongoose</span></a></div></div><div id="menu"><div class="pure-menu"><div id="logo-container" class="pure-menu-heading"><a href="/"><img id="logo" src="/docs/images/mongoose5_62x30_transparent.png"><span class="logo-text">mongoose</span></a></div><ul class="pure-menu-list"><li class="pure-menu-item"><a href="http://mongoosejs.com/docs/guide.html" class="pure-menu-link">英文原版</a></li><li class="pure-menu-item"><a href="/docs/cnhome.html" class="pure-menu-link">关于中文文档</a></li><li class="pure-menu-item"><a href="/docs/index.html" class="pure-menu-link">快速上手</a></li><li class="pure-menu-item"><a href="/docs/guide.html" class="pure-menu-link">模式（Schemas）</a></li><li class="pure-menu-item sub-item"><a href="/docs/schematypes.html" class="pure-menu-link">模式类型（SchemaTypes）</a></li><li class="pure-menu-item sub-item"><a href="/docs/connections.html" class="pure-menu-link">连接（Connections）</a></li><li class="pure-menu-item sub-item"><a href="/docs/models.html" class="pure-menu-link">模型（Models）</a></li><li class="pure-menu-item sub-item"><a href="/docs/documents.html" class="pure-menu-link">文档 （Documents）</a></li><li class="pure-menu-item sub-item"><a href="/docs/subdocs.html" class="pure-menu-link">子文档（Subdocuments）</a></li><li class="pure-menu-item sub-item"><a href="/docs/queries.html" class="pure-menu-link">查询 （queries）</a></li><li class="pure-menu-item sub-item"><a href="/docs/validation.html" class="pure-menu-link">验证 （validation）</a></li><li class="pure-menu-item sub-item"><a href="/docs/middleware.html" class="pure-menu-link">中间件 （middleware）</a></li><li class="pure-menu-item sub-item"><a href="/docs/populate.html" class="pure-menu-link">填充 （Populate）</a></li><li class="pure-menu-item sub-item"><a href="/docs/discriminators.html" class="pure-menu-link">鉴别器 （Discriminators）</a></li><li class="pure-menu-item sub-item"><a href="/docs/plugins.html" class="pure-menu-link">插件</a></li><li class="pure-menu-item sub-item"><a href="/docs/lambda.html" class="pure-menu-link">AWS Lambda</a></li><li class="pure-menu-item"><a href="/docs/api.html" class="pure-menu-link">API 文档</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Schema" class="pure-menu-link">Schema</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Connection" class="pure-menu-link">Connection</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Document" class="pure-menu-link">Document</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Model" class="pure-menu-link">Model</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Query" class="pure-menu-link">Query</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Aggregate" class="pure-menu-link">Aggregate</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Schematype" class="pure-menu-link">SchemaType</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Virtualtype" class="pure-menu-link">VirtualType</a></li><li class="pure-menu-item sub-item"><a href="/docs/api.html#Error" class="pure-menu-link">Error</a></li><li class="pure-menu-item"><a href="/docs/compatibility.html" class="pure-menu-link">Version Compatibility</a></li><li class="pure-menu-item"><a href="/docs/faq.html" class="pure-menu-link">FAQ</a></li><li class="carbon-ad"><script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=mongoosejscom" id="_carbonads_js"></script></li></ul></div></div><div class="container"><div id="content"><h1>API Docs</h1><hr class="separate-api"><h2 id="Index"><a href="#Index">Index</a></h2><ul><li><a href="#mongoose_Mongoose">Mongoose()</a></li><li><a href="#mongoose_Mongoose-STATES">Mongoose.prototypeSTATES</a></li><li><a href="#mongoose_Mongoose-set">Mongoose.prototype.set()</a></li><li><a href="#mongoose_Mongoose-get">Mongoose.prototype.get()</a></li><li><a href="#mongoose_Mongoose-createConnection">Mongoose.prototype.createConnection()</a></li><li><a href="#mongoose_Mongoose-connect">Mongoose.prototype.connect()</a></li><li><a href="#mongoose_Mongoose-disconnect">Mongoose.prototype.disconnect()</a></li><li><a href="#mongoose_Mongoose-pluralize">Mongoose.prototype.pluralize()</a></li><li><a href="#mongoose_Mongoose-model">Mongoose.prototype.model()</a></li><li><a href="#mongoose_Mongoose-modelNames">Mongoose.prototype.modelNames()</a></li><li><a href="#mongoose_Mongoose-plugin">Mongoose.prototype.plugin()</a></li><li><a href="#mongoose_Mongoose-connection">Mongoose.prototype.connection</a></li><li><a href="#mongoose_Mongoose-Aggregate">Mongoose.prototype.Aggregate()</a></li><li><a href="#mongoose_Mongoose-Collection">Mongoose.prototype.Collection()</a></li><li><a href="#mongoose_Mongoose-Connection">Mongoose.prototype.Connection()</a></li><li><a href="#mongoose_Mongoose-version">Mongoose.prototype.version</a></li><li><a href="#mongoose_Mongoose-Mongoose">Mongoose.prototype.Mongoose()</a></li><li><a href="#mongoose_Mongoose-Schema">Mongoose.prototype.Schema()</a></li><li><a href="#mongoose_Mongoose-SchemaType">Mongoose.prototype.SchemaType()</a></li><li><a href="#mongoose_Mongoose-SchemaTypes">Mongoose.prototype.SchemaTypes</a></li><li><a href="#mongoose_Mongoose-VirtualType">Mongoose.prototype.VirtualType()</a></li><li><a href="#mongoose_Mongoose-Types">Mongoose.prototype.Types</a></li><li><a href="#mongoose_Mongoose-Query">Mongoose.prototype.Query()</a></li><li><a href="#mongoose_Mongoose-Promise">Mongoose.prototype.Promise</a></li><li><a href="#mongoose_Mongoose-PromiseProvider">Mongoose.prototype.PromiseProvider()</a></li><li><a href="#mongoose_Mongoose-Model">Mongoose.prototype.Model()</a></li><li><a href="#mongoose_Mongoose-Document">Mongoose.prototype.Document()</a></li><li><a href="#mongoose_Mongoose-DocumentProvider">Mongoose.prototype.DocumentProvider()</a></li><li><a href="#mongoose_Mongoose-Error">Mongoose.prototype.Error()</a></li><li><a href="#mongoose_Mongoose-CastError">Mongoose.prototype.CastError()</a></li><li><a href="#mongoose_Mongoose-mongo">Mongoose.prototype.mongo</a></li><li><a href="#mongoose_Mongoose-mquery">Mongoose.prototype.mquery</a></li></ul><hr class="separate-api-elements"><h3 id="mongoose_Mongoose"><a href="#mongoose_Mongoose">Mongoose()</a></h3><div><p>Mongoose constructor.</p>
 
 <p>The exports object of the <code>mongoose</code> module is an instance of this class. Most apps will only use this one instance.</p></div><hr class="separate-api-elements"><h3 id="mongoose_Mongoose-STATES"><a href="#mongoose_Mongoose-STATES">Mongoose.prototypeSTATES</a></h3><div><p>Expose connection states for user-land</p></div><hr class="separate-api-elements"><h3 id="mongoose_Mongoose-set"><a href="#mongoose_Mongoose-set">Mongoose.prototype.set()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">key <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">value <span class="method-type">&laquo;String|Function|Boolean&raquo;</span> </li></ul><div><p>Sets mongoose options</p>
 
@@ -1629,42 +1629,39 @@ Weapon.populate(users, { path: <span class="hljs-string">'weapon'</span> }, <spa
   });
 });
 <span class="hljs-comment">// Note that we didn't need to specify the Weapon model because</span>
-<span class="hljs-comment">// it is in the schema's ref</span></code></pre></div><hr class="separate-api"><h2 id="Query"><a href="#Query">Query</a></h2><ul><li><a href="#query_Query">Query()</a></li><li><a href="#query_Query-use$geoWithin">Query.prototype.use$geoWithin</a></li><li><a href="#query_Query-toConstructor">Query.prototype.toConstructor()</a></li><li><a href="#query_Query-$where">Query.prototype.$where()</a></li><li><a href="#query_Query-where">Query.prototype.where()</a></li><li><a href="#query_Query-equals">Query.prototype.equals()</a></li><li><a href="#query_Query-or">Query.prototype.or()</a></li><li><a href="#query_Query-nor">Query.prototype.nor()</a></li><li><a href="#query_Query-and">Query.prototype.and()</a></li><li><a href="#query_Query-gt">Query.prototype.gt()</a></li><li><a href="#query_Query-gte">Query.prototype.gte()</a></li><li><a href="#query_Query-lt">Query.prototype.lt()</a></li><li><a href="#query_Query-lte">Query.prototype.lte()</a></li><li><a href="#query_Query-ne">Query.prototype.ne()</a></li><li><a href="#query_Query-in">Query.prototype.in()</a></li><li><a href="#query_Query-nin">Query.prototype.nin()</a></li><li><a href="#query_Query-all">Query.prototype.all()</a></li><li><a href="#query_Query-size">Query.prototype.size()</a></li><li><a href="#query_Query-regex">Query.prototype.regex()</a></li><li><a href="#query_Query-maxDistance">Query.prototype.maxDistance()</a></li><li><a href="#query_Query-mod">Query.prototype.mod()</a></li><li><a href="#query_Query-exists">Query.prototype.exists()</a></li><li><a href="#query_Query-elemMatch">Query.prototype.elemMatch()</a></li><li><a href="#query_Query-within">Query.prototype.within()</a></li><li><a href="#query_Query-slice">Query.prototype.slice()</a></li><li><a href="#query_Query-limit">Query.prototype.limit()</a></li><li><a href="#query_Query-skip">Query.prototype.skip()</a></li><li><a href="#query_Query-maxScan">Query.prototype.maxScan()</a></li><li><a href="#query_Query-batchSize">Query.prototype.batchSize()</a></li><li><a href="#query_Query-comment">Query.prototype.comment()</a></li><li><a href="#query_Query-snapshot">Query.prototype.snapshot()</a></li><li><a href="#query_Query-hint">Query.prototype.hint()</a></li><li><a href="#query_Query-select">Query.prototype.select()</a></li><li><a href="#query_Query-slaveOk">Query.prototype.slaveOk()</a></li><li><a href="#query_Query-read">Query.prototype.read()</a></li><li><a href="#query_Query-merge">Query.prototype.merge()</a></li><li><a href="#query_Query-setOptions">Query.prototype.setOptions()</a></li><li><a href="#query_Query-getQuery">Query.prototype.getQuery()</a></li><li><a href="#query_Query-getUpdate">Query.prototype.getUpdate()</a></li><li><a href="#_fieldsforexec__fieldsForExec">function Object() { [native code] }.prototype._fieldsForExec()</a></li><li><a href="#query_Query-_updateForExec">Query.prototype._updateForExec()</a></li><li><a href="#_ensurepath__ensurePath">function Object() { [native code] }.prototype._ensurePath()</a></li><li><a href="#query_Query-lean">Query.prototype.lean()</a></li><li><a href="#query_Query-error">Query.prototype.error()</a></li><li><a href="#query_Query-mongooseOptions">Query.prototype.mongooseOptions()</a></li><li><a href="#query_Query-find">Query.prototype.find()</a></li><li><a href="#query_Query-merge">Query.prototype.merge()</a></li><li><a href="#query_Query-collation">Query.prototype.collation()</a></li><li><a href="#query_Query-findOne">Query.prototype.findOne()</a></li><li><a href="#query_Query-count">Query.prototype.count()</a></li><li><a href="#query_Query-distinct">Query.prototype.distinct()</a></li><li><a href="#query_Query-sort">Query.prototype.sort()</a></li><li><a href="#query_Query-remove">Query.prototype.remove()</a></li><li><a href="#query_Query-deleteOne">Query.prototype.deleteOne()</a></li><li><a href="#query_Query-deleteMany">Query.prototype.deleteMany()</a></li><li><a href="#query_Query-findOneAndUpdate">Query.prototype.findOneAndUpdate()</a></li><li><a href="#query_Query-findOneAndRemove">Query.prototype.findOneAndRemove()</a></li><li><a href="#query_Query-update">Query.prototype.update()</a></li><li><a href="#query_Query-updateMany">Query.prototype.updateMany()</a></li><li><a href="#query_Query-updateOne">Query.prototype.updateOne()</a></li><li><a href="#query_Query-replaceOne">Query.prototype.replaceOne()</a></li><li><a href="#query_Query-exec">Query.prototype.exec()</a></li><li><a href="#query_Query-then">Query.prototype.then()</a></li><li><a href="#query_Query-catch">Query.prototype.catch()</a></li><li><a href="#query_Query-populate">Query.prototype.populate()</a></li><li><a href="#query_Query-cast">Query.prototype.cast()</a></li><li><a href="#query_Query-cursor">Query.prototype.cursor()</a></li><li><a href="#query_Query-maxscan">Query.prototype.maxscan()</a></li><li><a href="#query_Query-tailable">Query.prototype.tailable()</a></li><li><a href="#query_Query-intersects">Query.prototype.intersects()</a></li><li><a href="#query_Query-geometry">Query.prototype.geometry()</a></li><li><a href="#query_Query-near">Query.prototype.near()</a></li><li><a href="#query_Query-nearSphere">Query.prototype.nearSphere()</a></li><li><a href="#query_Query-polygon">Query.prototype.polygon()</a></li><li><a href="#query_Query-box">Query.prototype.box()</a></li><li><a href="#query_Query-circle">Query.prototype.circle()</a></li><li><a href="#query_Query-center">Query.prototype.center()</a></li><li><a href="#query_Query-centerSphere">Query.prototype.centerSphere()</a></li><li><a href="#query_Query-selected">Query.prototype.selected()</a></li><li><a href="#query_Query-selectedInclusively">Query.prototype.selectedInclusively()</a></li><li><a href="#query_Query-selectedExclusively">Query.prototype.selectedExclusively()</a></li></ul><hr class="separate-api-elements"><h3 id="query_Query"><a href="#query_Query">Query()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[options] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[model] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[conditions] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[collection] <span class="method-type">&laquo;Object&raquo;</span> Mongoose collection</li></ul><div><p>Query constructor used for building queries. You do not need to instantiate a <code>Query</code> directly. Instead use Model functions like <a href="/docs/api.html#find_find"><code>Model.find()</code></a>.</p>
+<span class="hljs-comment">// it is in the schema's ref</span></code></pre></div><hr class="separate-api"><h2 id="Query"><a href="#Query">Query</a></h2><ul><li><a href="#query_Query">Query()</a></li><li><a href="#query_Query-use$geoWithin">Query.prototype.use$geoWithin</a></li><li><a href="#query_Query-toConstructor">Query.prototype.toConstructor()</a></li><li><a href="#query_Query-$where">Query.prototype.$where()</a></li><li><a href="#query_Query-where">Query.prototype.where()</a></li><li><a href="#query_Query-equals">Query.prototype.equals()</a></li><li><a href="#query_Query-or">Query.prototype.or()</a></li><li><a href="#query_Query-nor">Query.prototype.nor()</a></li><li><a href="#query_Query-and">Query.prototype.and()</a></li><li><a href="#query_Query-gt">Query.prototype.gt()</a></li><li><a href="#query_Query-gte">Query.prototype.gte()</a></li><li><a href="#query_Query-lt">Query.prototype.lt()</a></li><li><a href="#query_Query-lte">Query.prototype.lte()</a></li><li><a href="#query_Query-ne">Query.prototype.ne()</a></li><li><a href="#query_Query-in">Query.prototype.in()</a></li><li><a href="#query_Query-nin">Query.prototype.nin()</a></li><li><a href="#query_Query-all">Query.prototype.all()</a></li><li><a href="#query_Query-size">Query.prototype.size()</a></li><li><a href="#query_Query-regex">Query.prototype.regex()</a></li><li><a href="#query_Query-maxDistance">Query.prototype.maxDistance()</a></li><li><a href="#query_Query-mod">Query.prototype.mod()</a></li><li><a href="#query_Query-exists">Query.prototype.exists()</a></li><li><a href="#query_Query-elemMatch">Query.prototype.elemMatch()</a></li><li><a href="#query_Query-within">Query.prototype.within()</a></li><li><a href="#query_Query-slice">Query.prototype.slice()</a></li><li><a href="#query_Query-limit">Query.prototype.limit()</a></li><li><a href="#query_Query-skip">Query.prototype.skip()</a></li><li><a href="#query_Query-maxScan">Query.prototype.maxScan()</a></li><li><a href="#query_Query-batchSize">Query.prototype.batchSize()</a></li><li><a href="#query_Query-comment">Query.prototype.comment()</a></li><li><a href="#query_Query-snapshot">Query.prototype.snapshot()</a></li><li><a href="#query_Query-hint">Query.prototype.hint()</a></li><li><a href="#query_Query-select">Query.prototype.select()</a></li><li><a href="#query_Query-slaveOk">Query.prototype.slaveOk()</a></li><li><a href="#query_Query-read">Query.prototype.read()</a></li><li><a href="#query_Query-setOptions">Query.prototype.setOptions()</a></li><li><a href="#query_Query-getQuery">Query.prototype.getQuery()</a></li><li><a href="#query_Query-getUpdate">Query.prototype.getUpdate()</a></li><li><a href="#_fieldsforexec__fieldsForExec">function Object() { [native code] }.prototype._fieldsForExec()</a></li><li><a href="#query_Query-_updateForExec">Query.prototype._updateForExec()</a></li><li><a href="#_ensurepath__ensurePath">function Object() { [native code] }.prototype._ensurePath()</a></li><li><a href="#query_Query-lean">Query.prototype.lean()</a></li><li><a href="#query_Query-error">Query.prototype.error()</a></li><li><a href="#query_Query-mongooseOptions">Query.prototype.mongooseOptions()</a></li><li><a href="#query_Query-find">Query.prototype.find()</a></li><li><a href="#query_Query-merge">Query.prototype.merge()</a></li><li><a href="#query_Query-collation">Query.prototype.collation()</a></li><li><a href="#query_Query-findOne">Query.prototype.findOne()</a></li><li><a href="#query_Query-count">Query.prototype.count()</a></li><li><a href="#query_Query-distinct">Query.prototype.distinct()</a></li><li><a href="#query_Query-sort">Query.prototype.sort()</a></li><li><a href="#query_Query-remove">Query.prototype.remove()</a></li><li><a href="#query_Query-deleteOne">Query.prototype.deleteOne()</a></li><li><a href="#query_Query-deleteMany">Query.prototype.deleteMany()</a></li><li><a href="#query_Query-findOneAndUpdate">Query.prototype.findOneAndUpdate()</a></li><li><a href="#query_Query-findOneAndRemove">Query.prototype.findOneAndRemove()</a></li><li><a href="#query_Query-update">Query.prototype.update()</a></li><li><a href="#query_Query-updateMany">Query.prototype.updateMany()</a></li><li><a href="#query_Query-updateOne">Query.prototype.updateOne()</a></li><li><a href="#query_Query-replaceOne">Query.prototype.replaceOne()</a></li><li><a href="#query_Query-exec">Query.prototype.exec()</a></li><li><a href="#query_Query-then">Query.prototype.then()</a></li><li><a href="#query_Query-catch">Query.prototype.catch()</a></li><li><a href="#query_Query-populate">Query.prototype.populate()</a></li><li><a href="#query_Query-cast">Query.prototype.cast()</a></li><li><a href="#query_Query-cursor">Query.prototype.cursor()</a></li><li><a href="#query_Query-maxscan">Query.prototype.maxscan()</a></li><li><a href="#query_Query-tailable">Query.prototype.tailable()</a></li><li><a href="#query_Query-intersects">Query.prototype.intersects()</a></li><li><a href="#query_Query-geometry">Query.prototype.geometry()</a></li><li><a href="#query_Query-near">Query.prototype.near()</a></li><li><a href="#query_Query-nearSphere">Query.prototype.nearSphere()</a></li><li><a href="#query_Query-polygon">Query.prototype.polygon()</a></li><li><a href="#query_Query-box">Query.prototype.box()</a></li><li><a href="#query_Query-circle">Query.prototype.circle()</a></li><li><a href="#query_Query-center">Query.prototype.center()</a></li><li><a href="#query_Query-centerSphere">Query.prototype.centerSphere()</a></li><li><a href="#query_Query-selected">Query.prototype.selected()</a></li><li><a href="#query_Query-selectedInclusively">Query.prototype.selectedInclusively()</a></li><li><a href="#query_Query-selectedExclusively">Query.prototype.selectedExclusively()</a></li></ul><hr class="separate-api-elements"><h3 id="query_Query"><a href="#query_Query">Query()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[options] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[model] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[conditions] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[collection] <span class="method-type">&laquo;Object&raquo;</span> Mongoose collection</li></ul><div><p>Query 构造函数，用来构建查询器（query），不过并不需要直接实例化 <code>Query</code> 对象，而是用 Model 的 <a href="/docs/api.html#find_find"><code>Model.find()</code></a> 这些函数。</p>
 
-<h4>Example:</h4>
+<h4>示例:</h4>
 
-<pre><code><span class="hljs-keyword">const</span> query = MyModel.find(); <span class="hljs-comment">// `query` is an instance of `Query`</span>
+<pre><code><span class="hljs-keyword">const</span> query = MyModel.find(); <span class="hljs-comment">// `query` 是 `Query` 的一个实例</span>
 query.setOptions({ lean : <span class="hljs-literal">true</span> });
 query.collection(MyModel.collection);
 query.where(<span class="hljs-string">'age'</span>).gte(<span class="hljs-number">21</span>).exec(callback);
 
-<span class="hljs-comment">// You can instantiate a query directly. There is no need to do</span>
-<span class="hljs-comment">// this unless you're an advanced user with a very good reason to.</span>
-<span class="hljs-keyword">const</span> query = <span class="hljs-keyword">new</span> mongoose.Query();</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-use$geoWithin"><a href="#query_Query-use$geoWithin">Query.prototype.use$geoWithin</a></h3><div><p>Flag to opt out of using <code>$geoWithin</code>.</p>
+<span class="hljs-comment">// 你也可以实例化一个 query，不过没有必要这么做，除非你是个高级用户又有充分的理由。</span>
+<span class="hljs-keyword">const</span> query = <span class="hljs-keyword">new</span> mongoose.Query();</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-use$geoWithin"><a href="#query_Query-use$geoWithin">Query.prototype.use$geoWithin</a></h3><div><p>选择是否启用 <code>$geoWithin</code> 的标识。</p>
 
 <pre><code>mongoose.Query.use$geoWithin = <span class="hljs-literal">false</span>;</code></pre>
 
-<p>MongoDB 2.4 deprecated the use of <code>$within</code>, replacing it with <code>$geoWithin</code>. Mongoose uses <code>$geoWithin</code> by default (which is 100% backward compatible with $within). If you are running an older version of MongoDB, set this flag to <code>false</code> so your <code>within()</code> queries continue to work.</p></div><hr class="separate-api-elements"><h3 id="query_Query-toConstructor"><a href="#query_Query-toConstructor">Query.prototype.toConstructor()</a></h3><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> subclass-of-Query</li></ul><div><p>Converts this query to a customized, reusable query constructor with all arguments and options retained.</p>
+<p>MongoDB 2.4 不再赞成使用 <code>$within</code>，而是用 <code>$geoWithin</code> 代替。Mongoose 默认使用 <code>$geoWithin</code>（对 $within 100%后向兼容）。 你如果运行较低版本的 MongoDB，把这个标识置为 <code>false</code> 就能使 <code>within()</code> 继续有效。</p></div><hr class="separate-api-elements"><h3 id="query_Query-toConstructor"><a href="#query_Query-toConstructor">Query.prototype.toConstructor()</a></h3><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> subclass-of-Query</li></ul><div><p>把当前 query 转换成自定义、可复用的而且保留当前所有参数（arguments）和选项（options）的构造函数。</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
-<pre><code><span class="hljs-comment">// Create a query for adventure movies and read from the primary</span>
-<span class="hljs-comment">// node in the replica-set unless it is down, in which case we'll</span>
-<span class="hljs-comment">// read from a secondary node.</span>
+<pre><code><span class="hljs-comment">// 为 adventure movies 生成一个 query，并从复本集（replica-set）中的主节点读取数据，</span>
+<span class="hljs-comment">// 如果主节点宕机，则从第二节点读取。</span>
 <span class="hljs-keyword">var</span> query = Movie.find({ tags: <span class="hljs-string">'adventure'</span> }).read(<span class="hljs-string">'primaryPreferred'</span>);
 
-<span class="hljs-comment">// create a custom Query constructor based off these settings</span>
+<span class="hljs-comment">// 基于上面的设置创建一个自定义 Query 构造函数</span>
 <span class="hljs-keyword">var</span> Adventure = query.toConstructor();
 
-<span class="hljs-comment">// Adventure is now a subclass of mongoose.Query and works the same way but with the</span>
-<span class="hljs-comment">// default query parameters and options set.</span>
+<span class="hljs-comment">// Adventure 就成了 mongoose.Query 的子类，使用方式一致，并且已设置了默认的查询参数和选项。</span>
 Adventure().exec(callback)
 
-<span class="hljs-comment">// further narrow down our query results while still using the previous settings</span>
+<span class="hljs-comment">// 在之前的设置基础上进一步缩小查询结果集</span>
 Adventure().where({ name: <span class="hljs-regexp">/^Life/</span> }).exec(callback);
 
-<span class="hljs-comment">// since Adventure is a stand-alone constructor we can also add our own</span>
-<span class="hljs-comment">// helper methods and getters without impacting global queries</span>
+<span class="hljs-comment">// 由于 Adventure 是个独立的构造函数，我们也可以向其添加自定义的辅助方法（ helper methods ）</span>
+<span class="hljs-comment">// 和 getter 函数，并且不会影响到全局查询。</span>
 Adventure.prototype.startsWith = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">prefix</span>) </span>{
   <span class="hljs-keyword">this</span>.where({ name: <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">'^'</span> + prefix) })
   <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
@@ -1677,9 +1674,9 @@ Adventure.prototype.startsWith = <span class="hljs-function"><span class="hljs-k
 })
 Adventure().highlyRated.startsWith(<span class="hljs-string">'Life'</span>).exec(callback)</code></pre>
 
-<p>New in 3.7.3</p></div><hr class="separate-api-elements"><h3 id="query_Query-$where"><a href="#query_Query-$where">Query.prototype.$where()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">js <span class="method-type">&laquo;String|Function&raquo;</span> javascript string or function</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Specifies a javascript function or expression to pass to MongoDBs query system.</p>
+<p>从版本3.7.3开始的新功能</p></div><hr class="separate-api-elements"><h3 id="query_Query-$where"><a href="#query_Query-$where">Query.prototype.$where()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">js <span class="method-type">&laquo;String|Function&raquo;</span> javascript string or function</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>指定一个传给 MongoDB query 的函数或表达式。</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>query.$where(<span class="hljs-string">'this.comments.length === 10 || this.name.length === 5'</span>)
 
@@ -1689,95 +1686,95 @@ query.$where(<span class="hljs-function"><span class="hljs-keyword">function</sp
   <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.comments.length === <span class="hljs-number">10</span> || <span class="hljs-keyword">this</span>.name.length === <span class="hljs-number">5</span>;
 })</code></pre>
 
-<h4>NOTE:</h4>
+<h4>注意：</h4>
 
-<p>Only use <code>$where</code> when you have a condition that cannot be met using other MongoDB operators like <code>$lt</code>. <strong>Be sure to read about all of <a href="http://docs.mongodb.org/manual/reference/operator/where/">its caveats</a> before using.</strong></p></div><hr class="separate-api-elements"><h3 id="query_Query-where"><a href="#query_Query-where">Query.prototype.where()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String|Object&raquo;</span> </li><li class="param">[val] <span class="method-type">&laquo;any&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Specifies a <code>path</code> for use with chaining.</p>
+<p>只有当 MongoDB 其他操作符（如 <code>$lt</code>）不能表达你的查询条件时再使用 <code>$where</code>。 <strong>使用之前一定要阅读它的所有<a href="http://docs.mongodb.org/manual/reference/operator/where/">警告</a></strong></p></div><hr class="separate-api-elements"><h3 id="query_Query-where"><a href="#query_Query-where">Query.prototype.where()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String|Object&raquo;</span> </li><li class="param">[val] <span class="method-type">&laquo;any&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>在链式用法中指定一个 <code>path</code>。</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
-<pre><code><span class="hljs-comment">// instead of writing:</span>
+<pre><code><span class="hljs-comment">// find 写法：</span>
 User.find({age: {$gte: <span class="hljs-number">21</span>, $lte: <span class="hljs-number">65</span>}}, callback);
 
-<span class="hljs-comment">// we can instead write:</span>
+<span class="hljs-comment">// where 替换写法：</span>
 User.where(<span class="hljs-string">'age'</span>).gte(<span class="hljs-number">21</span>).lte(<span class="hljs-number">65</span>);
 
-<span class="hljs-comment">// passing query conditions is permitted</span>
+<span class="hljs-comment">// 也可以传入 query condition</span>
 User.find().where({ name: <span class="hljs-string">'vonderful'</span> })
 
-<span class="hljs-comment">// chaining</span>
+<span class="hljs-comment">// 链式写法</span>
 User
 .where(<span class="hljs-string">'age'</span>).gte(<span class="hljs-number">21</span>).lte(<span class="hljs-number">65</span>)
 .where(<span class="hljs-string">'name'</span>, <span class="hljs-regexp">/^vonderful/i</span>)
 .where(<span class="hljs-string">'friends'</span>).slice(<span class="hljs-number">10</span>)
-.exec(callback)</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-equals"><a href="#query_Query-equals">Query.prototype.equals()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">val <span class="method-type">&laquo;Object&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Specifies the complementary comparison value for paths specified with <code>where()</code></p>
+.exec(callback)</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-equals"><a href="#query_Query-equals">Query.prototype.equals()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">val <span class="method-type">&laquo;Object&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>指定一个值，跟 <code>where()</code> 指定的路径做等值比较。</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>User.where(<span class="hljs-string">'age'</span>).equals(<span class="hljs-number">49</span>);
 
-<span class="hljs-comment">// is the same as</span>
+<span class="hljs-comment">// 等效于</span>
 
-User.where(<span class="hljs-string">'age'</span>, <span class="hljs-number">49</span>);</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-or"><a href="#query_Query-or">Query.prototype.or()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">array <span class="method-type">&laquo;Array&raquo;</span> array of conditions</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Specifies arguments for an <code>$or</code> condition.</p>
+User.where(<span class="hljs-string">'age'</span>, <span class="hljs-number">49</span>);</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-or"><a href="#query_Query-or">Query.prototype.or()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">array <span class="method-type">&laquo;Array&raquo;</span> array of conditions</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>为 <code>$or</code> 条件指定参数。</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
-<pre><code>query.or([{ color: <span class="hljs-string">'red'</span> }, { status: <span class="hljs-string">'emergency'</span> }])</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-nor"><a href="#query_Query-nor">Query.prototype.nor()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">array <span class="method-type">&laquo;Array&raquo;</span> array of conditions</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Specifies arguments for a <code>$nor</code> condition.</p>
+<pre><code>query.or([{ color: <span class="hljs-string">'red'</span> }, { status: <span class="hljs-string">'emergency'</span> }])</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-nor"><a href="#query_Query-nor">Query.prototype.nor()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">array <span class="method-type">&laquo;Array&raquo;</span> array of conditions</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>为 <code>$nor</code> 条件指定参数。</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
-<pre><code>query.nor([{ color: <span class="hljs-string">'green'</span> }, { status: <span class="hljs-string">'ok'</span> }])</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-and"><a href="#query_Query-and">Query.prototype.and()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">array <span class="method-type">&laquo;Array&raquo;</span> array of conditions</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Specifies arguments for a <code>$and</code> condition.</p>
+<pre><code>query.nor([{ color: <span class="hljs-string">'green'</span> }, { status: <span class="hljs-string">'ok'</span> }])</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-and"><a href="#query_Query-and">Query.prototype.and()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">array <span class="method-type">&laquo;Array&raquo;</span> array of conditions</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>为 <code>$and</code> 条件指定参数。</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
-<pre><code>query.and([{ color: <span class="hljs-string">'green'</span> }, { status: <span class="hljs-string">'ok'</span> }])</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-gt"><a href="#query_Query-gt">Query.prototype.gt()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>Specifies a $gt query condition.</p>
+<pre><code>query.and([{ color: <span class="hljs-string">'green'</span> }, { status: <span class="hljs-string">'ok'</span> }])</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-gt"><a href="#query_Query-gt">Query.prototype.gt()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>指定一个 $gt 查询条件。</p>
 
-<p>When called with one argument, the most recent path passed to <code>where()</code> is used.</p>
+<p>如果只传入一个参数，则对最后的 <code>where()</code> 路径生效。</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>Thing.find().where(<span class="hljs-string">'age'</span>).gt(<span class="hljs-number">21</span>)
 
 <span class="hljs-comment">// or</span>
-Thing.find().gt(<span class="hljs-string">'age'</span>, <span class="hljs-number">21</span>)</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-gte"><a href="#query_Query-gte">Query.prototype.gte()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>Specifies a $gte query condition.</p>
+Thing.find().gt(<span class="hljs-string">'age'</span>, <span class="hljs-number">21</span>)</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-gte"><a href="#query_Query-gte">Query.prototype.gte()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>指定一个 $gte 查询条件。</p>
 
-<p>When called with one argument, the most recent path passed to <code>where()</code> is used.</p></div><hr class="separate-api-elements"><h3 id="query_Query-lt"><a href="#query_Query-lt">Query.prototype.lt()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>Specifies a $lt query condition.</p>
+<p>如果只传入一个参数，则对最后的 <code>where()</code> 路径生效。</p></div><hr class="separate-api-elements"><h3 id="query_Query-lt"><a href="#query_Query-lt">Query.prototype.lt()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>指定一个 $lt 查询条件。</p>
 
-<p>When called with one argument, the most recent path passed to <code>where()</code> is used.</p></div><hr class="separate-api-elements"><h3 id="query_Query-lte"><a href="#query_Query-lte">Query.prototype.lte()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>Specifies a $lte query condition.</p>
+<p>如果只传入一个参数，则对最后的 <code>where()</code> 路径生效。</p></div><hr class="separate-api-elements"><h3 id="query_Query-lte"><a href="#query_Query-lte">Query.prototype.lte()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>指定一个 $lte 查询条件。</p>
 
-<p>When called with one argument, the most recent path passed to <code>where()</code> is used.</p></div><hr class="separate-api-elements"><h3 id="query_Query-ne"><a href="#query_Query-ne">Query.prototype.ne()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>Specifies a $ne query condition.</p>
+<p>如果只传入一个参数，则对最后的 <code>where()</code> 路径生效。</p></div><hr class="separate-api-elements"><h3 id="query_Query-ne"><a href="#query_Query-ne">Query.prototype.ne()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>指定一个 $ne 查询条件。</p>
 
-<p>When called with one argument, the most recent path passed to <code>where()</code> is used.</p></div><hr class="separate-api-elements"><h3 id="query_Query-in"><a href="#query_Query-in">Query.prototype.in()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>Specifies an $in query condition.</p>
+<p>如果只传入一个参数，则对最后的 <code>where()</code> 路径生效。</p></div><hr class="separate-api-elements"><h3 id="query_Query-in"><a href="#query_Query-in">Query.prototype.in()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>指定一个 $in 查询条件。</p>
 
-<p>When called with one argument, the most recent path passed to <code>where()</code> is used.</p></div><hr class="separate-api-elements"><h3 id="query_Query-nin"><a href="#query_Query-nin">Query.prototype.nin()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>Specifies an $nin query condition.</p>
+<p>如果只传入一个参数，则对最后的 <code>where()</code> 路径生效。</p></div><hr class="separate-api-elements"><h3 id="query_Query-nin"><a href="#query_Query-nin">Query.prototype.nin()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>指定一个 $nin 查询条件。</p>
 
-<p>When called with one argument, the most recent path passed to <code>where()</code> is used.</p></div><hr class="separate-api-elements"><h3 id="query_Query-all"><a href="#query_Query-all">Query.prototype.all()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>Specifies an $all query condition.</p>
+<p>如果只传入一个参数，则对最后的 <code>where()</code> 路径生效。</p></div><hr class="separate-api-elements"><h3 id="query_Query-all"><a href="#query_Query-all">Query.prototype.all()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>指定一个 $all 查询条件。</p>
 
-<p>When called with one argument, the most recent path passed to <code>where()</code> is used.</p></div><hr class="separate-api-elements"><h3 id="query_Query-size"><a href="#query_Query-size">Query.prototype.size()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>Specifies a $size query condition.</p>
+<p>如果只传入一个参数，则对最后的 <code>where()</code> 路径生效。</p></div><hr class="separate-api-elements"><h3 id="query_Query-size"><a href="#query_Query-size">Query.prototype.size()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>指定一个 $size 查询条件。</p>
 
-<p>When called with one argument, the most recent path passed to <code>where()</code> is used.</p>
+<p>如果只传入一个参数，则对最后的 <code>where()</code> 路径生效。</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>MyModel.where(<span class="hljs-string">'tags'</span>).size(<span class="hljs-number">0</span>).exec(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, docs</span>) </span>{
   <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">return</span> handleError(err);
 
   assert(<span class="hljs-built_in">Array</span>.isArray(docs));
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'documents with 0 tags'</span>, docs);
-})</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-regex"><a href="#query_Query-regex">Query.prototype.regex()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;String|RegExp&raquo;</span> </li></ul><div><p>Specifies a $regex query condition.</p>
+})</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-regex"><a href="#query_Query-regex">Query.prototype.regex()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;String|RegExp&raquo;</span> </li></ul><div><p>指定一个 $regex 查询条件。</p>
 
-<p>When called with one argument, the most recent path passed to <code>where()</code> is used.</p></div><hr class="separate-api-elements"><h3 id="query_Query-maxDistance"><a href="#query_Query-maxDistance">Query.prototype.maxDistance()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>Specifies a $maxDistance query condition.</p>
+<p>如果只传入一个参数，则对最后的 <code>where()</code> 路径生效。</p></div><hr class="separate-api-elements"><h3 id="query_Query-maxDistance"><a href="#query_Query-maxDistance">Query.prototype.maxDistance()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>指定一个 $maxDistance 查询条件。</p>
 
-<p>When called with one argument, the most recent path passed to <code>where()</code> is used.</p></div><hr class="separate-api-elements"><h3 id="query_Query-mod"><a href="#query_Query-mod">Query.prototype.mod()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Array&raquo;</span> must be of length 2, first element is <code>divisor</code>, 2nd element is <code>remainder</code>.</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Specifies a <code>$mod</code> condition, filters documents for documents whose <code>path</code> property is a number that is equal to <code>remainder</code> modulo <code>divisor</code>.</p>
+<p>如果只传入一个参数，则对最后的 <code>where()</code> 路径生效。</p></div><hr class="separate-api-elements"><h3 id="query_Query-mod"><a href="#query_Query-mod">Query.prototype.mod()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Array&raquo;</span> 长度必须是2，第一个元素是 <code>divisor</code>，第二个是 <code>remainder</code>.</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>指定一个 <code>$mod</code> 条件，对文档的过滤规则：属性 <code>path</code> 是个数值，且对 <code>divisor</code> 取模，余数等于 <code>remainder</code></p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
-<pre><code><span class="hljs-comment">// All find products whose inventory is odd</span>
+<pre><code><span class="hljs-comment">// products 中 inventory 是奇数的</span>
 Product.find().mod(<span class="hljs-string">'inventory'</span>, [<span class="hljs-number">2</span>, <span class="hljs-number">1</span>]);
 Product.find().where(<span class="hljs-string">'inventory'</span>).mod([<span class="hljs-number">2</span>, <span class="hljs-number">1</span>]);
-<span class="hljs-comment">// This syntax is a little strange, but supported.</span>
-Product.find().where(<span class="hljs-string">'inventory'</span>).mod(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>);</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-exists"><a href="#query_Query-exists">Query.prototype.exists()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Specifies an <code>$exists</code> condition</p>
+<span class="hljs-comment">// 这种语法有点儿奇怪，但也支持。</span>
+Product.find().where(<span class="hljs-string">'inventory'</span>).mod(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>);</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-exists"><a href="#query_Query-exists">Query.prototype.exists()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>指定一个 <code>$exists</code> 查询条件。</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code><span class="hljs-comment">// { name: { $exists: true }}</span>
 Thing.where(<span class="hljs-string">'name'</span>).exists()
@@ -1786,9 +1783,9 @@ Thing.find().exists(<span class="hljs-string">'name'</span>)
 
 <span class="hljs-comment">// { name: { $exists: false }}</span>
 Thing.where(<span class="hljs-string">'name'</span>).exists(<span class="hljs-literal">false</span>);
-Thing.find().exists(<span class="hljs-string">'name'</span>, <span class="hljs-literal">false</span>);</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-elemMatch"><a href="#query_Query-elemMatch">Query.prototype.elemMatch()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">path <span class="method-type">&laquo;String|Object|Function&raquo;</span> </li><li class="param">criteria <span class="method-type">&laquo;Object|Function&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Specifies an <code>$elemMatch</code> condition</p>
+Thing.find().exists(<span class="hljs-string">'name'</span>, <span class="hljs-literal">false</span>);</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-elemMatch"><a href="#query_Query-elemMatch">Query.prototype.elemMatch()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">path <span class="method-type">&laquo;String|Object|Function&raquo;</span> </li><li class="param">criteria <span class="method-type">&laquo;Object|Function&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>指定一个 <code>$elemMatch</code> 查询条件。</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>query.elemMatch(<span class="hljs-string">'comment'</span>, { author: <span class="hljs-string">'autobot'</span>, votes: {$gte: <span class="hljs-number">5</span>}})
 
@@ -1802,9 +1799,9 @@ query.elemMatch(<span class="hljs-string">'comment'</span>, <span class="hljs-fu
 query.where(<span class="hljs-string">'comment'</span>).elemMatch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">elem</span>) </span>{
   elem.where({ author: <span class="hljs-string">'autobot'</span> });
   elem.where(<span class="hljs-string">'votes'</span>).gte(<span class="hljs-number">5</span>);
-})</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-within"><a href="#query_Query-within">Query.prototype.within()</a></h3><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Defines a <code>$within</code> or <code>$geoWithin</code> argument for geo-spatial queries.</p>
+})</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-within"><a href="#query_Query-within">Query.prototype.within()</a></h3><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>给地理空间（geo-spatial）查询 <code>$within</code>、<code>$geoWithin</code> 指定参数</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>query.where(path).within().box()
 query.where(path).within().circle()
@@ -1818,119 +1815,118 @@ query.where(<span class="hljs-string">'loc'</span>).within([], [], []) <span cla
 query.where(<span class="hljs-string">'loc'</span>).within([], []) <span class="hljs-comment">// box</span>
 query.where(<span class="hljs-string">'loc'</span>).within({ type: <span class="hljs-string">'LineString'</span>, coordinates: [...] }); <span class="hljs-comment">// geometry</span></code></pre>
 
-<p><strong>MUST</strong> be used after <code>where()</code>.</p>
+<p><strong>必须</strong> 跟 <code>where()</code> 一起使用。</p>
 
-<h4>NOTE:</h4>
+<h4>注意:</h4>
 
-<p>As of Mongoose 3.7, <code>$geoWithin</code> is always used for queries. To change this behavior, see <a href="#query_Query-use%2524geoWithin">Query.use$geoWithin</a>.</p>
+<p>从 Mongoose 3.7 开始，查询中默认使用 <code>$geoWithin</code>。想改变这种做法，查看 <a href="#query_Query-use%2524geoWithin">Query.use$geoWithin</a>。</p>
 
-<h4>NOTE:</h4>
+<h4>注意:</h4>
 
-<p>In Mongoose 3.7, <code>within</code> changed from a getter to a function. If you need the old syntax, use <a href="https://github.com/ebensing/mongoose-within">this</a>.</p></div><hr class="separate-api-elements"><h3 id="query_Query-slice"><a href="#query_Query-slice">Query.prototype.slice()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> number/range of elements to slice</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Specifies a $slice projection for an array.</p>
+<p>在 Mongoose 3.7 中，<code>within</code> 由 getter 改变成了 function。如果你需要旧语法，查看 <a href="https://github.com/ebensing/mongoose-within">这里</a>。</p></div><hr class="separate-api-elements"><h3 id="query_Query-slice"><a href="#query_Query-slice">Query.prototype.slice()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> number/range of elements to slice</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>对数组字段做切片映射（$slice projection）。</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>query.slice(<span class="hljs-string">'comments'</span>, <span class="hljs-number">5</span>)
 query.slice(<span class="hljs-string">'comments'</span>, <span class="hljs-number">-5</span>)
 query.slice(<span class="hljs-string">'comments'</span>, [<span class="hljs-number">10</span>, <span class="hljs-number">5</span>])
 query.where(<span class="hljs-string">'comments'</span>).slice(<span class="hljs-number">5</span>)
-query.where(<span class="hljs-string">'comments'</span>).slice([<span class="hljs-number">-10</span>, <span class="hljs-number">5</span>])</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-limit"><a href="#query_Query-limit">Query.prototype.limit()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>Specifies the maximum number of documents the query will return.</p>
+query.where(<span class="hljs-string">'comments'</span>).slice([<span class="hljs-number">-10</span>, <span class="hljs-number">5</span>])</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-limit"><a href="#query_Query-limit">Query.prototype.limit()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>指定查询结果的最大条数。</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>query.limit(<span class="hljs-number">20</span>)</code></pre>
 
-<h4>Note</h4>
+<h4>注意</h4>
 
-<p>Cannot be used with <code>distinct()</code></p></div><hr class="separate-api-elements"><h3 id="query_Query-skip"><a href="#query_Query-skip">Query.prototype.skip()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>Specifies the number of documents to skip.</p>
+<p>不能和 <code>distinct()</code> 一起使用</p></div><hr class="separate-api-elements"><h3 id="query_Query-skip"><a href="#query_Query-skip">Query.prototype.skip()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>指定跳过的文档条数。</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>query.skip(<span class="hljs-number">100</span>).limit(<span class="hljs-number">20</span>)</code></pre>
 
-<h4>Note</h4>
+<h4>注意</h4>
 
-<p>Cannot be used with <code>distinct()</code></p></div><hr class="separate-api-elements"><h3 id="query_Query-maxScan"><a href="#query_Query-maxScan">Query.prototype.maxScan()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>Specifies the maxScan option.</p>
+<p>不能和 <code>distinct()</code> 一起使用</p></div><hr class="separate-api-elements"><h3 id="query_Query-maxScan"><a href="#query_Query-maxScan">Query.prototype.maxScan()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>指定 maxScan 选项</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>query.maxScan(<span class="hljs-number">100</span>)</code></pre>
 
-<h4>Note</h4>
+<h4>注意</h4>
 
-<p>Cannot be used with <code>distinct()</code></p></div><hr class="separate-api-elements"><h3 id="query_Query-batchSize"><a href="#query_Query-batchSize">Query.prototype.batchSize()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>Specifies the batchSize option.</p>
+<p>不能和 <code>distinct()</code> 一起使用</p></div><hr class="separate-api-elements"><h3 id="query_Query-batchSize"><a href="#query_Query-batchSize">Query.prototype.batchSize()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>指定 batchSize 选项</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>query.batchSize(<span class="hljs-number">100</span>)</code></pre>
 
-<h4>Note</h4>
+<h4>注意</h4>
 
-<p>Cannot be used with <code>distinct()</code></p></div><hr class="separate-api-elements"><h3 id="query_Query-comment"><a href="#query_Query-comment">Query.prototype.comment()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>Specifies the <code>comment</code> option.</p>
+<p>不能和 <code>distinct()</code> 一起使用</p></div><hr class="separate-api-elements"><h3 id="query_Query-comment"><a href="#query_Query-comment">Query.prototype.comment()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">val <span class="method-type">&laquo;Number&raquo;</span> </li></ul><div><p>指定 <code>comment</code> 选项</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>query.comment(<span class="hljs-string">'login query'</span>)</code></pre>
 
-<h4>Note</h4>
+<h4>注意</h4>
 
-<p>Cannot be used with <code>distinct()</code></p></div><hr class="separate-api-elements"><h3 id="query_Query-snapshot"><a href="#query_Query-snapshot">Query.prototype.snapshot()</a></h3><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Specifies this query as a <code>snapshot</code> query.</p>
+<p>不能和 <code>distinct()</code> 一起使用</p></div><hr class="separate-api-elements"><h3 id="query_Query-snapshot"><a href="#query_Query-snapshot">Query.prototype.snapshot()</a></h3><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>指定当前 query 是个 <code>snapshot</code> query</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>query.snapshot() <span class="hljs-comment">// true</span>
 query.snapshot(<span class="hljs-literal">true</span>)
 query.snapshot(<span class="hljs-literal">false</span>)</code></pre>
 
-<h4>Note</h4>
+<h4>注意</h4>
 
-<p>Cannot be used with <code>distinct()</code></p></div><hr class="separate-api-elements"><h3 id="query_Query-hint"><a href="#query_Query-hint">Query.prototype.hint()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">val <span class="method-type">&laquo;Object&raquo;</span> a hint object</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Sets query hints.</p>
+<p>不能和 <code>distinct()</code> 一起使用</p></div><hr class="separate-api-elements"><h3 id="query_Query-hint"><a href="#query_Query-hint">Query.prototype.hint()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">val <span class="method-type">&laquo;Object&raquo;</span> a hint object</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>设置查询会使用的索引</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>query.hint({ indexA: <span class="hljs-number">1</span>, indexB: <span class="hljs-number">-1</span>})</code></pre>
 
-<h4>Note</h4>
+<h4>注意</h4>
 
-<p>Cannot be used with <code>distinct()</code></p></div><hr class="separate-api-elements"><h3 id="query_Query-select"><a href="#query_Query-select">Query.prototype.select()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">arg <span class="method-type">&laquo;Object|String&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Specifies which document fields to include or exclude (also known as the query "projection")</p>
+<p>不能和 <code>distinct()</code> 一起使用</p></div><hr class="separate-api-elements"><h3 id="query_Query-select"><a href="#query_Query-select">Query.prototype.select()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">arg <span class="method-type">&laquo;Object|String&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>指定包含或排除哪些字段（也叫做查询映射 "projection" ）</p>
 
-<p>When using string syntax, prefixing a path with <code>-</code> will flag that path as excluded. When a path does not have the <code>-</code> prefix, it is included. Lastly, if a path is prefixed with <code>+</code>, it forces inclusion of the path, which is useful for paths excluded at the <a href="/docs/api.html#schematype_SchemaType-select">schema level</a>.</p>
+<p>使用字符串语法时，有 <code>-</code> 前缀的路径会被排除，没有 <code>-</code> 前缀的路径会被选择。 最后，如果路径有前缀 <code>+</code>，将被强制选择，这对于在 <a href="/docs/api.html#schematype_SchemaType-select">schema level</a> 被排除的路径会有用。</p>
 
-<p>A projection <em>must</em> be either inclusive or exclusive. In other words, you must either list the fields to include (which excludes all others), or list the fields to exclude (which implies all other fields are included). The <a href="https://docs.mongodb.com/manual/tutorial/project-fields-from-query-results/#suppress-id-field"><code>_id</code> field is the only exception because MongoDB includes it by default</a>.</p>
+<p>映射 <em>必须</em> 只能是 包含 或 排除 二者其一。换句话说，只能要么列举包含的字段（将排除其他所有字段），要么列举排除的字段（将选择其他所有字段）。 <a href="https://docs.mongodb.com/manual/tutorial/project-fields-from-query-results/#suppress-id-field"><code>_id</code> 字段总会被选择因为 MongoDB 默认会这么做</a>.</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
-<pre><code><span class="hljs-comment">// include a and b, exclude other fields</span>
+<pre><code><span class="hljs-comment">// 选择 a 和 b 字段，排除其他的</span>
 query.select(<span class="hljs-string">'a b'</span>);
 
-<span class="hljs-comment">// exclude c and d, include other fields</span>
+<span class="hljs-comment">// 排除 c 和 d 字段，选择其他的</span>
 query.select(<span class="hljs-string">'-c -d'</span>);
 
-<span class="hljs-comment">// or you may use object notation, useful when</span>
-<span class="hljs-comment">// you have keys already prefixed with a "-"</span>
+<span class="hljs-comment">// 如果存在已经有"-"前缀的字段，可以用对象标记法</span>
 query.select({ a: <span class="hljs-number">1</span>, b: <span class="hljs-number">1</span> });
 query.select({ c: <span class="hljs-number">0</span>, d: <span class="hljs-number">0</span> });
 
-<span class="hljs-comment">// force inclusion of field excluded at schema level</span>
-query.select(<span class="hljs-string">'+path'</span>)</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-slaveOk"><a href="#query_Query-slaveOk">Query.prototype.slaveOk()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">v <span class="method-type">&laquo;Boolean&raquo;</span> defaults to true</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p><em>DEPRECATED</em> Sets the slaveOk option.</p>
+<span class="hljs-comment">// 强制包含已经在 schema level 排除的字段</span>
+query.select(<span class="hljs-string">'+path'</span>)</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-slaveOk"><a href="#query_Query-slaveOk">Query.prototype.slaveOk()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">v <span class="method-type">&laquo;Boolean&raquo;</span> defaults to true</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p><em>已不赞成使用</em> 设置 slaveOk 选项</p>
 
-<p><strong>Deprecated</strong> in MongoDB 2.2 in favor of <a href="#query_Query-read">read preferences</a>.</p>
+<p><strong>Deprecated</strong> 从 MongoDB 2.2 版本之后使用 <a href="#query_Query-read">read preferences</a> 代替</p>
 
-<h4>Example:</h4>
+<h4>示例:</h4>
 
 <pre><code>query.slaveOk() <span class="hljs-comment">// true</span>
 query.slaveOk(<span class="hljs-literal">true</span>)
-query.slaveOk(<span class="hljs-literal">false</span>)</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-read"><a href="#query_Query-read">Query.prototype.read()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">pref <span class="method-type">&laquo;String&raquo;</span> one of the listed preference options or aliases</li><li class="param">[tags] <span class="method-type">&laquo;Array&raquo;</span> optional tags for this query</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Determines the MongoDB nodes from which to read.</p>
+query.slaveOk(<span class="hljs-literal">false</span>)</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-read"><a href="#query_Query-read">Query.prototype.read()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">pref <span class="method-type">&laquo;String&raquo;</span> one of the listed preference options or aliases</li><li class="param">[tags] <span class="method-type">&laquo;Array&raquo;</span> optional tags for this query</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>指定读数据的 MongoDB 节点</p>
 
-<h4>Preferences:</h4>
+<h4>首选项:</h4>
 
-<pre><code>primary - (<span class="hljs-keyword">default</span>) Read <span class="hljs-keyword">from</span> primary only. Operations will produce an error <span class="hljs-keyword">if</span> primary is unavailable. Cannot be combined <span class="hljs-keyword">with</span> tags.
-secondary            Read <span class="hljs-keyword">from</span> secondary <span class="hljs-keyword">if</span> available, otherwise error.
-primaryPreferred     Read <span class="hljs-keyword">from</span> primary <span class="hljs-keyword">if</span> available, otherwise a secondary.
-secondaryPreferred   Read <span class="hljs-keyword">from</span> a secondary <span class="hljs-keyword">if</span> available, otherwise read <span class="hljs-keyword">from</span> the primary.
-nearest              All operations read <span class="hljs-keyword">from</span> among the nearest candidates, but unlike other modes, <span class="hljs-keyword">this</span> option will include both the primary and all secondaries <span class="hljs-keyword">in</span> the random selection.</code></pre>
+<pre><code>primary - (默认值)    只从主节点读取。如果主节点不可用则报错。不能跟 tags 选项组合使用。
+secondary            只有当从节点可用时，从中读取，否则报错。
+primaryPreferred     优先读取主节点，不可用时读取从节点。
+secondaryPreferred   优先读取从节点，不可用时读取主节点。
+nearest              所有操作都读最近的候选节点，不同于其他模式，该选项会随机选取所有主、从节点。</code></pre>
 
-<p>Aliases</p>
+<p>选项别名：</p>
 
 <pre><code>p   primary
 pp  primaryPreferred
@@ -1938,63 +1934,55 @@ s   secondary
 sp  secondaryPreferred
 n   nearest</code></pre>
 
-<h4>Example:</h4>
+<h4>示例:</h4>
 
 <pre><code><span class="hljs-keyword">new</span> Query().read(<span class="hljs-string">'primary'</span>)
-<span class="hljs-keyword">new</span> Query().read(<span class="hljs-string">'p'</span>)  <span class="hljs-comment">// same as primary</span>
+<span class="hljs-keyword">new</span> Query().read(<span class="hljs-string">'p'</span>)  <span class="hljs-comment">// 等效于 primary</span>
 
 <span class="hljs-keyword">new</span> Query().read(<span class="hljs-string">'primaryPreferred'</span>)
-<span class="hljs-keyword">new</span> Query().read(<span class="hljs-string">'pp'</span>) <span class="hljs-comment">// same as primaryPreferred</span>
+<span class="hljs-keyword">new</span> Query().read(<span class="hljs-string">'pp'</span>) <span class="hljs-comment">// 等效于 primaryPreferred</span>
 
 <span class="hljs-keyword">new</span> Query().read(<span class="hljs-string">'secondary'</span>)
-<span class="hljs-keyword">new</span> Query().read(<span class="hljs-string">'s'</span>)  <span class="hljs-comment">// same as secondary</span>
+<span class="hljs-keyword">new</span> Query().read(<span class="hljs-string">'s'</span>)  <span class="hljs-comment">// 等效于 secondary</span>
 
 <span class="hljs-keyword">new</span> Query().read(<span class="hljs-string">'secondaryPreferred'</span>)
-<span class="hljs-keyword">new</span> Query().read(<span class="hljs-string">'sp'</span>) <span class="hljs-comment">// same as secondaryPreferred</span>
+<span class="hljs-keyword">new</span> Query().read(<span class="hljs-string">'sp'</span>) <span class="hljs-comment">// 等效于 secondaryPreferred</span>
 
 <span class="hljs-keyword">new</span> Query().read(<span class="hljs-string">'nearest'</span>)
-<span class="hljs-keyword">new</span> Query().read(<span class="hljs-string">'n'</span>)  <span class="hljs-comment">// same as nearest</span>
+<span class="hljs-keyword">new</span> Query().read(<span class="hljs-string">'n'</span>)  <span class="hljs-comment">// 等效于 nearest</span>
 
-<span class="hljs-comment">// read from secondaries with matching tags</span>
+<span class="hljs-comment">// 读取匹配 tags 的从节点</span>
 <span class="hljs-keyword">new</span> Query().read(<span class="hljs-string">'s'</span>, [{ dc:<span class="hljs-string">'sf'</span>, s: <span class="hljs-number">1</span> },{ dc:<span class="hljs-string">'ma'</span>, s: <span class="hljs-number">2</span> }])</code></pre>
 
-<p>Read more about how to use read preferrences <a href="http://docs.mongodb.org/manual/applications/replication/#read-preference">here</a> and <a href="http://mongodb.github.com/node-mongodb-native/driver-articles/anintroductionto1_1and2_2.html#read-preferences">here</a>.</p></div><hr class="separate-api-elements"><h3 id="query_Query-merge"><a href="#query_Query-merge">Query.prototype.merge()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">source <span class="method-type">&laquo;Query|Object&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Merges another Query or conditions object into this one.</p>
+<p>从 <a href="http://docs.mongodb.org/manual/applications/replication/#read-preference">这里</a> 和 <a href="http://mongodb.github.com/node-mongodb-native/driver-articles/anintroductionto1_1and2_2.html#read-preferences">这里</a> 参阅更多 read 首选项的用法。</p></div><hr class="separate-api-elements"><h3 id="query_Query-setOptions"><a href="#query_Query-setOptions">Query.prototype.setOptions()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">options <span class="method-type">&laquo;Object&raquo;</span> </li></ul><div><p>设置查询选项。某些选项只对特定操作生效。</p>
 
-<p>When a Query is passed, conditions, field selection and options are merged.</p>
+<h4>选项：</h4>
 
-<p>New in 3.7.0</p></div><hr class="separate-api-elements"><h3 id="query_Query-setOptions"><a href="#query_Query-setOptions">Query.prototype.setOptions()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">options <span class="method-type">&laquo;Object&raquo;</span> </li></ul><div><p>Sets query options. Some options only make sense for certain operations.</p>
+<p>以下选项只适用于 <code>find()</code>: - <a href="http://www.mongodb.org/display/DOCS/Tailable+Cursors">tailable</a> - <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%7B%7Bsort()%7D%7D">sort</a> - <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%7B%7Blimit%28%29%7D%7D">limit</a> - <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%7B%7Bskip%28%29%7D%7D">skip</a> - <a href="https://docs.mongodb.org/v3.2/reference/operator/meta/maxScan/#metaOp._S_maxScan">maxscan</a> - <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%7B%7BbatchSize%28%29%7D%7D">batchSize</a> - <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%24comment">comment</a> - <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%7B%7Bsnapshot%28%29%7D%7D">snapshot</a> - <a href="http://docs.mongodb.org/manual/applications/replication/#read-preference">readPreference</a> - <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%24hint">hint</a></p>
 
-<h4>Options:</h4>
+<p>以下选项只适用于 <code>update()</code>, <code>updateOne()</code>, <code>updateMany()</code>, <code>replaceOne()</code>, <code>findOneAndUpdate()</code> 和 <code>findByIdAndUpdate()</code>: - <a href="https://docs.mongodb.com/manual/reference/method/db.collection.update/">upsert</a> - <a href="https://docs.mongodb.com/manual/reference/method/db.collection.update/">writeConcern</a></p>
 
-<p>The following options are only for <code>find()</code>: - <a href="http://www.mongodb.org/display/DOCS/Tailable+Cursors">tailable</a> - <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%7B%7Bsort()%7D%7D">sort</a> - <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%7B%7Blimit%28%29%7D%7D">limit</a> - <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%7B%7Bskip%28%29%7D%7D">skip</a> - <a href="https://docs.mongodb.org/v3.2/reference/operator/meta/maxScan/#metaOp._S_maxScan">maxscan</a> - <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%7B%7BbatchSize%28%29%7D%7D">batchSize</a> - <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%24comment">comment</a> - <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%7B%7Bsnapshot%28%29%7D%7D">snapshot</a> - <a href="http://docs.mongodb.org/manual/applications/replication/#read-preference">readPreference</a> - <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%24hint">hint</a></p>
+<p>以下选项只适用于 <code>find()</code>, <code>findOne()</code>, <code>findById()</code>, <code>findOneAndUpdate()</code> 和 <code>findByIdAndUpdate()</code>: - <a href="./api.html#query_Query-lean">lean</a></p>
 
-<p>The following options are only for <code>update()</code>, <code>updateOne()</code>, <code>updateMany()</code>, <code>replaceOne()</code>, <code>findOneAndUpdate()</code>, and <code>findByIdAndUpdate()</code>: - <a href="https://docs.mongodb.com/manual/reference/method/db.collection.update/">upsert</a> - <a href="https://docs.mongodb.com/manual/reference/method/db.collection.update/">writeConcern</a></p>
+<p>以下选项适用于所有操作 （<strong>除这些以外</strong> <code>update()</code>, <code>updateOne()</code>, <code>updateMany()</code>, <code>remove()</code>, <code>deleteOne()</code> 和 <code>deleteMany()</code> ）: - <a href="https://docs.mongodb.com/manual/reference/operator/meta/maxTimeMS/">maxTimeMS</a></p>
 
-<p>The following options are only for <code>find()</code>, <code>findOne()</code>, <code>findById()</code>, <code>findOneAndUpdate()</code>, and <code>findByIdAndUpdate()</code>: - <a href="./api.html#query_Query-lean">lean</a></p>
+<p>以下选项适用于所有操作： - <a href="https://docs.mongodb.com/manual/reference/collation/">collation</a></p></div><hr class="separate-api-elements"><h3 id="query_Query-getQuery"><a href="#query_Query-getQuery">Query.prototype.getQuery()</a></h3><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Object&raquo;</span> current query conditions</li></ul><div><p>以 JSON 对象格式返回当前的 query conditions。</p>
 
-<p>The following options are only for all operations <strong>except</strong> <code>update()</code>, <code>updateOne()</code>, <code>updateMany()</code>, <code>remove()</code>, <code>deleteOne()</code>, and <code>deleteMany()</code>: - <a href="https://docs.mongodb.com/manual/reference/operator/meta/maxTimeMS/">maxTimeMS</a></p>
-
-<h2>The following options are for all operations</h2>
-
-<ul>
-<li><a href="https://docs.mongodb.com/manual/reference/collation/">collation</a></li>
-</ul></div><hr class="separate-api-elements"><h3 id="query_Query-getQuery"><a href="#query_Query-getQuery">Query.prototype.getQuery()</a></h3><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Object&raquo;</span> current query conditions</li></ul><div><p>Returns the current query conditions as a JSON object.</p>
-
-<h4>Example:</h4>
+<h4>示例:</h4>
 
 <pre><code><span class="hljs-keyword">var</span> query = <span class="hljs-keyword">new</span> Query();
 query.find({ a: <span class="hljs-number">1</span> }).where(<span class="hljs-string">'b'</span>).gt(<span class="hljs-number">2</span>);
-query.getQuery(); <span class="hljs-comment">// { a: 1, b: { $gt: 2 } }</span></code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-getUpdate"><a href="#query_Query-getUpdate">Query.prototype.getUpdate()</a></h3><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Object&raquo;</span> current update operations</li></ul><div><p>Returns the current update operations as a JSON object.</p>
+query.getQuery(); <span class="hljs-comment">// { a: 1, b: { $gt: 2 } }</span></code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-getUpdate"><a href="#query_Query-getUpdate">Query.prototype.getUpdate()</a></h3><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Object&raquo;</span> current update operations</li></ul><div><p>以 JSON 对象格式返回当前的 update operations。</p>
 
-<h4>Example:</h4>
+<h4>示例:</h4>
 
 <pre><code><span class="hljs-keyword">var</span> query = <span class="hljs-keyword">new</span> Query();
 query.update({}, { $set: { a: <span class="hljs-number">5</span> } });
-query.getUpdate(); <span class="hljs-comment">// { $set: { a: 5 } }</span></code></pre></div><hr class="separate-api-elements"><h3 id="_fieldsforexec__fieldsForExec"><a href="#_fieldsforexec__fieldsForExec">function Object() { [native code] }.prototype._fieldsForExec()</a></h3><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Object&raquo;</span> </li></ul><div><p>Returns fields selection for this query.</p></div><hr class="separate-api-elements"><h3 id="query_Query-_updateForExec"><a href="#query_Query-_updateForExec">Query.prototype._updateForExec()</a></h3><div><p>Return an update document with corrected $set operations.</p></div><hr class="separate-api-elements"><h3 id="_ensurepath__ensurePath"><a href="#_ensurepath__ensurePath">function Object() { [native code] }.prototype._ensurePath()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">method <span class="method-type">&laquo;String&raquo;</span> </li></ul><div><p>Makes sure _path is set.</p></div><hr class="separate-api-elements"><h3 id="query_Query-lean"><a href="#query_Query-lean">Query.prototype.lean()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">bool <span class="method-type">&laquo;Boolean|Object&raquo;</span> defaults to true</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Sets the lean option.</p>
+query.getUpdate(); <span class="hljs-comment">// { $set: { a: 5 } }</span></code></pre></div><hr class="separate-api-elements"><h3 id="_fieldsforexec__fieldsForExec"><a href="#_fieldsforexec__fieldsForExec">function Object() { [native code] }.prototype._fieldsForExec()</a></h3><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Object&raquo;</span> </li></ul><div><p>Returns fields selection for this query.</p></div><hr class="separate-api-elements"><h3 id="query_Query-_updateForExec"><a href="#query_Query-_updateForExec">Query.prototype._updateForExec()</a></h3><div><p>Return an update document with corrected $set operations.</p></div><hr class="separate-api-elements"><h3 id="_ensurepath__ensurePath"><a href="#_ensurepath__ensurePath">function Object() { [native code] }.prototype._ensurePath()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">method <span class="method-type">&laquo;String&raquo;</span> </li></ul><div><p>Makes sure _path is set.</p></div><hr class="separate-api-elements"><h3 id="query_Query-lean"><a href="#query_Query-lean">Query.prototype.lean()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">bool <span class="method-type">&laquo;Boolean|Object&raquo;</span> 默认值 true</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>设置 lean 选项</p>
 
-<p>Documents returned from queries with the <code>lean</code> option enabled are plain javascript objects, not <a href="#document-js">MongooseDocuments</a>. They have no <code>save</code> method, getters/setters or other Mongoose magic applied.</p>
+<p>那些激活 <code>lean</code> 选项的查询，返回的文档是普通 javascript 对象，而不是 <a href="#document-js">Mongoose Documents</a>。 这些对象没有 <code>save</code> 方法、getters/setters，也没有被赋予其他 Mongoose magic。</p>
 
-<h4>Example:</h4>
+<h4>示例:</h4>
 
 <pre><code><span class="hljs-keyword">new</span> Query().lean() <span class="hljs-comment">// true</span>
 <span class="hljs-keyword">new</span> Query().lean(<span class="hljs-literal">true</span>)
@@ -2004,71 +1992,72 @@ Model.find().lean().exec(<span class="hljs-function"><span class="hljs-keyword">
   docs[<span class="hljs-number">0</span>] <span class="hljs-keyword">instanceof</span> mongoose.Document <span class="hljs-comment">// false</span>
 });</code></pre>
 
-<p>This is a <a href="https://groups.google.com/forum/#!topic/mongoose-orm/u2_DzDydcnA/discussion">great</a> option in high-performance read-only scenarios, especially when combined with <a href="#query_Query-stream">stream</a>.</p></div><hr class="separate-api-elements"><h3 id="query_Query-error"><a href="#query_Query-error">Query.prototype.error()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">err <span class="method-type">&laquo;Error|null&raquo;</span> if set, <code>exec()</code> will fail fast before sending the query to MongoDB</li></ul><div><p>Gets/sets the error flag on this query. If this flag is not null or undefined, the <code>exec()</code> promise will reject without executing.</p>
+<p>在高性能只读场景下这个选项就 <a href="https://groups.google.com/forum/#!topic/mongoose-orm/u2_DzDydcnA/discussion">厉害</a> 了，特别是跟 <a href="#query_Query-stream">stream</a> 组合使用时。</p></div><hr class="separate-api-elements"><h3 id="query_Query-error"><a href="#query_Query-error">Query.prototype.error()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">err <span class="method-type">&laquo;Error|null&raquo;</span> 如果被赋值，<code>exec()</code> 会在查询被发送到 MongoDB 之前速效失败</li></ul><div><p>读取/赋值 query 的 error 标识。如果标识不是 null 或 undefined，<code>exec()</code> promise 会直接执行 reject.</p>
 
-<h4>Example:</h4>
+<h4>示例:</h4>
 
-<pre><code>Query().error(); <span class="hljs-comment">// Get current error value</span>
-Query().error(<span class="hljs-literal">null</span>); <span class="hljs-comment">// Unset the current error</span>
-Query().error(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'test'</span>)); <span class="hljs-comment">// `exec()` will resolve with test</span>
+<pre><code>Query().error(); <span class="hljs-comment">// 读当前 error 值</span>
+Query().error(<span class="hljs-literal">null</span>); <span class="hljs-comment">// 空置当前 error</span>
+Query().error(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'test'</span>)); <span class="hljs-comment">// `exec()` will reject with test</span>
 Schema.pre(<span class="hljs-string">'find'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.getQuery().userId) {
     <span class="hljs-keyword">this</span>.error(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Not allowed to query without setting userId'</span>));
   }
 });</code></pre>
 
-<p>Note that query casting runs <strong>after</strong> hooks, so cast errors will override custom errors.</p>
+<p>注意：query casting 在 hooks <strong>之后</strong> 执行，所以 cast errors 会覆盖自定义 errors。</p>
 
-<h4>Example:</h4>
+<h4>示例:</h4>
 
 <pre><code><span class="hljs-keyword">var</span> TestSchema = <span class="hljs-keyword">new</span> Schema({ num: <span class="hljs-built_in">Number</span> });
 <span class="hljs-keyword">var</span> TestModel = db.model(<span class="hljs-string">'Test'</span>, TestSchema);
 TestModel.find({ num: <span class="hljs-string">'not a number'</span> }).error(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'woops'</span>)).exec(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
   <span class="hljs-comment">// `error` will be a cast error because `num` failed to cast</span>
-});</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-mongooseOptions"><a href="#query_Query-mongooseOptions">Query.prototype.mongooseOptions()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">options <span class="method-type">&laquo;Object&raquo;</span> if specified, overwrites the current options</li></ul><div><p>Getter/setter around the current mongoose-specific options for this query (populate, lean, etc.)</p></div><hr class="separate-api-elements"><h3 id="query_Query-find"><a href="#query_Query-find">Query.prototype.find()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[filter] <span class="method-type">&laquo;Object&raquo;</span> mongodb selector</li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Finds documents.</p>
+});</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-mongooseOptions"><a href="#query_Query-mongooseOptions">Query.prototype.mongooseOptions()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">options <span class="method-type">&laquo;Object&raquo;</span> if specified, overwrites the current options</li></ul><div><p>Getter/setter around the current mongoose-specific options for this query (populate, lean, etc.)</p></div><hr class="separate-api-elements"><h3 id="query_Query-find"><a href="#query_Query-find">Query.prototype.find()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[filter] <span class="method-type">&laquo;Object&raquo;</span> mongodb selector</li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>查询文档</p>
 
-<p>When no <code>callback</code> is passed, the query is not executed. When the query is executed, the result will be an array of documents.</p>
+<p>如果不传入 <code>callback</code> 查询不会被执行。实际执行时，查询结果是个文档数组。</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
-<pre><code>query.find({ name: <span class="hljs-string">'Los Pollos Hermanos'</span> }).find(callback)</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-merge"><a href="#query_Query-merge">Query.prototype.merge()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">source <span class="method-type">&laquo;Query|Object&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Merges another Query or conditions object into this one.</p>
+<pre><code>query.find({ name: <span class="hljs-string">'Los Pollos Hermanos'</span> }).find(callback)</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-merge"><a href="#query_Query-merge">Query.prototype.merge()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">source <span class="method-type">&laquo;Query|Object&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>把另一个 Query 或者 condition 对象合并到当前 query。</p>
 
-<p>When a Query is passed, conditions, field selection and options are merged.</p></div><hr class="separate-api-elements"><h3 id="query_Query-collation"><a href="#query_Query-collation">Query.prototype.collation()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">value <span class="method-type">&laquo;Object&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Adds a collation to this op (MongoDB 3.4 and up)</p></div><hr class="separate-api-elements"><h3 id="query_Query-findOne"><a href="#query_Query-findOne">Query.prototype.findOne()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[filter] <span class="method-type">&laquo;Object&raquo;</span> mongodb selector</li><li class="param">[projection] <span class="method-type">&laquo;Object&raquo;</span> optional fields to return</li><li class="param">[options] <span class="method-type">&laquo;Object&raquo;</span> see <a href="http://mongoosejs.com/docs/api.html#query_Query-setOptions"><code>setOptions()</code></a></li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> optional params are (error, document)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Declares the query a findOne operation. When executed, the first found document is passed to the callback.</p>
+<p>如果传入的是一个 Query，条件对象、字段选择和选项都会被合并。</p>
 
-<p>Passing a <code>callback</code> executes the query. The result of the query is a single document.</p>
+<p>3.7.0版本新功能</p></div><hr class="separate-api-elements"><h3 id="query_Query-collation"><a href="#query_Query-collation">Query.prototype.collation()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">value <span class="method-type">&laquo;Object&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Adds a collation to this op (MongoDB 3.4 and up)</p></div><hr class="separate-api-elements"><h3 id="query_Query-findOne"><a href="#query_Query-findOne">Query.prototype.findOne()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[conditions] <span class="method-type">&laquo;Object&raquo;</span> mongodb selector</li><li class="param">[projection] <span class="method-type">&laquo;Object&raquo;</span> 可选 要选择的字段</li><li class="param">[options] <span class="method-type">&laquo;Object&raquo;</span> 见 <a href="http://mongoosejs.com/docs/api.html#query_Query-setOptions"><code>setOptions()</code></a></li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> 可选 参数表是 (error, document)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>声明一个 findOne 查询。传给回调函数的查询结果是第一个查到的文档。</p>
+
+<p>传入 <code>callback</code> 时启动查询。结果是单个文档。</p>
 
 <ul>
-<li><em>Note:</em> <code>conditions</code> is optional, and if <code>conditions</code> is null or undefined,
-mongoose will send an empty <code>findOne</code> command to MongoDB, which will return
-an arbitrary document. If you're querying by <code>_id</code>, use <code>Model.findById()</code>
-instead.</li>
+<li><em>注意：</em> <code>conditions</code> 是可选的，如果 <code>conditions</code> 是 null 或 undefined，
+mongoose 会向 MongoDB 发送一个空的 <code>findOne</code> 指令，返回结果会是一个随机文档。
+如果要按 <code>_id</code> 进行查询，可以用 <code>Model.findById()</code>。</li>
 </ul>
 
-<p>This function triggers the following middleware.</p>
+<p>这个函数触发以下中间件</p>
 
 <ul>
 <li><code>findOne()</code></li>
 </ul>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code><span class="hljs-keyword">var</span> query  = Kitten.where({ color: <span class="hljs-string">'white'</span> });
 query.findOne(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, kitten</span>) </span>{
   <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">return</span> handleError(err);
   <span class="hljs-keyword">if</span> (kitten) {
-    <span class="hljs-comment">// doc may be null if no document matched</span>
+    <span class="hljs-comment">// 如果没有匹配的文档 kitten 是 null</span>
   }
-});</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-count"><a href="#query_Query-count">Query.prototype.count()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[criteria] <span class="method-type">&laquo;Object&raquo;</span> mongodb selector</li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> optional params are (error, count)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Specifying this query as a <code>count</code> query.</p>
+});</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-count"><a href="#query_Query-count">Query.prototype.count()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[conditions] <span class="method-type">&laquo;Object&raquo;</span> mongodb selector</li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> 可选 参数表是 (error, count)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>声明一个 <code>count</code> 查询</p>
 
-<p>Passing a <code>callback</code> executes the query.</p>
+<p>传入 <code>callback</code> 时启动查询</p>
 
-<p>This function triggers the following middleware.</p>
+<p>这个函数触发以下中间件</p>
 
 <ul>
 <li><code>count()</code></li>
 </ul>
 
-<h4>Example:</h4>
+<h4>示例:</h4>
 
 <pre><code><span class="hljs-keyword">var</span> countQuery = model.where({ <span class="hljs-string">'color'</span>: <span class="hljs-string">'black'</span> }).count();
 
@@ -2079,107 +2068,107 @@ query.count({ color: <span class="hljs-string">'black'</span> }, callback)
 query.where(<span class="hljs-string">'color'</span>, <span class="hljs-string">'black'</span>).count(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, count</span>) </span>{
   <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">return</span> handleError(err);
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'there are %d kittens'</span>, count);
-})</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-distinct"><a href="#query_Query-distinct">Query.prototype.distinct()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[field] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">[filter] <span class="method-type">&laquo;Object|Query&raquo;</span> </li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> optional params are (error, arr)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Declares or executes a distict() operation.</p>
+})</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-distinct"><a href="#query_Query-distinct">Query.prototype.distinct()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[field] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">[filter] <span class="method-type">&laquo;Object|Query&raquo;</span> </li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> 可选 参数表是 (error, arr)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>声明或执行 distict() 操作</p>
 
-<p>Passing a <code>callback</code> executes the query.</p>
+<p>传入 <code>callback</code> 启动查询</p>
 
-<p>This function does not trigger any middleware.</p>
+<p>这个函数不触发中间件</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>distinct(field, conditions, callback)
 distinct(field, conditions)
 distinct(field, callback)
 distinct(field)
 distinct(callback)
-distinct()</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-sort"><a href="#query_Query-sort">Query.prototype.sort()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">arg <span class="method-type">&laquo;Object|String&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Sets the sort order</p>
+distinct()</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-sort"><a href="#query_Query-sort">Query.prototype.sort()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">arg <span class="method-type">&laquo;Object|String&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>设置排序</p>
 
-<p>If an object is passed, values allowed are <code>asc</code>, <code>desc</code>, <code>ascending</code>, <code>descending</code>, <code>1</code>, and <code>-1</code>.</p>
+<p>如果传入的参数是个对象，字段值可以是 <code>asc</code>, <code>desc</code>, <code>ascending</code>, <code>descending</code>, <code>1</code> 和 <code>-1</code>。</p>
 
-<p>If a string is passed, it must be a space delimited list of path names. The sort order of each path is ascending unless the path name is prefixed with <code>-</code> which will be treated as descending.</p>
+<p>如果传入参数是字符串，它得是以空格间隔的字段路径名列表。每个字段的排列顺序默认是正序，如果字段名有 <code>-</code> 前缀， 那么这个字段是倒序。</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
-<pre><code><span class="hljs-comment">// sort by "field" ascending and "test" descending</span>
+<pre><code><span class="hljs-comment">// 按照 "field" 字段正序、"test" 字段倒序排列</span>
 query.sort({ field: <span class="hljs-string">'asc'</span>, test: <span class="hljs-number">-1</span> });
 
-<span class="hljs-comment">// equivalent</span>
+<span class="hljs-comment">// 等效于</span>
 query.sort(<span class="hljs-string">'field -test'</span>);</code></pre>
 
-<h4>Note</h4>
+<h4>注意</h4>
 
-<p>Cannot be used with <code>distinct()</code></p></div><hr class="separate-api-elements"><h3 id="query_Query-remove"><a href="#query_Query-remove">Query.prototype.remove()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[filter] <span class="method-type">&laquo;Object|Query&raquo;</span> mongodb selector</li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> optional params are (error, writeOpResult)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Declare and/or execute this query as a remove() operation.</p>
+<p>不能和 <code>distinct()</code> 一起使用</p></div><hr class="separate-api-elements"><h3 id="query_Query-remove"><a href="#query_Query-remove">Query.prototype.remove()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[filter] <span class="method-type">&laquo;Object|Query&raquo;</span> mongodb selector</li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> 可选 参数表是 (error, writeOpResult)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>声明/执行删除操作</p>
 
-<p>This function does not trigger any middleware</p>
+<p>这个函数不触发中间件</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>Model.remove({ artist: <span class="hljs-string">'Anne Murray'</span> }, callback)</code></pre>
 
-<h4>Note</h4>
+<h4>注意</h4>
 
-<p>The operation is only executed when a callback is passed. To force execution without a callback, you must first call <code>remove()</code> and then execute it by using the <code>exec()</code> method.</p>
+<p>只有当传入 callback 时操作才会被执行。如果要强制不带 callback 就执行，你得先调用 <code>remove()</code> 然后调用 <code>exec()</code> 来让它执行。</p>
 
-<pre><code><span class="hljs-comment">// not executed</span>
+<pre><code><span class="hljs-comment">// 不会执行</span>
 <span class="hljs-keyword">var</span> query = Model.find().remove({ name: <span class="hljs-string">'Anne Murray'</span> })
 
-<span class="hljs-comment">// executed</span>
+<span class="hljs-comment">// 会被执行</span>
 query.remove({ name: <span class="hljs-string">'Anne Murray'</span> }, callback)
 query.remove({ name: <span class="hljs-string">'Anne Murray'</span> }).remove(callback)
 
-<span class="hljs-comment">// executed without a callback</span>
+<span class="hljs-comment">// 没有 callback 就执行</span>
 query.exec()
 
-<span class="hljs-comment">// summary</span>
-query.remove(conds, fn); <span class="hljs-comment">// executes</span>
+<span class="hljs-comment">// 总结</span>
+query.remove(conds, fn); <span class="hljs-comment">// 执行</span>
 query.remove(conds)
-query.remove(fn) <span class="hljs-comment">// executes</span>
-query.remove()</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-deleteOne"><a href="#query_Query-deleteOne">Query.prototype.deleteOne()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[filter] <span class="method-type">&laquo;Object|Query&raquo;</span> mongodb selector</li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> optional params are (error, writeOpResult)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Declare and/or execute this query as a <code>deleteOne()</code> operation. Works like remove, except it deletes at most one document regardless of the <code>single</code> option.</p>
+query.remove(fn) <span class="hljs-comment">// 执行</span>
+query.remove()</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-deleteOne"><a href="#query_Query-deleteOne">Query.prototype.deleteOne()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[filter] <span class="method-type">&laquo;Object|Query&raquo;</span> mongodb selector</li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> 可选 参数表是 (error, writeOpResult)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>声明/执行 <code>deleteOne()</code> 操作。 功能类似 remove，不过会忽略 <code>single</code> 选项最多删除一条文档。</p>
 
-<p>This function does not trigger any middleware.</p>
+<p>这个函数不触发中间件.</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>Character.deleteOne({ name: <span class="hljs-string">'Eddard Stark'</span> }, callback)
-Character.deleteOne({ name: <span class="hljs-string">'Eddard Stark'</span> }).then(next)</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-deleteMany"><a href="#query_Query-deleteMany">Query.prototype.deleteMany()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[filter] <span class="method-type">&laquo;Object|Query&raquo;</span> mongodb selector</li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> optional params are (error, writeOpResult)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Declare and/or execute this query as a <code>deleteMany()</code> operation. Works like remove, except it deletes <em>every</em> document that matches <code>criteria</code> in the collection, regardless of the value of <code>single</code>.</p>
+Character.deleteOne({ name: <span class="hljs-string">'Eddard Stark'</span> }).then(next)</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-deleteMany"><a href="#query_Query-deleteMany">Query.prototype.deleteMany()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[filter] <span class="method-type">&laquo;Object|Query&raquo;</span> mongodb selector</li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> 可选 参数表是 (error, writeOpResult)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>声明 / 执行一次 <code>deleteMany()</code> 操作。功能类似于 remove，不过会忽略 <code>single</code> 选项，删除集合中 <em>每一条</em> 匹配条件的文档。</p>
 
-<p>This function does not trigger any middleware</p>
+<p>这个函数不触发中间件</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>Character.deleteMany({ name: <span class="hljs-regexp">/Stark/</span>, age: { $gte: <span class="hljs-number">18</span> } }, callback)
-Character.deleteMany({ name: <span class="hljs-regexp">/Stark/</span>, age: { $gte: <span class="hljs-number">18</span> } }).then(next)</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-findOneAndUpdate"><a href="#query_Query-findOneAndUpdate">Query.prototype.findOneAndUpdate()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[query] <span class="method-type">&laquo;Object|Query&raquo;</span> </li><li class="param">[doc] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[options] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[options.rawResult] <span class="method-type">&laquo;Boolean&raquo;</span> if true, returns the <a href="http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#findAndModify">raw result from the MongoDB driver</a></li><li class="param">[options.strict] <span class="method-type">&laquo;Boolean|String&raquo;</span> overwrites the schema&#39;s <a href="http://mongoosejs.com/docs/guide.html#strict">strict mode option</a></li><li class="param">[options.multipleCastError] <span class="method-type">&laquo;Boolean&raquo;</span> by default, mongoose only returns the first error that occurred in casting the query. Turn on this option to aggregate all the cast errors.</li><li class="param">[options.lean] <span class="method-type">&laquo;Object&raquo;</span> if truthy, mongoose will return the document as a plain JavaScript object rather than a mongoose document. See <a href="http://mongoosejs.com/docs/api.html#query_Query-lean"><code>Query.lean()</code></a>.</li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> optional params are (error, doc), <em>unless</em> <code>rawResult</code> is used, in which case params are (error, writeOpResult)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Issues a mongodb <a href="http://www.mongodb.org/display/DOCS/findAndModify+Command">findAndModify</a> update command.</p>
+Character.deleteMany({ name: <span class="hljs-regexp">/Stark/</span>, age: { $gte: <span class="hljs-number">18</span> } }).then(next)</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-findOneAndUpdate"><a href="#query_Query-findOneAndUpdate">Query.prototype.findOneAndUpdate()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[query] <span class="method-type">&laquo;Object|Query&raquo;</span> </li><li class="param">[doc] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[options] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[options.rawResult] <span class="method-type">&laquo;Boolean&raquo;</span> </li><li class="param">[options.strict] <span class="method-type">&laquo;Boolean|String&raquo;</span> 覆盖 schema 的 <a href="http://mongoosejs.com/docs/guide.html#strict">严格模式</a> 选项</li><li class="param">[options.multipleCastError] <span class="method-type">&laquo;Boolean&raquo;</span> 默认情况下 mongoose 只返回第一个 cast 错误。激活该选项来聚合所有的 cast 错误。</li><li class="param">[options.lean] <span class="method-type">&laquo;Object&raquo;</span> 如果值是 true， mongoose 以 plain JavaScript object 格式返回文档，不再实例化成一个 model 文档。参阅 <a href="http://mongoosejs.com/docs/api.html#query_Query-lean"><code>Query.lean()</code></a>.</li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> 可选 参数表是 (error, doc), <em>除非</em> 设置了 <code>rawResult</code> 选项，那么参数将是 (error, writeOpResult)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>向 mongodb 发起一条 <a href="http://www.mongodb.org/display/DOCS/findAndModify+Command">findAndModify</a> 更新指令。</p>
 
-<p>Finds a matching document, updates it according to the <code>update</code> arg, passing any <code>options</code>, and returns the found document (if any) to the callback. The query executes immediately if <code>callback</code> is passed.</p>
+<p>查到一条匹配的文档，依据 <code>doc</code> 参数和 <code>options</code> 选项更新文档，向回调函数返回查询到的文档（如果有的话）。如果传入了 <code>callback</code> 则查询会立即执行。</p>
 
-<p>This function triggers the following middleware.</p>
+<p>这个函数触发以下中间件</p>
 
 <ul>
 <li><code>findOneAndUpdate()</code></li>
 </ul>
 
-<h4>Available options</h4>
+<h4>支持的选项</h4>
 
 <ul>
-<li><code>new</code>: bool - if true, return the modified document rather than the original. defaults to false (changed in 4.0)</li>
-<li><code>upsert</code>: bool - creates the object if it doesn't exist. defaults to false.</li>
-<li><code>fields</code>: {Object|String} - Field selection. Equivalent to <code>.select(fields).findOneAndUpdate()</code></li>
-<li><code>sort</code>: if multiple docs are found by the conditions, sets the sort order to choose which doc to update</li>
-<li><code>maxTimeMS</code>: puts a time limit on the query - requires mongodb >= 2.6.0</li>
-<li><code>runValidators</code>: if true, runs <a href="/docs/validation.html#update-validators">update validators</a> on this command. Update validators validate the update operation against the model's schema.</li>
-<li><code>setDefaultsOnInsert</code>: if this and <code>upsert</code> are true, mongoose will apply the <a href="http://mongoosejs.com/docs/defaults.html">defaults</a> specified in the model's schema if a new document is created. This option only works on MongoDB >= 2.4 because it relies on <a href="https://docs.mongodb.org/v2.4/reference/operator/update/setOnInsert/">MongoDB's <code>$setOnInsert</code> operator</a>.</li>
-<li><code>rawResult</code>: if true, returns the <a href="http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#findAndModify">raw result from the MongoDB driver</a></li>
-<li><code>context</code> (string) if set to 'query' and <code>runValidators</code> is on, <code>this</code> will refer to the query in custom validator functions that update validation runs. Does nothing if <code>runValidators</code> is false.</li>
+<li><code>new</code>: bool - 如果设置为 true，不再返回旧文档而是更新后的文档。默认值 false（从 4.0 版本开始）</li>
+<li><code>upsert</code>: bool - 如果文档不存在则插入一条新数据。默认值 false</li>
+<li><code>fields</code>: {Object|String} - 选择字段。等效于 <code>.select(fields).findOneAndUpdate()</code></li>
+<li><code>sort</code>: 如果查询条件匹配多条文档，可以设置排序条件以确定更新哪条文档（排序后的第一条）</li>
+<li><code>maxTimeMS</code>: 对查询设置时间限制 - 需要 mongodb 2.6.0 及以上版本</li>
+<li><code>runValidators</code>: 如果值为 true，更新操作执行时会做 <a href="/docs/validation.html#update-validators">update validators</a> 。 Update validators 会依照 model 的 schema 对更新操作做校验。</li>
+<li><code>setDefaultsOnInsert</code>: 如果该选项和 <code>upsert</code> 都是 true， mongoose 会在插入新文档时应用 schema 中指定的 <a href="http://mongoosejs.com/docs/defaults.html">默认值</a>。该选项只会在 MongoDB 2.4 版本及以上生效，因为它依赖 MongoDB 的 <a href="https://docs.mongodb.org/v2.4/reference/operator/update/setOnInsert/"><code>$setOnInsert</code></a> 操作符。</li>
+<li><code>rawResult</code>: 如果值为 true，将返回 MongoDB 驱动的 <a href="http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#findAndModify">原生结果（raw result）</a></li>
+<li><code>context</code>: string - if set to 'query' and <code>runValidators</code> is on, <code>this</code> will refer to the query in custom validator functions that update validation runs. Does nothing if <code>runValidators</code> is false.</li>
 </ul>
 
-<h4>Callback Signature</h4>
+<h4>回调函数签名</h4>
 
 <pre><code><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, doc</span>) </span>{
-  <span class="hljs-comment">// error: any errors that occurred</span>
-  <span class="hljs-comment">// doc: the document before updates are applied if `new: false`, or after updates if `new = true`</span>
+  <span class="hljs-comment">// error: 发生错误时有值</span>
+  <span class="hljs-comment">// doc: 如果 `new: false` 则为更新前的文档；如果 `new: true` 则为更新后的文档</span>
 }</code></pre>
 
-<h4>Examples</h4>
+<h4>示例</h4>
 
 <pre><code>query.findOneAndUpdate(conditions, update, options, callback) <span class="hljs-comment">// executes</span>
 query.findOneAndUpdate(conditions, update, options)  <span class="hljs-comment">// returns Query</span>
@@ -2188,49 +2177,49 @@ query.findOneAndUpdate(conditions, update)           <span class="hljs-comment">
 query.findOneAndUpdate(update, callback)             <span class="hljs-comment">// returns Query</span>
 query.findOneAndUpdate(update)                       <span class="hljs-comment">// returns Query</span>
 query.findOneAndUpdate(callback)                     <span class="hljs-comment">// executes</span>
-query.findOneAndUpdate()                             <span class="hljs-comment">// returns Query</span></code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-findOneAndRemove"><a href="#query_Query-findOneAndRemove">Query.prototype.findOneAndRemove()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[conditions] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[options] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[options.rawResult] <span class="method-type">&laquo;Boolean&raquo;</span> if true, returns the <a href="http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#findAndModify">raw result from the MongoDB driver</a></li><li class="param">[options.strict] <span class="method-type">&laquo;Boolean|String&raquo;</span> overwrites the schema&#39;s <a href="http://mongoosejs.com/docs/guide.html#strict">strict mode option</a></li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> optional params are (error, document)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Issues a mongodb <a href="http://www.mongodb.org/display/DOCS/findAndModify+Command">findAndModify</a> remove command.</p>
+query.findOneAndUpdate()                             <span class="hljs-comment">// returns Query</span></code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-findOneAndRemove"><a href="#query_Query-findOneAndRemove">Query.prototype.findOneAndRemove()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[conditions] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[options] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[options.rawResult] <span class="method-type">&laquo;Boolean&raquo;</span> 如果值为 true，则返回 <a href="http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#findAndModify">MongoDB 驱动的原生结果</a></li><li class="param">[options.strict] <span class="method-type">&laquo;Boolean|String&raquo;</span> 覆盖 schema 的 <a href="http://mongoosejs.com/docs/guide.html#strict">strict mode 选项</a></li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> 可选 参数表是 (error, document)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>发起一条 mongodb <a href="http://www.mongodb.org/display/DOCS/findAndModify+Command">findAndModify</a> 删除指令。</p>
 
-<p>Finds a matching document, removes it, passing the found document (if any) to the callback. Executes immediately if <code>callback</code> is passed.</p>
+<p>查询一条匹配的文档，把它删掉，并回传给回调函数。如果有 <code>callback</code> 参数，删除指令会立即执行。</p>
 
-<p>This function triggers the following middleware.</p>
+<p>这个函数触发以下中间件</p>
 
 <ul>
 <li><code>findOneAndRemove()</code></li>
 </ul>
 
-<h4>Available options</h4>
+<h4>可选项</h4>
 
 <ul>
-<li><code>sort</code>: if multiple docs are found by the conditions, sets the sort order to choose which doc to update</li>
-<li><code>maxTimeMS</code>: puts a time limit on the query - requires mongodb >= 2.6.0</li>
-<li><code>rawResult</code>: if true, resolves to the <a href="http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#findAndModify">raw result from the MongoDB driver</a></li>
+<li><code>sort</code>: 设置排序，如果多条文档匹配查询条件，将影响到实际更新哪条文档（只会更新第一条）</li>
+<li><code>maxTimeMS</code>: 对查询设置时间限制 - 需要 mongodb 2.6.0 及以上版本</li>
+<li><code>rawResult</code>: 如果设置为 true，返回结果将是 <a href="http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#findAndModify">MongoDB 驱动的原生结果</a></li>
 </ul>
 
-<h4>Callback Signature</h4>
+<h4>回调函数签名</h4>
 
 <pre><code><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, doc</span>) </span>{
-  <span class="hljs-comment">// error: any errors that occurred</span>
-  <span class="hljs-comment">// doc: the document before updates are applied if `new: false`, or after updates if `new = true`</span>
+  <span class="hljs-comment">// error: 可能爆出的错误</span>
+  <span class="hljs-comment">// doc: 若 `new = false` 则是更新之前的文档，若 `new = true` 则是更新之后的文档</span>
 }</code></pre>
 
-<h4>Examples</h4>
+<h4>示例</h4>
 
 <pre><code>A.where().findOneAndRemove(conditions, options, callback) <span class="hljs-comment">// executes</span>
 A.where().findOneAndRemove(conditions, options)  <span class="hljs-comment">// return Query</span>
 A.where().findOneAndRemove(conditions, callback) <span class="hljs-comment">// executes</span>
 A.where().findOneAndRemove(conditions) <span class="hljs-comment">// returns Query</span>
 A.where().findOneAndRemove(callback)   <span class="hljs-comment">// executes</span>
-A.where().findOneAndRemove()           <span class="hljs-comment">// returns Query</span></code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-update"><a href="#query_Query-update">Query.prototype.update()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[criteria] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[doc] <span class="method-type">&laquo;Object&raquo;</span> the update command</li><li class="param">[options] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[options.multipleCastError] <span class="method-type">&laquo;Boolean&raquo;</span> by default, mongoose only returns the first error that occurred in casting the query. Turn on this option to aggregate all the cast errors.</li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> optional, params are (error, writeOpResult)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Declare and/or execute this query as an update() operation.</p>
+A.where().findOneAndRemove()           <span class="hljs-comment">// returns Query</span></code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-update"><a href="#query_Query-update">Query.prototype.update()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[criteria] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[doc] <span class="method-type">&laquo;Object&raquo;</span> the update command</li><li class="param">[options] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[options.multipleCastError] <span class="method-type">&laquo;Boolean&raquo;</span> 默认情况下，mongoose 只返回 query 转换中报的第一个错。激活该选项会聚合转换中所有的报错。</li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> 可选，参数表是 (error, writeOpResult)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>声明且（/或）执行当前查询为 update() 操作。</p>
 
-<p><em>All paths passed that are not $atomic operations will become $set ops.</em></p>
+<p><em>被传入的路径中非原子（$atomic）的操作，会以 $set 形式执行。</em></p>
 
-<p>This function triggers the following middleware.</p>
+<p>这个函数触发以下中间件</p>
 
 <ul>
 <li><code>update()</code></li>
 </ul>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>Model.where({ _id: id }).update({ title: <span class="hljs-string">'words'</span> })
 
@@ -2238,56 +2227,56 @@ A.where().findOneAndRemove()           <span class="hljs-comment">// returns Que
 
 Model.where({ _id: id }).update({ $set: { title: <span class="hljs-string">'words'</span> }})</code></pre>
 
-<h4>Valid options:</h4>
+<h4>可用选项:</h4>
 
 <ul>
-<li><code>safe</code> (boolean) safe mode (defaults to value set in schema (true))</li>
-<li><code>upsert</code> (boolean) whether to create the doc if it doesn't match (false)</li>
-<li><code>multi</code> (boolean) whether multiple documents should be updated (false)</li>
-<li><code>runValidators</code>: if true, runs <a href="/docs/validation.html#update-validators">update validators</a> on this command. Update validators validate the update operation against the model's schema.</li>
-<li><code>setDefaultsOnInsert</code>: if this and <code>upsert</code> are true, mongoose will apply the <a href="http://mongoosejs.com/docs/defaults.html">defaults</a> specified in the model's schema if a new document is created. This option only works on MongoDB >= 2.4 because it relies on <a href="https://docs.mongodb.org/v2.4/reference/operator/update/setOnInsert/">MongoDB's <code>$setOnInsert</code> operator</a>.</li>
-<li><code>strict</code> (boolean) overrides the <code>strict</code> option for this update</li>
-<li><code>overwrite</code> (boolean) disables update-only mode, allowing you to overwrite the doc (false)</li>
-<li><code>context</code> (string) if set to 'query' and <code>runValidators</code> is on, <code>this</code> will refer to the query in custom validator functions that update validation runs. Does nothing if <code>runValidators</code> is false.</li>
+<li><code>safe</code> (boolean) 安全模式（默认值同 schema 中的定义（true））</li>
+<li><code>upsert</code> (boolean) 没有匹配文档时是否创建新文档 (false)</li>
+<li><code>multi</code> (boolean) 是否更新多条文档 (false)</li>
+<li><code>runValidators</code>: 如果设为 true，这条命令将执行 <a href="/docs/validation.html#update-validators">update validators</a> 。 Update validators 依据 schema 校验更新选项。</li>
+<li><code>setDefaultsOnInsert</code>: 如果该选项跟 <code>upsert</code> 都为 true，创建新文档时 mongoose 会应用 schema 中指定的 <a href="http://mongoosejs.com/docs/defaults.html">默认值</a> 。 该选项只能用于 MongoDB >= 2.4 ，因为依赖于 <a href="https://docs.mongodb.org/v2.4/reference/operator/update/setOnInsert/">MongoDB's <code>$setOnInsert</code> </a>操作符。</li>
+<li><code>strict</code> (boolean) 覆盖当前 update 的 <code>strict</code> 选项</li>
+<li><code>overwrite</code> (boolean) 禁用 update-only 模式，允许你替换整个文档 (false)</li>
+<li><code>context</code> (string) if set to 'query' and <code>runValidators</code> is on, <code>this</code> will refer to the query in custom validator functions that update validation runs. 如果 <code>runValidators</code> 是 false 则什么都不做。</li>
 </ul>
 
-<h4>Note</h4>
+<h4>注意</h4>
 
-<p>Passing an empty object <code>{}</code> as the doc will result in a no-op unless the <code>overwrite</code> option is passed. Without the <code>overwrite</code> option set, the update operation will be ignored and the callback executed without sending the command to MongoDB so as to prevent accidently overwritting documents in the collection.</p>
+<p>doc 参数被传入空对象 <code>{}</code> 会造成一次空操作，除非 <code>overwrite</code> 选项被激活。<code>overwrite</code> 选项没有激活的情况下，update 命令不会发送给 MongoDB 而被忽略，回调函数直接被调用，以防止数据集合的文档被意外覆盖。</p>
 
-<h4>Note</h4>
+<h4>注意</h4>
 
-<p>The operation is only executed when a callback is passed. To force execution without a callback, we must first call update() and then execute it by using the <code>exec()</code> method.</p>
+<p>只有传入了回调函数，操作才会被执行。要想强制执行回调，你得先调用 update() 然后用 <code>exec()</code> 方法使其执行。</p>
 
 <pre><code>var q = Model.where({ _id: id });
 q.update({ $set: { name: 'bob' }}).update(); // not executed
 
 q.update({ $set: { name: 'bob' }}).exec(); // executed
 
-// keys that are not $atomic ops become $set.
-// this executes the same command as the previous example.
+// 非 $atomic ops 的键都会被转换成 $set。
+// 本句执行跟上例一样的命令。
 q.update({ name: 'bob' }).exec();
 
-// overwriting with empty docs
+// 用空文档替换更新
 var q = Model.where({ _id: id }).setOptions({ overwrite: true })
 q.update({ }, callback); // executes
 
-// multi update with overwrite to empty doc
+// 用空文档进行多条替换更新
 var q = Model.where({ _id: id });
 q.setOptions({ multi: true, overwrite: true })
 q.update({ });
 q.update(callback); // executed
 
-// multi updates
+// 多条更新
 Model.where()
      .update({ name: /^match/ }, { $set: { arr: [] }}, { multi: true }, callback)
 
-// more multi updates
+// 再多一例多条更新
 Model.where()
      .setOptions({ multi: true })
      .update({ $set: { arr: [] }}, callback)
 
-// single update by default
+// 默认是单条更新
 Model.where({ email: '<a href='mailto:address@example.com'>address@example.com</a>' })
      .update({ $inc: { counter: 1 }}, callback)
 </code></pre>
@@ -2302,41 +2291,41 @@ update(doc, cb) <span class="hljs-comment">// executes</span>
 update(doc)
 update(cb) <span class="hljs-comment">// executes</span>
 update(<span class="hljs-literal">true</span>) <span class="hljs-comment">// executes</span>
-update()</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-updateMany"><a href="#query_Query-updateMany">Query.prototype.updateMany()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[criteria] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[doc] <span class="method-type">&laquo;Object&raquo;</span> the update command</li><li class="param">[options] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> optional params are (error, writeOpResult)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Declare and/or execute this query as an updateMany() operation. Same as <code>update()</code>, except MongoDB will update <em>all</em> documents that match <code>criteria</code> (as opposed to just the first one) regardless of the value of the <code>multi</code> option.</p>
+update()</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-updateMany"><a href="#query_Query-updateMany">Query.prototype.updateMany()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[criteria] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[doc] <span class="method-type">&laquo;Object&raquo;</span> the update command</li><li class="param">[options] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[options.multipleCastError] <span class="method-type">&laquo;Boolean&raquo;</span> 默认情况下，mongoose 只返回 query 转换中报的第一个错。激活该选项会聚合转换中所有的报错。</li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> 可选，参数表是 (error, writeOpResult)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>声明且（/或）执行当前查询为 updateMany() 操作。不同于 <code>update()</code> 的是， MongoDB 会忽略 <code>multi</code> 选项，更新 <em>所有</em> 匹配 <code>criteria</code> 的文档（而非只是第一条）。</p>
 
-<p><strong>Note</strong> updateMany will <em>not</em> fire update middleware. Use <code>pre('updateMany')</code> and <code>post('updateMany')</code> instead.</p>
+<p><strong>注意</strong> updateMany <em>不会</em> 触发 update 中间件。可以用 <code>pre('updateMany')</code> 和 <code>post('updateMany')</code> 代替。</p>
 
-<p>This function triggers the following middleware.</p>
+<p>这个函数触发以下中间件</p>
 
 <ul>
 <li><code>updateMany()</code></li>
-</ul></div><hr class="separate-api-elements"><h3 id="query_Query-updateOne"><a href="#query_Query-updateOne">Query.prototype.updateOne()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[criteria] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[doc] <span class="method-type">&laquo;Object&raquo;</span> the update command</li><li class="param">[options] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> params are (error, writeOpResult)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Declare and/or execute this query as an updateOne() operation. Same as <code>update()</code>, except MongoDB will update <em>only</em> the first document that matches <code>criteria</code> regardless of the value of the <code>multi</code> option.</p>
+</ul></div><hr class="separate-api-elements"><h3 id="query_Query-updateOne"><a href="#query_Query-updateOne">Query.prototype.updateOne()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[criteria] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[doc] <span class="method-type">&laquo;Object&raquo;</span> the update command</li><li class="param">[options] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[options.multipleCastError] <span class="method-type">&laquo;Boolean&raquo;</span> 默认情况下，mongoose 只返回 query 转换中报的第一个错。激活该选项会聚合转换中所有的报错。</li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> 参数表是(error, writeOpResult)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>声明且（/或）执行当前查询为 updateMany() 操作。不同于 <code>update()</code> 的是，MongoDB 会忽略 <code>multi</code> 选项，<em>只</em> 更新第一条匹配 <code>criteria</code> 的文档。</p>
 
-<p><strong>Note</strong> updateOne will <em>not</em> fire update middleware. Use <code>pre('updateOne')</code> and <code>post('updateOne')</code> instead.</p>
+<p><strong>注意</strong> updateOne <em>不会</em> 触发 update 中间件。可以用 <code>pre('updateOne')</code> 和 <code>post('updateOne')</code> 代替。</p>
 
-<p>This function triggers the following middleware.</p>
+<p>这个函数触发以下中间件</p>
 
 <ul>
 <li><code>updateOne()</code></li>
-</ul></div><hr class="separate-api-elements"><h3 id="query_Query-replaceOne"><a href="#query_Query-replaceOne">Query.prototype.replaceOne()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[criteria] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[doc] <span class="method-type">&laquo;Object&raquo;</span> the update command</li><li class="param">[options] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> optional params are (error, writeOpResult)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Declare and/or execute this query as a replaceOne() operation. Same as <code>update()</code>, except MongoDB will replace the existing document and will not accept any atomic operators (<code>$set</code>, etc.)</p>
+</ul></div><hr class="separate-api-elements"><h3 id="query_Query-replaceOne"><a href="#query_Query-replaceOne">Query.prototype.replaceOne()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[criteria] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[doc] <span class="method-type">&laquo;Object&raquo;</span> the update command</li><li class="param">[options] <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> 可选 参数表是 (error, writeOpResult)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>声明且（/或）执行当前查询为 replaceOne() 操作。不同于 <code>update()</code> 的是，MongoDB 不接受原子操作符（<code>$set</code>等）直接替换存在的文档。</p>
 
-<p><strong>Note</strong> replaceOne will <em>not</em> fire update middleware. Use <code>pre('replaceOne')</code> and <code>post('replaceOne')</code> instead.</p>
+<p><strong>注意</strong> replaceOne <em>不会</em> 触发 update 中间件。可以用 <code>pre('replaceOne')</code> 和 <code>post('replaceOne')</code> 代替。</p>
 
-<p>This function triggers the following middleware.</p>
+<p>这个函数触发以下中间件</p>
 
 <ul>
 <li><code>replaceOne()</code></li>
-</ul></div><hr class="separate-api-elements"><h3 id="query_Query-exec"><a href="#query_Query-exec">Query.prototype.exec()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[operation] <span class="method-type">&laquo;String|Function&raquo;</span> </li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> optional params depend on the function being called</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Promise&raquo;</span> </li></ul><div><p>Executes the query</p>
+</ul></div><hr class="separate-api-elements"><h3 id="query_Query-exec"><a href="#query_Query-exec">Query.prototype.exec()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[operation] <span class="method-type">&laquo;String|Function&raquo;</span> </li><li class="param">[callback] <span class="method-type">&laquo;Function&raquo;</span> 可选 参数表取决于调用的函数</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Promise&raquo;</span> </li></ul><div><p>执行查询</p>
 
-<h4>Examples:</h4>
+<h4>示例:</h4>
 
 <pre><code><span class="hljs-keyword">var</span> promise = query.exec();
 <span class="hljs-keyword">var</span> promise = query.exec(<span class="hljs-string">'update'</span>);
 
 query.exec(callback);
-query.exec(<span class="hljs-string">'find'</span>, callback);</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-then"><a href="#query_Query-then">Query.prototype.then()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[resolve] <span class="method-type">&laquo;Function&raquo;</span> </li><li class="param">[reject] <span class="method-type">&laquo;Function&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Promise&raquo;</span> </li></ul><div><p>Executes the query returning a <code>Promise</code> which will be resolved with either the doc(s) or rejected with the error.</p></div><hr class="separate-api-elements"><h3 id="query_Query-catch"><a href="#query_Query-catch">Query.prototype.catch()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[reject] <span class="method-type">&laquo;Function&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Promise&raquo;</span> </li></ul><div><p>Executes the query returning a <code>Promise</code> which will be resolved with either the doc(s) or rejected with the error. Like <code>.then()</code>, but only takes a rejection handler.</p></div><hr class="separate-api-elements"><h3 id="query_Query-populate"><a href="#query_Query-populate">Query.prototype.populate()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">path <span class="method-type">&laquo;Object|String&raquo;</span> either the path to populate or an object specifying all parameters</li><li class="param">[select] <span class="method-type">&laquo;Object|String&raquo;</span> Field selection for the population query</li><li class="param">[model] <span class="method-type">&laquo;Model&raquo;</span> The model you wish to use for population. If not specified, populate will look up the model by the name in the Schema&#39;s <code>ref</code> field.</li><li class="param">[match] <span class="method-type">&laquo;Object&raquo;</span> Conditions for the population query</li><li class="param">[options] <span class="method-type">&laquo;Object&raquo;</span> Options for the population query (sort, etc)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Specifies paths which should be populated with other documents.</p>
+query.exec(<span class="hljs-string">'find'</span>, callback);</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-then"><a href="#query_Query-then">Query.prototype.then()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[resolve] <span class="method-type">&laquo;Function&raquo;</span> </li><li class="param">[reject] <span class="method-type">&laquo;Function&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Promise&raquo;</span> </li></ul><div><p>执行返回 <code>Promise</code> 的查询，成功返回 doc(s)，失败返回 error</p></div><hr class="separate-api-elements"><h3 id="query_Query-catch"><a href="#query_Query-catch">Query.prototype.catch()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[reject] <span class="method-type">&laquo;Function&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Promise&raquo;</span> </li></ul><div><p>执行返回 <code>Promise</code> 的查询，成功返回 doc(s)，失败返回 error。 类似于 <code>.then()</code> 但是只接受失败句柄。</p></div><hr class="separate-api-elements"><h3 id="query_Query-populate"><a href="#query_Query-populate">Query.prototype.populate()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">path <span class="method-type">&laquo;Object|String&raquo;</span> 需要做表关联的字段路径，或者包含所有参数的对象</li><li class="param">[select] <span class="method-type">&laquo;Object|String&raquo;</span> 表关联查询要选择的字段</li><li class="param">[model] <span class="method-type">&laquo;Model&raquo;</span> 表关联的 model 。如果没有指定，将以 Schema 中 <code>ref</code> 字段为名称查找 model 进行关联。</li><li class="param">[match] <span class="method-type">&laquo;Object&raquo;</span> population 查询的条件</li><li class="param">[options] <span class="method-type">&laquo;Object&raquo;</span> population 查询的选项 (sort 等)</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>指定哪些字段需要关联查询（populated）其他文档。</p>
 
-<h4>Example:</h4>
+<h4>示例:</h4>
 
 <pre><code>Kitten.findOne().populate(<span class="hljs-string">'owner'</span>).exec(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, kitten</span>) </span>{
   <span class="hljs-built_in">console</span>.log(kitten.owner.name) <span class="hljs-comment">// Max</span>
@@ -2356,33 +2345,31 @@ Kitten.find().populate(<span class="hljs-string">'owner'</span>, <span class="hl
   <span class="hljs-built_in">console</span>.log(kittens[<span class="hljs-number">0</span>].owner.name) <span class="hljs-comment">// Zoopa</span>
 })</code></pre>
 
-<p>Paths are populated after the query executes and a response is received. A separate query is then executed for each path specified for population. After a response for each query has also been returned, the results are passed to the callback.</p></div><hr class="separate-api-elements"><h3 id="query_Query-cast"><a href="#query_Query-cast">Query.prototype.cast()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">model <span class="method-type">&laquo;Model&raquo;</span> </li><li class="param">[obj] <span class="method-type">&laquo;Object&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Object&raquo;</span> </li></ul><div><p>Casts this query to the schema of <code>model</code></p>
+<p>字段的表关联在查询结束并收到响应之后执行。每个指定表关联的路径都由一个独立的查询执行。收到所有查询的响应之后，查询结果被传递给回调函数。</p></div><hr class="separate-api-elements"><h3 id="query_Query-cast"><a href="#query_Query-cast">Query.prototype.cast()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">model <span class="method-type">&laquo;Model&raquo;</span> </li><li class="param">[obj] <span class="method-type">&laquo;Object&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Object&raquo;</span> </li></ul><div><p>Casts this query to the schema of <code>model</code></p>
 
-<h4>Note</h4>
+<h4>注意</h4>
 
-<p>If <code>obj</code> is present, it is cast instead of this query.</p></div><hr class="separate-api-elements"><h3 id="query_Query-cursor"><a href="#query_Query-cursor">Query.prototype.cursor()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[options] <span class="method-type">&laquo;Object&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;QueryCursor&raquo;</span> </li></ul><div><p>Returns a wrapper around a <a href="http://mongodb.github.io/node-mongodb-native/2.1/api/Cursor.html">mongodb driver cursor</a>. A QueryCursor exposes a Streams3 interface, as well as a <code>.next()</code> function.</p>
+<p>If <code>obj</code> is present, it is cast instead of this query.</p></div><hr class="separate-api-elements"><h3 id="query_Query-cursor"><a href="#query_Query-cursor">Query.prototype.cursor()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[options] <span class="method-type">&laquo;Object&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;QueryCursor&raquo;</span> </li></ul><div><p>返回对 <a href="http://mongodb.github.io/node-mongodb-native/2.1/api/Cursor.html">mongodb driver cursor</a> 的封装。 QueryCursor 暴露了一个 Streams3 接口，和一个 <code>.next()</code> 函数。</p>
 
-<p>The <code>.cursor()</code> function triggers pre find hooks, but <strong>not</strong> post find hooks.</p>
+<p><code>.cursor()</code> 函数触发 find 的前置钩子，但<strong>不会</strong>触发后置钩子。</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
-<pre><code><span class="hljs-comment">// There are 2 ways to use a cursor. First, as a stream:</span>
-Thing.
+<pre><code><span class="hljs-comment">// 有2种方式使用游标。第一种，流式:</span>
   find({ name: <span class="hljs-regexp">/^hello/</span> }).
   cursor().
   on(<span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">doc</span>) </span>{ <span class="hljs-built_in">console</span>.log(doc); }).
   on(<span class="hljs-string">'end'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Done!'</span>); });
 
-<span class="hljs-comment">// Or you can use `.next()` to manually get the next doc in the stream.</span>
-<span class="hljs-comment">// `.next()` returns a promise, so you can use promises or callbacks.</span>
+<span class="hljs-comment">// 或者使用 `.next()` 手动获取流中的下一个文档。</span>
+<span class="hljs-comment">// `.next()` 返回一个 promise，你可以用 promises 或者 callbacks.</span>
 <span class="hljs-keyword">var</span> cursor = Thing.find({ name: <span class="hljs-regexp">/^hello/</span> }).cursor();
 cursor.next(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, doc</span>) </span>{
   <span class="hljs-built_in">console</span>.log(doc);
 });
 
-<span class="hljs-comment">// Because `.next()` returns a promise, you can use co</span>
-<span class="hljs-comment">// to easily iterate through all documents without loading them</span>
-<span class="hljs-comment">// all into memory.</span>
+<span class="hljs-comment">// 由于 `.next()` 返回一个 promise，你可以使用 co</span>
+<span class="hljs-comment">// 很容易地遍历所有文档而不用把它们都加载到内存里</span>
 co(<span class="hljs-function"><span class="hljs-keyword">function</span>*(<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">const</span> cursor = Thing.find({ name: <span class="hljs-regexp">/^hello/</span> }).cursor();
   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> doc = <span class="hljs-keyword">yield</span> cursor.next(); doc != <span class="hljs-literal">null</span>; doc = <span class="hljs-keyword">yield</span> cursor.next()) {
@@ -2390,23 +2377,23 @@ co(<span class="hljs-function"><span class="hljs-keyword">function</span>*(<span
   }
 });</code></pre>
 
-<h4>Valid options</h4>
+<h4>可选项</h4>
 
 <ul>
-<li><code>transform</code>: optional function which accepts a mongoose document. The return value of the function will be emitted on <code>data</code> and returned by <code>.next()</code>.</li>
-</ul></div><hr class="separate-api-elements"><h3 id="query_Query-maxscan"><a href="#query_Query-maxscan">Query.prototype.maxscan()</a></h3><div><p><em>DEPRECATED</em> Alias of <code>maxScan</code></p></div><hr class="separate-api-elements"><h3 id="query_Query-tailable"><a href="#query_Query-tailable">Query.prototype.tailable()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">bool <span class="method-type">&laquo;Boolean&raquo;</span> defaults to true</li><li class="param">[opts] <span class="method-type">&laquo;Object&raquo;</span> options to set</li><li class="param">[opts.numberOfRetries] <span class="method-type">&laquo;Number&raquo;</span> if cursor is exhausted, retry this many times before giving up</li><li class="param">[opts.tailableRetryInterval] <span class="method-type">&laquo;Number&raquo;</span> if cursor is exhausted, wait this many milliseconds before retrying</li></ul><div><p>Sets the tailable option (for use with capped collections).</p>
+<li><code>transform</code>: 可选 接收一个 mongoose document 参数的函数。函数的返回值会成为 <code>data</code> 事件的响应结果和 <code>.next()</code> 函数的返回值。</li>
+</ul></div><hr class="separate-api-elements"><h3 id="query_Query-maxscan"><a href="#query_Query-maxscan">Query.prototype.maxscan()</a></h3><div><p><em>DEPRECATED</em> Alias of <code>maxScan</code></p></div><hr class="separate-api-elements"><h3 id="query_Query-tailable"><a href="#query_Query-tailable">Query.prototype.tailable()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">bool <span class="method-type">&laquo;Boolean&raquo;</span> 默认值 true</li><li class="param">[opts] <span class="method-type">&laquo;Object&raquo;</span> 要设置的选项</li><li class="param">[opts.numberOfRetries] <span class="method-type">&laquo;Number&raquo;</span> 游标用尽时，重试终止前的次数</li><li class="param">[opts.tailableRetryInterval] <span class="method-type">&laquo;Number&raquo;</span> 游标用尽时，重试之前等待的毫秒数</li></ul><div><p>设置 tailable 选项 (capped collections 中会使用).</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>query.tailable() <span class="hljs-comment">// true</span>
 query.tailable(<span class="hljs-literal">true</span>)
 query.tailable(<span class="hljs-literal">false</span>)</code></pre>
 
-<h4>Note</h4>
+<h4>注意</h4>
 
-<p>Cannot be used with <code>distinct()</code></p></div><hr class="separate-api-elements"><h3 id="query_Query-intersects"><a href="#query_Query-intersects">Query.prototype.intersects()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[arg] <span class="method-type">&laquo;Object&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Declares an intersects query for <code>geometry()</code>.</p>
+<p>不能和 <code>distinct()</code> 一起使用</p></div><hr class="separate-api-elements"><h3 id="query_Query-intersects"><a href="#query_Query-intersects">Query.prototype.intersects()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[arg] <span class="method-type">&laquo;Object&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Declares an intersects query for <code>geometry()</code>.</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>query.where(<span class="hljs-string">'path'</span>).intersects().geometry({
     type: <span class="hljs-string">'LineString'</span>
@@ -2418,15 +2405,15 @@ query.where(<span class="hljs-string">'path'</span>).intersects({
   , coordinates: [[<span class="hljs-number">180.0</span>, <span class="hljs-number">11.0</span>], [<span class="hljs-number">180</span>, <span class="hljs-number">9.0</span>]]
 })</code></pre>
 
-<h4>NOTE:</h4>
+<h4>注意:</h4>
 
 <p><strong>MUST</strong> be used after <code>where()</code>.</p>
 
-<h4>NOTE:</h4>
+<h4>注意:</h4>
 
 <p>In Mongoose 3.7, <code>intersects</code> changed from a getter to a function. If you need the old syntax, use <a href="https://github.com/ebensing/mongoose-within">this</a>.</p></div><hr class="separate-api-elements"><h3 id="query_Query-geometry"><a href="#query_Query-geometry">Query.prototype.geometry()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">object <span class="method-type">&laquo;Object&raquo;</span> Must contain a <code>type</code> property which is a String and a <code>coordinates</code> property which is an Array. See the examples.</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Specifies a <code>$geometry</code> condition</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code><span class="hljs-keyword">var</span> polyA = [[[ <span class="hljs-number">10</span>, <span class="hljs-number">20</span> ], [ <span class="hljs-number">10</span>, <span class="hljs-number">40</span> ], [ <span class="hljs-number">30</span>, <span class="hljs-number">40</span> ], [ <span class="hljs-number">30</span>, <span class="hljs-number">20</span> ]]]
 query.where(<span class="hljs-string">'loc'</span>).within().geometry({ type: <span class="hljs-string">'Polygon'</span>, coordinates: polyA })
@@ -2444,7 +2431,7 @@ query.where(<span class="hljs-string">'loc'</span>).intersects().geometry({ type
 
 <p>The argument is assigned to the most recent path passed to <code>where()</code>.</p>
 
-<h4>NOTE:</h4>
+<h4>注意:</h4>
 
 <p><code>geometry()</code> <strong>must</strong> come after either <code>intersects()</code> or <code>within()</code>.</p>
 
@@ -2452,29 +2439,29 @@ query.where(<span class="hljs-string">'loc'</span>).intersects().geometry({ type
 
 <p>These operators return documents sorted by distance.</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>query.where(<span class="hljs-string">'loc'</span>).near({ center: [<span class="hljs-number">10</span>, <span class="hljs-number">10</span>] });
 query.where(<span class="hljs-string">'loc'</span>).near({ center: [<span class="hljs-number">10</span>, <span class="hljs-number">10</span>], maxDistance: <span class="hljs-number">5</span> });
 query.where(<span class="hljs-string">'loc'</span>).near({ center: [<span class="hljs-number">10</span>, <span class="hljs-number">10</span>], maxDistance: <span class="hljs-number">5</span>, spherical: <span class="hljs-literal">true</span> });
 query.near(<span class="hljs-string">'loc'</span>, { center: [<span class="hljs-number">10</span>, <span class="hljs-number">10</span>], maxDistance: <span class="hljs-number">5</span> });</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-nearSphere"><a href="#query_Query-nearSphere">Query.prototype.nearSphere()</a></h3><div><p><em>DEPRECATED</em> Specifies a <code>$nearSphere</code> condition</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>query.where(<span class="hljs-string">'loc'</span>).nearSphere({ center: [<span class="hljs-number">10</span>, <span class="hljs-number">10</span>], maxDistance: <span class="hljs-number">5</span> });</code></pre>
 
 <p><strong>Deprecated.</strong> Use <code>query.near()</code> instead with the <code>spherical</code> option set to <code>true</code>.</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>query.where(<span class="hljs-string">'loc'</span>).near({ center: [<span class="hljs-number">10</span>, <span class="hljs-number">10</span>], spherical: <span class="hljs-literal">true</span> });</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-polygon"><a href="#query_Query-polygon">Query.prototype.polygon()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String|Array&raquo;</span> </li><li class="param">[coordinatePairs...] <span class="method-type">&laquo;Array|Object&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Specifies a $polygon condition</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code>query.where(<span class="hljs-string">'loc'</span>).within().polygon([<span class="hljs-number">10</span>,<span class="hljs-number">20</span>], [<span class="hljs-number">13</span>, <span class="hljs-number">25</span>], [<span class="hljs-number">7</span>,<span class="hljs-number">15</span>])
 query.polygon(<span class="hljs-string">'loc'</span>, [<span class="hljs-number">10</span>,<span class="hljs-number">20</span>], [<span class="hljs-number">13</span>, <span class="hljs-number">25</span>], [<span class="hljs-number">7</span>,<span class="hljs-number">15</span>])</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-box"><a href="#query_Query-box">Query.prototype.box()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">val <span class="method-type">&laquo;Object&raquo;</span> </li><li class="param">Upper <span class="method-type">&laquo;[Array]&raquo;</span> Right Coords</li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Specifies a $box condition</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code><span class="hljs-keyword">var</span> lowerLeft = [<span class="hljs-number">40.73083</span>, <span class="hljs-number">-73.99756</span>]
 <span class="hljs-keyword">var</span> upperRight= [<span class="hljs-number">40.741404</span>,  <span class="hljs-number">-73.988135</span>]
@@ -2482,7 +2469,7 @@ query.polygon(<span class="hljs-string">'loc'</span>, [<span class="hljs-number"
 query.where(<span class="hljs-string">'loc'</span>).within().box(lowerLeft, upperRight)
 query.box({ ll : lowerLeft, ur : upperRight })</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-circle"><a href="#query_Query-circle">Query.prototype.circle()</a></h3><h5>Parameters</h5><ul class="params"><li class="param">[path] <span class="method-type">&laquo;String&raquo;</span> </li><li class="param">area <span class="method-type">&laquo;Object&raquo;</span> </li></ul><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Query&raquo;</span> this</li></ul><div><p>Specifies a $center or $centerSphere condition.</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code><span class="hljs-keyword">var</span> area = { center: [<span class="hljs-number">50</span>, <span class="hljs-number">50</span>], radius: <span class="hljs-number">10</span>, unique: <span class="hljs-literal">true</span> }
 query.where(<span class="hljs-string">'loc'</span>).within().circle(area)
@@ -2501,7 +2488,7 @@ query.circle(<span class="hljs-string">'loc'</span>, area);</code></pre>
 
 <p><strong>Deprecated.</strong> Use <a href="#query_Query-circle">circle</a> instead.</p>
 
-<h4>Example</h4>
+<h4>示例</h4>
 
 <pre><code><span class="hljs-keyword">var</span> area = { center: [<span class="hljs-number">50</span>, <span class="hljs-number">50</span>], radius: <span class="hljs-number">10</span> };
 query.where(<span class="hljs-string">'loc'</span>).within().centerSphere(area);</code></pre></div><hr class="separate-api-elements"><h3 id="query_Query-selected"><a href="#query_Query-selected">Query.prototype.selected()</a></h3><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Boolean&raquo;</span> </li></ul><div><p>Determines if field selection has been made.</p></div><hr class="separate-api-elements"><h3 id="query_Query-selectedInclusively"><a href="#query_Query-selectedInclusively">Query.prototype.selectedInclusively()</a></h3><h5>Returns:</h5><ul><li><span class="method-type">&laquo;Boolean&raquo;</span> </li></ul><div><p>Determines if inclusive field selection has been made.</p>

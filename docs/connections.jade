@@ -77,11 +77,11 @@ block content
     * `autoReconnect`     - 底层 MongoDB 驱动在连接丢失后将自动重连。除非你是可以自己管理连接池的高手，否则**不要**把这个选项设为 `false`
     * `reconnectTries`    - If you're connected to a single server or mongos proxy (as opposed to a replica set), the MongoDB driver will try to reconnect every `reconnectInterval` milliseconds for `reconnectTries` times, and give up afterward. When the driver gives up, the mongoose connection emits a `reconnectFailed` event. This option does nothing for replica set connections.
     * `reconnectInterval` - 见 `reconnectTries`
-    * `promiseLibrary`    - sets the [underlying driver's promise library](http://mongodb.github.io/node-mongodb-native/2.1/api/MongoClient.html)
-    * `poolSize`          - The maximum number of sockets the MongoDB driver will keep open for this connection. By default, `poolSize` is 5. Keep in mind that, as of MongoDB 3.4, MongoDB only allows one operation per socket at a time, so you may want to increase this if you find you have a few slow queries that are blocking faster queries from proceeding.
-    * `bufferMaxEntries`  - The MongoDB driver also has its own buffering mechanism that kicks in when the driver is disconnected. Set this option to 0 and set `bufferCommands` to `false` on your schemas if you want your database operations to fail immediately when the driver is not connected, as opposed to waiting for reconnection.
+    * `promiseLibrary`    - 设定底层 [promise 库](http://mongodb.github.io/node-mongodb-native/2.1/api/MongoClient.html)
+    * `poolSize`          - MongoDB 保持的最大 socket 连接数。 `poolSize` 的默认值是 5。注意，MongoDB 3.4 之前， MongoDB 只允许每个 socket 同时进行一个操作，所以如果你有几个缓慢请求卡着后面快的请求，可以尝试增加连接数。
+    * `bufferMaxEntries`  - MongoDB 驱动同样有自己的离线时缓存机制。如果你希望链接错误时终止数据库操作，请将此选项设为 0 以及把 `bufferCommands` 设为 `false` 。
 
-    Example:
+    举例：
 
     ```javascript
     const options = {
@@ -96,10 +96,9 @@ block content
     mongoose.connect(uri, options);
     ```
 
-    <h3 id="callback"><a href="#callback">Callback</a></h3>
+    <h3 id="callback"><a href="#callback">回调</a></h3>
 
-    The `connect()` function also accepts a callback parameter and returns a
-    [promise](./promises.html).
+    `connect()` 函数接受回调函数，或返回一个 [promise](./promises.html)。
 
     ```javascript
     mongoose.connect(uri, options, function(error) {
@@ -113,13 +112,10 @@ block content
     );
     ```
 
-    <h3 id="connection-string-options"><a href="#connection-string-options">Connection String Options</a></h3>
+    <h3 id="connection-string-options"><a href="#connection-string-options">连接字符串（ Connection String ）选项</a></h3>
 
-    You can also specify driver options in your connection string as
-    [parameters in the query string](https://en.wikipedia.org/wiki/Query_string)
-    portion of the URI. This only applies to options passed to the MongoDB
-    driver. You **can't** set Mongoose-specific options like `bufferCommands`
-    in the query string.
+    你也可以在连接字符串填写驱动选项，但是这只适用于 MongoDB 驱动使用的选项，
+    所以类似 `bufferCommands` 的 Mongoose 专用选项**不能**在连接字符串使用。
 
     ```javascript
     mongoose.connect('mongodb://localhost:27017/test?connectTimeoutMS=1000&bufferCommands=false');
@@ -130,16 +126,11 @@ block content
     });
     ```
 
-    The disadvantage of putting options in the query string is that query
-    string options are harder to read. The advantage is that you only need a
-    single configuration option, the URI, rather than separate options for
-    `socketTimeoutMS`, `connectTimeoutMS`, etc. Best practice is to put options
-    that likely differ between development and production, like `replicaSet`
-    or `ssl`, in the connection string, and options that should remain constant,
-    like `connectTimeoutMS` or `poolSize`, in the options object.
+    把选项放在连接字符串的劣势是不便于阅读，优势是你只需要写一条连接而不需要把所有设定分开写。
+    最佳实践是把区分生产环境和开发环境的选项如 `socketTimeoutMS` 、 `connectTimeoutMS` 放在 uri ，
+    把通用的常量如 `connectTimeoutMS` 、 `poolSize` 放在选项对象里。
 
-    The MongoDB docs have a full list of
-    [supported connection string options](https://docs.mongodb.com/manual/reference/connection-string/)
+    MongoDB 的文档[可以找到](https://docs.mongodb.com/manual/reference/connection-string/)关于连接字符串的所有选项。
 
     <h3 id="keepAlive"><a href="#keepAlive">A note about keepAlive</a></h3>
 
@@ -215,8 +206,9 @@ block content
     mongoose.createConnection(uri);
     ```
 
-    <h3 id="v5-changes"><a href="#v5-changes">Option Changes in v5.x</a></h3>
+    <h3 id="v5-changes"><a href="#v5-changes">v5.x 的变化</a></h3>
 
+    
     You may see the following deprecation warning if upgrading from 4.x to 5.x
     and you didn't use the `useMongoClient` option in 4.x:
 
@@ -266,6 +258,7 @@ block content
     });
     ```
 
-    <h3 id="next">Next Up</h3>
+    <h3 id="next">下一步</h3>
 
-    Now that we've covered connections, let's take a look at [models](/docs/models.html).
+    现在我们介绍了 mongoose 的连接方式，接着看看
+    [models](/docs/models.html)。
