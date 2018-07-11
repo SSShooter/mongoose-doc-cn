@@ -97,54 +97,45 @@ mongoose.connect(<span class="hljs-string">'mongodb://localhost:27017/test'</spa
 最佳实践是把区分生产环境和开发环境的选项如 <code>socketTimeoutMS</code> 、 <code>connectTimeoutMS</code> 放在 uri ，
 把通用的常量如 <code>connectTimeoutMS</code> 、 <code>poolSize</code> 放在选项对象里。</p>
 <p>MongoDB 的文档<a href="https://docs.mongodb.com/manual/reference/connection-string/">可以找到</a>关于连接字符串的所有选项。</p>
-<h3 id="keepAlive"><a href="#keepAlive">A note about keepAlive</a></h3>
+<h3 id="keepAlive"><a href="#keepAlive">keepAlive 注意事项</a></h3>
 
-<p>For long running applications, it is often prudent to enable <code>keepAlive</code>
-with a number of milliseconds. Without it, after some period of time
-you may start to see <code>&quot;connection closed&quot;</code> errors for what seems like
-no reason. If so, after
-<a href="http://tldp.org/HOWTO/TCP-Keepalive-HOWTO/overview.html">reading this</a>,
-you may decide to enable <code>keepAlive</code>:</p>
+<p>对于长期运行的后台应用，启用毫秒级 <code>keepAlive</code> 是一个精明的操作。不这么做你可能会经常
+收到看似毫无原因的 <code>&quot;connection closed&quot;</code> 错误。遇到这个情况，
+阅读<a href="http://tldp.org/HOWTO/TCP-Keepalive-HOWTO/overview.html">这篇文章</a>，
+你或许会立刻启用 <code>keepAlive</code>:</p>
 <pre><code class="lang-javascript">mongoose.connect(uri, { keepAlive: <span class="hljs-number">120</span> });
 </code></pre>
-<h3 id="replicaset_connections"><a href="#replicaset_connections">Replica Set Connections</a></h3>
+<h3 id="replicaset_connections"><a href="#replicaset_connections">副本集（Replica Set）连接</a></h3>
 
-<p>To connect to a replica set you pass a comma delimited list of hosts to
-connect to rather than a single host.</p>
+<p>要连接到副本集，你可以用逗号分隔，传入多个地址。</p>
 <pre><code class="lang-javascript">mongoose.connect(<span class="hljs-string">'mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]'</span> [, options]);
 </code></pre>
-<p>To connect to a single node replica set, specify the <code>replicaSet</code> option.</p>
+<p>连接到单节点副本集，需指定 <code>replicaSet</code> 选项。</p>
 <pre><code class="lang-javascript">mongoose.connect(<span class="hljs-string">'mongodb://host1:port1/?replicaSet=rsName'</span>);
 </code></pre>
-<h3 id="mongos_connections"><a href="#mongos_connections">Multi-mongos support</a></h3>
+<h3 id="mongos_connections"><a href="#mongos_connections">多 mongos 支持</a></h3>
 
-<p>You can also connect to multiple <a href="https://docs.mongodb.com/manual/reference/program/mongos/">mongos</a> instances
-for high availability in a sharded cluster. You do
-<a href="http://mongodb.github.io/node-mongodb-native/3.0/tutorials/connect/#connect-to-sharded-cluster">not need to pass any special options to connect to multiple mongos</a> in mongoose 5.x.</p>
+<p>使用高性能分片集群，需要连接<a href="https://docs.mongodb.com/manual/reference/program/mongos/">多个 mongos（MongoDB Shard） 实例</a>。
+在 mongoose 5.x 中，
+你在连接多个 mongos 时<a href="http://mongodb.github.io/node-mongodb-native/3.0/tutorials/connect/#connect-to-sharded-cluster">不需要传入任何特殊选项</a>。</p>
 <pre><code class="lang-javascript"><span class="hljs-comment">// Connect to 2 mongos servers</span>
 mongoose.connect(<span class="hljs-string">'mongodb://mongosA:27501,mongosB:27501'</span>, cb);
 </code></pre>
-<h3 id="multiple_connections"><a href="#multiple_connections">Multiple connections</a></h3>
+<h3 id="multiple_connections"><a href="#multiple_connections">多个连接</a></h3>
 
-<p>So far we&#39;ve seen how to connect to MongoDB using Mongoose&#39;s default
-connection. At times we may need multiple connections open to Mongo, each
-with different read/write settings, or maybe just to different databases for
-example. In these cases we can utilize <code>mongoose.createConnection()</code> which
-accepts all the arguments already discussed and returns a fresh connection
-for you.</p>
+<p>之前我们了解如何使用 Mongoose 默认连接方法连接到 MongoDB。但有时候我们需要权限不同的多个连接，
+或是连接到不同数据库。这个情况下我们可以使用 <code>mongoose.createConnection()</code>，
+它接受之前提到的所有参数，给你返回一个新的连接。</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">const</span> conn = mongoose.createConnection(<span class="hljs-string">'mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]'</span>, options);
 </code></pre>
-<p>This <a href="./api.html#connection_Connection">connection</a> object is then used to
-create and retrieve <a href="./api.html#model_Model">models</a>. Models are
-<strong>always</strong> scoped to a single connection.</p>
-<p>Mongoose creates a <em>default connection</em> when you call <code>mongoose.connect()</code>.
-You can access the default connection using <code>mongoose.connection</code>.</p>
-<h3 id="connection_pools"><a href="connection_pools">Connection pools</a></h3>
+<p><a href="./api.html#connection_Connection">connection</a> 对象后续用于创建和检索 <a href="./api.html#model_Model">models</a>。
+models 的范围总是局限于单个连接。</p>
+<p>调用 <code>mongoose.connect()</code> 时，Mongoose 会自动创建<strong>默认连接</strong>。
+你可以使用 <code>mongoose.connection</code> 访问默认连接。</p>
+<h3 id="connection_pools"><a href="connection_pools">连接池</a></h3>
 
-<p>Each <code>connection</code>, whether created with <code>mongoose.connect</code> or
-<code>mongoose.createConnection</code> are all backed by an internal configurable
-connection pool defaulting to a maximum size of 5. Adjust the pool size
-using your connection options:</p>
+<p>无论是使用 <code>mongoose.connect</code> 或是 <code>mongoose.createConnection</code> 创建的连接，
+都被纳入默认最大为 5 的连接池，可以通过 poolSize 选项调整：</p>
 <pre><code class="lang-javascript"><span class="hljs-comment">// With object options</span>
 mongoose.createConnection(uri, { poolSize: <span class="hljs-number">4</span> });
 
@@ -153,12 +144,10 @@ mongoose.createConnection(uri);
 </code></pre>
 <h3 id="v5-changes"><a href="#v5-changes">v5.x 的变化</a></h3>
 
-
-<p>You may see the following deprecation warning if upgrading from 4.x to 5.x
-and you didn&#39;t use the <code>useMongoClient</code> option in 4.x:</p>
+<p>从 4.x 升级到 5.x，你可能会看到一下弃用提示，
+你不应该在 4.x 使用 <code>useMongoClient</code> 选项：</p>
 <pre><code>the server/replset/mongos options are deprecated, all their options are supported at the top level <span class="hljs-keyword">of</span> the options object
-</code></pre><p>In older version of the MongoDB driver you had to specify distinct options
-for server connections, replica set connections, and mongos connections:</p>
+</code></pre><p>旧版的 MongoDB 驱动中你需要为多连接配置特定选项：</p>
 <pre><code class="lang-javascript">mongoose.connect(myUri, {
   server: {
     socketOptions: {
@@ -183,9 +172,8 @@ for server connections, replica set connections, and mongos connections:</p>
   }
 });
 </code></pre>
-<p>In mongoose v5.x you can instead declare these options at the top level,
-without all that extra nesting.
-<a href="http://mongodb.github.io/node-mongodb-native/2.2/api/MongoClient.html">Here&#39;s the list of all supported options</a>.</p>
+<p>mongoose v5.x 中，你可以把所有选项写在顶层而不用嵌套到每个属性。
+<a href="http://mongodb.github.io/node-mongodb-native/2.2/api/MongoClient.html">点击这里查看所有选项列表</a>。</p>
 <pre><code class="lang-javascript"><span class="hljs-comment">// Equivalent to the above code</span>
 mongoose.connect(myUri, {
   socketTimeoutMS: <span class="hljs-number">0</span>,

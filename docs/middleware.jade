@@ -169,7 +169,7 @@ block content
 
     <h3 id="post"><a href="#post">Post 中间件</a></h3>
 
-    [post](/docs/api.html#schema_Schema-post) 中间件在方法执行_之后_
+    [post](/docs/api.html#schema_Schema-post) 中间件在方法执行**之后**
     调用，这个时候每个 `pre` 中间件都已经完成。
 
     ```javascript
@@ -231,12 +231,11 @@ block content
     });
     ```
 
-    <h3 id="notes"><a href="#notes">Notes on findAndUpdate() and Query Middleware</a></h3>
+    <h3 id="notes"><a href="#notes">findAndUpdate() 与 Query 中间件使用注意</a></h3>
 
-    Pre and post `save()` hooks are **not** executed on `update()`,
-    `findOneAndUpdate()`, etc. You can see a more detailed discussion why in
-    [this GitHub issue](http://github.com/Automattic/mongoose/issues/964).
-    Mongoose 4.0 introduced distinct hooks for these functions.
+    pre 和 post `save()` 钩子都不执行于 `update()`，`findOneAndUpdate()` 等情况。
+    你可以[在此](http://github.com/Automattic/mongoose/issues/964)了解更多细节。
+    Mongoose 4.0 为这些函数制定了新钩子。
 
     ```javascript
     schema.pre('find', function() {
@@ -268,16 +267,13 @@ block content
 
     <h3 id="error-handling"><a href="#error-handling">错误处理中间件</a></h3>
 
-    _4.5.0 新增_
+    **4.5.0 新增**
 
-    Middleware execution normally stops the first time a piece of middleware
-    calls `next()` with an error. However, there is a special kind of post
-    middleware called "error handling middleware" that executes specifically
-    when an error occurs.
+    `next()` 执行错误时，中间件执行立即停止。但是我们有特殊的 post 中间件技巧处理这个问题 —— 
+    错误处理中渐渐，它可以在出错后执行你指定的代码。
 
-    Error handling middleware is defined as middleware that takes one extra
-    parameter: the 'error' that occurred as the first parameter to the function.
-    Error handling middleware can then transform the error however you want.
+    错误处理中间件比普通中间件多一个 `error` 参数，并且 `err` 作为第一个参数传入。
+    而后错误处理中间件可以让你自由地做错误的后续处理。
 
     ```javascript
     var schema = new Schema({
@@ -289,8 +285,8 @@ block content
       }
     });
 
-    // Handler **must** take 3 parameters: the error that occurred, the document
-    // in question, and the `next()` function
+    // 处理函数**必须**传入 3 个参数: 发生的错误
+    // 返回的文件，以及 next 函数
     schema.post('save', function(error, doc, next) {
       if (error.name === 'MongoError' && error.code === 11000) {
         next(new Error('There was a duplicate key error'));
@@ -303,9 +299,8 @@ block content
     Person.create([{ name: 'Axl Rose' }, { name: 'Axl Rose' }]);
     ```
 
-    Error handling middleware also works with query middleware. You can
-    also define a post `update()` hook that will catch MongoDB duplicate key
-    errors.
+    对于 query 中间件也可以使用错误处理。你可以定义一个 post `update()` 钩子，
+    它可以捕获 MongoDB 重复 key 错误。
 
     ```javascript
     // The same E11000 error can occur when you call `update()`

@@ -132,71 +132,62 @@ block content
 
     MongoDB 的文档[可以找到](https://docs.mongodb.com/manual/reference/connection-string/)关于连接字符串的所有选项。
 
-    <h3 id="keepAlive"><a href="#keepAlive">A note about keepAlive</a></h3>
+    <h3 id="keepAlive"><a href="#keepAlive">keepAlive 注意事项</a></h3>
 
-    For long running applications, it is often prudent to enable `keepAlive`
-    with a number of milliseconds. Without it, after some period of time
-    you may start to see `"connection closed"` errors for what seems like
-    no reason. If so, after
-    [reading this](http://tldp.org/HOWTO/TCP-Keepalive-HOWTO/overview.html),
-    you may decide to enable `keepAlive`:
+    对于长期运行的后台应用，启用毫秒级 `keepAlive` 是一个精明的操作。不这么做你可能会经常
+    收到看似毫无原因的 `"connection closed"` 错误。遇到这个情况，
+    阅读[这篇文章](http://tldp.org/HOWTO/TCP-Keepalive-HOWTO/overview.html)，
+    你或许会立刻启用 `keepAlive`:
 
     ```javascript
     mongoose.connect(uri, { keepAlive: 120 });
     ```
 
-    <h3 id="replicaset_connections"><a href="#replicaset_connections">Replica Set Connections</a></h3>
+    <h3 id="replicaset_connections"><a href="#replicaset_connections">副本集（Replica Set）连接</a></h3>
 
-    To connect to a replica set you pass a comma delimited list of hosts to
-    connect to rather than a single host.
+    要连接到副本集，你可以用逗号分隔，传入多个地址。
 
     ```javascript
     mongoose.connect('mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]' [, options]);
     ```
 
-    To connect to a single node replica set, specify the `replicaSet` option.
+    连接到单节点副本集，需指定 `replicaSet` 选项。
 
     ```javascript
     mongoose.connect('mongodb://host1:port1/?replicaSet=rsName');
     ```
 
-    <h3 id="mongos_connections"><a href="#mongos_connections">Multi-mongos support</a></h3>
+    <h3 id="mongos_connections"><a href="#mongos_connections">多 mongos 支持</a></h3>
 
-    You can also connect to multiple [mongos](https://docs.mongodb.com/manual/reference/program/mongos/) instances
-    for high availability in a sharded cluster. You do
-    [not need to pass any special options to connect to multiple mongos](http://mongodb.github.io/node-mongodb-native/3.0/tutorials/connect/#connect-to-sharded-cluster) in mongoose 5.x.
+    使用高性能分片集群，需要连接[多个 mongos（MongoDB Shard） 实例](https://docs.mongodb.com/manual/reference/program/mongos/)。
+    在 mongoose 5.x 中，
+    你在连接多个 mongos 时[不需要传入任何特殊选项](http://mongodb.github.io/node-mongodb-native/3.0/tutorials/connect/#connect-to-sharded-cluster)。
 
     ```javascript
     // Connect to 2 mongos servers
     mongoose.connect('mongodb://mongosA:27501,mongosB:27501', cb);
     ```
 
-    <h3 id="multiple_connections"><a href="#multiple_connections">Multiple connections</a></h3>
+    <h3 id="multiple_connections"><a href="#multiple_connections">多个连接</a></h3>
 
-    So far we've seen how to connect to MongoDB using Mongoose's default
-    connection. At times we may need multiple connections open to Mongo, each
-    with different read/write settings, or maybe just to different databases for
-    example. In these cases we can utilize `mongoose.createConnection()` which
-    accepts all the arguments already discussed and returns a fresh connection
-    for you.
+    之前我们了解如何使用 Mongoose 默认连接方法连接到 MongoDB。但有时候我们需要权限不同的多个连接，
+    或是连接到不同数据库。这个情况下我们可以使用 `mongoose.createConnection()`，
+    它接受之前提到的所有参数，给你返回一个新的连接。
 
     ```javascript
     const conn = mongoose.createConnection('mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]', options);
     ```
 
-    This [connection](./api.html#connection_Connection) object is then used to
-    create and retrieve [models](./api.html#model_Model). Models are
-    **always** scoped to a single connection.
+    [connection](./api.html#connection_Connection) 对象后续用于创建和检索 [models](./api.html#model_Model)。
+    models 的范围总是局限于单个连接。
 
-    Mongoose creates a _default connection_ when you call `mongoose.connect()`.
-    You can access the default connection using `mongoose.connection`.
+    调用 `mongoose.connect()` 时，Mongoose 会自动创建**默认连接**。
+    你可以使用 `mongoose.connection` 访问默认连接。
 
-    <h3 id="connection_pools"><a href="connection_pools">Connection pools</a></h3>
+    <h3 id="connection_pools"><a href="connection_pools">连接池</a></h3>
 
-    Each `connection`, whether created with `mongoose.connect` or
-    `mongoose.createConnection` are all backed by an internal configurable
-    connection pool defaulting to a maximum size of 5. Adjust the pool size
-    using your connection options:
+    无论是使用 `mongoose.connect` 或是 `mongoose.createConnection` 创建的连接，
+    都被纳入默认最大为 5 的连接池，可以通过 poolSize 选项调整：
 
     ```javascript
     // With object options
@@ -208,16 +199,14 @@ block content
 
     <h3 id="v5-changes"><a href="#v5-changes">v5.x 的变化</a></h3>
 
-    
-    You may see the following deprecation warning if upgrading from 4.x to 5.x
-    and you didn't use the `useMongoClient` option in 4.x:
+    从 4.x 升级到 5.x，你可能会看到一下弃用提示，
+    你不应该在 4.x 使用 `useMongoClient` 选项：
 
     ```
     the server/replset/mongos options are deprecated, all their options are supported at the top level of the options object
     ```
 
-    In older version of the MongoDB driver you had to specify distinct options
-    for server connections, replica set connections, and mongos connections:
+    旧版的 MongoDB 驱动中你需要为多连接配置特定选项：
 
     ```javascript
     mongoose.connect(myUri, {
@@ -245,9 +234,8 @@ block content
     });
     ```
 
-    In mongoose v5.x you can instead declare these options at the top level,
-    without all that extra nesting.
-    [Here's the list of all supported options](http://mongodb.github.io/node-mongodb-native/2.2/api/MongoClient.html).
+    mongoose v5.x 中，你可以把所有选项写在顶层而不用嵌套到每个属性。
+    [点击这里查看所有选项列表](http://mongodb.github.io/node-mongodb-native/2.2/api/MongoClient.html)。
 
     ```javascript
     // Equivalent to the above code
