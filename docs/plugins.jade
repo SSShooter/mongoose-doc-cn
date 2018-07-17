@@ -2,13 +2,12 @@ extends layout
 
 block content
   :markdown
-    ## Plugins
-    Schemas are pluggable, that is, they allow for applying pre-packaged capabilities 
-    to extend their functionality. This is a very powerful feature.
+    ## 插件
+    Schema 是可拓展的，你可以用打包好的功能拓展你的 Schema。这是一个很实用的特性。
 
-    Suppose that we have several collections in our database 
-    and want to add last-modified functionality to each one. 
-    With plugins this is easy. Just create a plugin once and apply it to each `Schema`:
+    试想下数据库里有很多个 collection，我们需要对它们都添加
+    记录“最后修改”的功能。使用插件，我们很容易做到。
+    创建一次插件，然后应用到每个 `Schema` 就好了。
 
     ```javascript
     // lastMod.js
@@ -36,14 +35,12 @@ block content
     Player.plugin(lastMod);
     ```
 
-    We just added last-modified behavior to both our `Game` and `Player` schemas 
-    and declared an index on the `lastMod` path of our Games to boot. Not bad for a few lines of code.
+    这样就已经在 `Game` 和 `Player` 添加了记录最后修改功能，
+    同时对 game 的 `lastMod` 添加索引。这寥寥几行代码，看起来不错。
 
-    <h3 id="global"><a href="#global">Global Plugins</a></h3>
+    <h3 id="global"><a href="#global">全局插件</a></h3>
 
-    Want to register a plugin for all schemas? The mongoose singleton has a
-    `.plugin()` function that registers a plugin for every schema. For
-    example:
+    想对所有 schema 注册插件？可以使用 mongoose 单例提供的 `.plugin()` 函数，请看例子：
 
     ```javascript
     var mongoose = require('mongoose');
@@ -56,9 +53,8 @@ block content
     var Player = mongoose.model('Player', playerSchema);
     ```
 
-    ### Community!
+    ### 社区！
 
-    Not only can you re-use schema functionality in your own projects 
-    but you also reap the benefits of the Mongoose community as well. 
-    Any plugin published to [npm](https://npmjs.org/) and [tagged](https://npmjs.org/doc/tag.html) 
-    with `mongoose` will show up on our [search results](http://plugins.mongoosejs.io) page.
+    你还可以逛逛 Mongoose 社区！看看有什么好用的插件，当然你也可以把自己的插件分享到社区。
+    你只要把插件发布到 npm 并打上 `mongoose` 的 tag，
+    就能在我们的插件专页[搜索](http://plugins.mongoosejs.io)到啦。

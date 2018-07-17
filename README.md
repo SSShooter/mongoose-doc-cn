@@ -39,7 +39,7 @@ test/docs/validation|完成|[ssshooter](https://github.com/ssshooter)|
 docs/middleware|完成|[ssshooter](https://github.com/ssshooter)|
 docs/populate|完成|[ssshooter](https://github.com/ssshooter)|
 test/docs/discriminators|完成|[ssshooter](https://github.com/ssshooter)|
-docs/plugins|进行中|[ssshooter](https://github.com/ssshooter)|
+docs/plugins|完成|[ssshooter](https://github.com/ssshooter)|
 lib/schema|完成|[easezhi](https://github.com/easezhi)|
 lib/connection|-|-|
 lib/document|-|-|
