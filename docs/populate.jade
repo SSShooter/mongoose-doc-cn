@@ -2,11 +2,14 @@ extends layout
 
 block content
   :markdown
-    ## Populate
+    ## Populate（填充）
 
-    MongoDB has the join-like [$lookup](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/) aggregation operator in versions >= 3.2. Mongoose has a more powerful alternative called `populate()`, which lets you reference documents in other collections.
+    MongoDB 3.2 之后，也有像 sql 里 join 的聚合操作，那就是 [$lookup](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/)
+    而 Mongoose，拥有更强大的 `populate()`，可以让你在别的 collection 中引用 document。
 
-    Population is the process of automatically replacing the specified paths in the document with document(s) from other collection(s). We may populate a single document, multiple documents, plain object, multiple plain objects, or all objects returned from a query. Let's look at some examples.
+    Population 可以自动替换 document 中的指定字段，替换内容从其他 collection 获取。
+    我们可以填充（populate）单个或多个 document、单个或多个纯对象，甚至是 query 返回的一切对象。
+    下面我们看看例子：
 
     ```javascript
     var mongoose = require('mongoose');
@@ -29,20 +32,16 @@ block content
     var Person = mongoose.model('Person', personSchema);
     ```
 
-    So far we've created two [Models](./models.html). Our `Person` model has
-    its `stories` field set to an array of `ObjectId`s. The `ref` option is
-    what tells Mongoose which model to use during population, in our case
-    the `Story` model. All `_id`s we store here must be document `_id`s from
-    the `Story` model.
+    现在我们创建了两个 [Model](./models.html)。`Person` model 的 `stories` 字段设为 `ObjectId`数组。
+    `ref` 选项告诉 Mongoose 在填充的时候使用哪个 model，本例中为 `Story` model。
+    所有储存在此的 `_id` 都必须是 `Story` model 中 document 的 `_id`。
 
-    **Note**: `ObjectId`, `Number`, `String`, and `Buffer` are valid for use
-    as refs. However, you should use `ObjectId` unless you are an advanced
-    user and have a good reason for doing so.
+    **注意**: `ObjectId`、`Number`、`String` 以及 `Buffer` 都可以作为 refs 使用。
+    但是最好还是使用 `ObjectId`，除非你是进阶玩家，并且有充分理由使用其他类型 作为 refs。
 
-    <h3 id="saving-refs"><a href="#saving-refs">Saving refs</a></h3>
+    <h3 id="saving-refs"><a href="#saving-refs">保存 refs</a></h3>
 
-    Saving refs to other documents works the same way you normally save
-    properties, just assign the `_id` value:
+    保存 refs 与保存普通属性一样，把 `_id` 的值赋给它就好了：
 
     ```javascript
     var author = new Person({
@@ -68,6 +67,8 @@ block content
 
     <h3 id="population"><a href="#population">Population</a></h3>
 
+    至此我们做的东西还是跟平常差不多，只是创建了 `Person` 和 `Story`。
+    现在我们试试对 query 填充 story 的 `author`：
     So far we haven't done anything much different. We've merely created a
     `Person` and a `Story`. Now let's take a look at populating our story's
     `author` using the query builder:
@@ -83,17 +84,15 @@ block content
       });
     ```
 
-    Populated paths are no longer set to their original `_id` , their value
-    is replaced with the mongoose document returned from the database by
-    performing a separate query before returning the results.
+    被填充的字段已经不是原来的 `_id`，而是被指定的 document 代替，这个 document 
+    由另一条 query 从数据库返回。
 
-    Arrays of refs work the same way. Just call the
-    [populate](./api.html#query_Query-populate) method on the query and an
-    array of documents will be returned _in place_ of the original `_id`s.
+    refs 数组的原理也与此相似。对 query 对象调用 [populate](./api.html#query_Query-populate) 方法，
+    就能返回装载对应 `_id` 的 document 数组。
 
-    <h3 id="setting-populated-fields"><a href="#setting-populated-fields">Setting Populated Fields</a></h3>
+    <h3 id="setting-populated-fields"><a href="#setting-populated-fields">设置被填充字段</a></h3>
 
-    In Mongoose >= 4.0, you can manually populate a field as well.
+    Mongoose 4.0 之后，你可以手动填充一个字段。
 
     ```javascript
     Story.findOne({ title: 'Casino Royale' }, function(error, story) {
@@ -105,12 +104,10 @@ block content
     });
     ```
 
-    <h3 id="field-selection"><a href="#field-selection">Field Selection</a></h3>
+    <h3 id="field-selection"><a href="#field-selection">字段选择</a></h3>
 
-    What if we only want a few specific fields returned for the populated
-    documents? This can be accomplished by passing the usual
-    [field name syntax](./api.html#query_Query-select) as the second argument
-    to the populate method:
+    如果我们只需要填充的 document 其中一部分字段怎么办？
+    第二参数传入 [field name syntax](./api.html#query_Query-select) 就能实现。
 
     ```javascript
     Story.
@@ -127,9 +124,9 @@ block content
       });
     ```
 
-    <h3 id="populating-multiple-paths"><a href="#populating-multiple-paths">Populating Multiple Paths</a></h3>
+    <h3 id="populating-multiple-paths"><a href="#populating-multiple-paths">填充多个字段</a></h3>
 
-    What if we wanted to populate multiple paths at the same time?
+    要一次填充多个字段怎么办？
 
     ```javascript
     Story.
@@ -139,12 +136,10 @@ block content
       exec();
     ```
 
-    If you call `populate()` multiple times with the same path, only the last
-    one will take effect.
+    如果对同一路径 `populate()` 两次，只有最后一次生效。
 
     ```javascript
-    // The 2nd `populate()` call below overwrites the first because they
-    // both populate 'fans'.
+    // 第二个 `populate()` 覆盖了第一个，因为它们都填充 fans
     Story.
       find().
       populate({ path: 'fans', select: 'name' }).
@@ -153,10 +148,9 @@ block content
     Story.find().populate({ path: 'fans', select: 'email' });
     ```
 
-    <h3 id="query-conditions"><a href="#query-conditions">Query conditions and other options</a></h3>
+    <h3 id="query-conditions"><a href="#query-conditions">Query 条件与其他选项</a></h3>
 
-    What if we wanted to populate our fans array based on their age, select
-    just their names, and return at most, any 5 of them?
+    如果要根据年龄来填充，只填充 name，并且，只返回最多 5 个数据，怎么做？
 
     ```javascript
     Story.
@@ -171,24 +165,22 @@ block content
       exec();
     ```
 
-    <h3 id="refs-to-children"><a href="#refs-to-children">Refs to children</a></h3>
+    <h3 id="refs-to-children"><a href="#refs-to-children">Refs 到 children</a></h3>
 
-    We may find however, if we use the `author` object, we are unable to get a
-    list of the stories. This is because no `story` objects were ever 'pushed'
-    onto `author.stories`.
+    然而我们发现，用 `author` 对象没办法获取 story 列表，因为 `author.stories` 没有被 
+    'pushed' 任何 `story` 对象。
 
-    There are two perspectives here. First, you may want the `author` know
-    which stories are theirs. Usually, your schema should resolve
-    one-to-many relationships by having a parent pointer in the 'many' side.
-    But, if you have a good reason to want an array of child pointers, you
-    can `push()` documents onto the array as shown below.
+    于此有两方面，首先，我们希望 `author` 知道哪些 story 属于他们。通常，
+    你的 schema 应该通过在“多”的一方使用指向它们的父节点（parent pointer）解决一对多关系问题。
+    另一方面，如果你有充分理由得到指向子节点（child pointer）的数组，
+    你可以像下面代码一样把 document `push()` 到数组中。
 
     ```javascript
     author.stories.push(story1);
     author.save(callback);
     ```
 
-    This allows us to perform a `find` and `populate` combo:
+    然后我们就能 `find` 和 `populate` 了：
 
     ```javascript
     Person.
@@ -200,9 +192,8 @@ block content
       });
     ```
 
-    It is debatable that we really want two sets of pointers as they may get
-    out of sync. Instead we could skip populating and directly `find()` the
-    stories we are interested in.
+    如果父子节点互相指向，数据可能会在某一时刻失去同步。
+    为此我们可以不使用填充，直接 `find()` 我们需要的 story。
 
     ```javascript
     Story.
@@ -213,31 +204,25 @@ block content
       });
     ```
 
-    The documents returned from
-    [query population](./api.html#query_Query-populate) become fully
-    functional, `remove`able, `save`able documents unless the
-    [lean](./api.html#query_Query-lean) option is specified. Do not confuse
-    them with [sub docs](./subdocs.html). Take caution when calling its
-    remove method because you'll be removing it from the database, not just
-    the array.
+    [query 填充后](./api.html#query_Query-populate)返回的 document 功能齐全，
+    除非设置了 [lean](./api.html#query_Query-lean) 选项，否则它就是可 `remove`，可 `save` 的。
+    不要把它们和 [sub docs](./subdocs.html) 弄混了，
+    调用 remove 方法要小心，因为这样不只是从数组删除，还会从数据库删除它们。
 
-    <h3 id="populate_an_existing_mongoose_document"><a href="#populate_an_existing_mongoose_document">Populating an existing document</a></h3>
 
-    If we have an existing mongoose document and want to populate some of its
-    paths, **mongoose >= 3.6** supports the
-    [document#populate()](./api.html#document_Document-populate) method.
+    <h3 id="populate_an_existing_mongoose_document"><a href="#populate_an_existing_mongoose_document">填充现有 document</a></h3>
 
-    <h3 id="populate_multiple_documents"><a href="#populate_multiple_documents">Populating multiple existing documents</a></h3>
+    现有 document 同样可以被填充，**mongoose 3.6** 之后支持了 [document#populate()](./api.html#document_Document-populate) 方法。
 
-    If we have one or many mongoose documents or even plain objects
-    (_like [mapReduce](./api.html#model_Model.mapReduce) output_), we may
-    populate them using the [Model.populate()](./api.html#model_Model.populate)
-    method available in **mongoose >= 3.6**. This is what `document#populate()`
-    and `query#populate()` use to populate documents.
+    <h3 id="populate_multiple_documents"><a href="#populate_multiple_documents">填充多个现有 document</a></h3>
 
-    <h3 id="deep-populate"><a href="#deep-populate">Populating across multiple levels</a></h3>
+    如果要填充一个或多个 document 或是（像 [mapReduce](./api.html#model_Model.mapReduce) 输出的）对象，
+    我们可以使用 [Model.populate()](./api.html#model_Model.populate) 方法，此方法适用版本同样需要大于 **mongoose 3.6**。
+    `document#populate()` 和 `query#populate()` 也是使用这个方法填充 document。
 
-    Say you have a user schema which keeps track of the user's friends.
+    <h3 id="deep-populate"><a href="#deep-populate">多级填充</a></h3>
+
+    假设 user schema 记录了 user 的 friends。
 
     ```javascript
     var userSchema = new Schema({
@@ -246,9 +231,8 @@ block content
     });
     ```
 
-    Populate lets you get a list of a user's friends, but what if you also
-    wanted a user's friends of friends? Specify the `populate` option to tell
-    mongoose to populate the `friends` array of all the user's friends:
+    你当然可以填充得到用户的 friends 列表，但是如果要再获得他们朋友的朋友呢？
+    指定 `populate` 选项就可以了：
 
     ```javascript
     User.
@@ -260,16 +244,15 @@ block content
       });
     ```
 
-    <h3 id="cross-db-populate"><a href="#cross-db-populate">Populating across Databases</a></h3>
+    <h3 id="cross-db-populate"><a href="#cross-db-populate">跨数据库填充</a></h3>
 
-    Let's say you have a schema representing events, and a schema representing
-    conversations. Each event has a corresponding conversation thread.
+    假设现在有 event schema 和 conversation schema，每个 event 对应一个 conversation 线程。
 
     ```javascript
     var eventSchema = new Schema({
       name: String,
       // The id of the corresponding conversation
-      // Notice there's no ref here!
+      // 注意，这里没有 ref！
       conversation: ObjectId
     });
     var conversationSchema = new Schema({
@@ -277,8 +260,7 @@ block content
     });
     ```
 
-    Also, suppose that events and conversations are stored in separate MongoDB
-    instances.
+    并且，event 和 conversation 保存在不同 MongoDB 实例。
 
     ```javascript
     var db1 = mongoose.createConnection('localhost:27000/db1');
@@ -288,10 +270,8 @@ block content
     var Conversation = db2.model('Conversation', conversationSchema);
     ```
 
-    In this situation, you will **not** be able to `populate()` normally.
-    The `conversation` field will always be null, because `populate()` doesn't
-    know which model to use. However,
-    [you can specify the model explicitly](./api.html#model_Model.populate).
+    这个情况就**不能**直接使用 `populate()` 了，因为 `populate()` 不知道应该使用什么填充。
+    不过你可以[显式指定一个 model](./api.html#model_Model.populate)。
 
     ```javascript
     Event.
@@ -300,14 +280,13 @@ block content
       exec(function(error, docs) { /* ... */ });
     ```
 
-    This is known as a "cross-database populate," because it enables you to
-    populate across MongoDB databases and even across MongoDB instances.
+    这就是“跨数据库填充”，这可以让你跨 mongodb 数据库甚至是跨 mongodb 实例填充。
 
-    <h3 id="dynamic-ref"><a href="#dynamic-ref">Dynamic References</a></h3>
+    <h3 id="dynamic-ref"><a href="#dynamic-ref">动态引用</a></h3>
 
-    Mongoose can also populate from multiple collections at the same time.
-    Let's say you have a user schema that has an array of "connections" - a
-    user can be connected to either other users or an organization.
+    Mongoose 也可以同时从多个 collection 填充。
+    假设 user schema 有一系列 connection，
+    一个 user 可以连接到其他 user 或组织。
 
     ```javascript
     var userSchema = new Schema({
@@ -324,10 +303,8 @@ block content
     var Organization = mongoose.model('Organization', organizationSchema);
     ```
 
-    The `refPath` property above means that mongoose will look at the
-    `connections.kind` path to determine which model to use for `populate()`.
-    In other words, the `refPath` property enables you to make the `ref`
-    property dynamic.
+    上面的 `refPath` 属性意味着 mongoose 会查找 `connections.kind` 路径，
+    以此确定 `populate()` 使用的 model。换句话说，`refPath` 属性可以让你动态寻找 `ref`。
 
     ```javascript
     // Say we have one organization:
@@ -355,10 +332,12 @@ block content
       });
     ```
 
-    <h3 id="populate-virtuals"><a href="#populate-virtuals">Populate Virtuals</a></h3>
+    <h3 id="populate-virtuals"><a href="#populate-virtuals">虚拟值填充</a></h3>
 
-    _New in 4.5.0_
+    **4.5.0 新功能**
 
+    目前为止你只能以 `_id` 为基础进行填充，然而经常会造成不便。
+    特别地，
     So far you've only populated based on the `_id` field. However, that's
     sometimes not the right choice.
     In particular, [arrays that grow without bound are a MongoDB anti-pattern](https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/).
@@ -396,11 +375,9 @@ block content
     });
     ```
 
-    Keep in mind that virtuals are _not_ included in `toJSON()` output by
-    default. If you want populate virtuals to show up when using functions
-    that rely on `JSON.stringify()`, like Express'
-    [`res.json()` function](http://expressjs.com/en/4x/api.html#res.json),
-    set the `virtuals: true` option on your schema's `toJSON` options.
+    要记得虚拟值默认**不会**被 `toJSON()` 输出。如果你需要填充的虚拟值显式在依赖 `JSON.stringify()` 的函数
+    （例如 Express 的 [`res.json()` function](http://expressjs.com/en/4x/api.html#res.json)）中打印，
+    需要在 `toJSON` 中设置 `virtuals: true` 选项。
 
     ```javascript
     // Set `virtuals: true` so `res.json()` works
@@ -409,8 +386,7 @@ block content
     }, { toJSON: { virtuals: true } });
     ```
 
-    If you're using populate projections, make sure `foreignField` is included
-    in the projection.
+    如果你使用了填充保护，要确保 select 中包含了 `foreignField`。
 
     ```javascript
     Band.
@@ -428,10 +404,10 @@ block content
       });
     ```
 
-    <h3 id="populate-middleware"><a href="#populate-middleware">Populate in Middleware</a></h3>
+    <h3 id="populate-middleware"><a href="#populate-middleware">在中间件中使用填充</a></h3>
     
-    You can populate in either pre or post [hooks](http://mongoosejs.com/docs/middleware.html). If you want to
-    always populate a certain field, check out the [mongoose-autopopulate plugin](http://npmjs.com/package/mongoose-autopopulate).
+    你可以在 pre 或 post [钩子](http://mongoosejs.com/docs/middleware.html)中使用填充。
+    如果你总是需要填充某一字段，可以了解一下[mongoose-autopopulate 插件](http://npmjs.com/package/mongoose-autopopulate)。
     
     ```javascript
     // Always attach `populate()` to `find()` calls
@@ -462,6 +438,5 @@ block content
     });
     ```
 
-    ### Next Up
-
-    Now that we've covered `populate()`, let's take a look at [discriminators](/docs/discriminators.html).
+    ### 下一步
+    现在我们介绍了 `populate()`，接着看看 [discriminators](/docs/discriminators.html)。
