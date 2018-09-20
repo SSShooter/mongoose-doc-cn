@@ -1,9 +1,11 @@
 # mongoose-doc-cn
-mongoose-doc-cn
-欢迎加入翻译:joy:        
-文档来源 https://github.com/Automattic/mongoose         
-中文文档仓库 https://github.com/ssshooter/mongoose-doc-cn           
-中文文档地址 https://mongoosedoc.top/docs/index.html          
+欢迎加入翻译 :smile:      
+
+文档来源 https://github.com/Automattic/mongoose    
+
+中文文档仓库 https://github.com/ssshooter/mongoose-doc-cn        
+
+中文文档地址 https://cn.mongoosedoc.top/docs/guide.html          
 ### 排版相关
 [中文文案排版指北](https://github.com/sparanoid/chinese-copywriting-guidelines)
 ### 约定
