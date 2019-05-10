@@ -30,7 +30,7 @@ block content
     ```javascript
     // getting-started.js
     var mongoose = require('mongoose');
-    mongoose.connect('mongodb://localhost/test');
+    mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
     ```
 
     `connect()` 返回一个状态待定（pending）的连接，
@@ -51,7 +51,7 @@ block content
     现在我们来看一个例子：
 
     ```javascript
-    var kittySchema = mongoose.Schema({
+    var kittySchema = new mongoose.Schema({
       name: String
     });
     ```
